@@ -8,16 +8,14 @@ Usage
 
 ``` php
 
-$basic = new BasicSitemap;
+$basic = new SitemapEntry;
 $basic->setLocation('http://example.com/page-1');
 $basic->setLastMod(time());
 
-$collection = new Collection();
+$collection = new URLSetCollection();
 $collection->addSitemap($basic);
 
-$writer = new URLSetXMLWriter($collection);
-
-var_dump($writer->output());
+var_dump($collection->output());
 
 ```
 
