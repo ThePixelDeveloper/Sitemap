@@ -2,7 +2,7 @@
 	"name": "ThePixelDeveloper/sitemap",
 	"type": "library",
 	"description": "XML sitemap generation",
-	"keywords": ["sitemap", "xml", "search", "google"],
+	"keywords": ["sitemap", "xml"],
 	"license": "MIT",
 	"authors": [
 		{
