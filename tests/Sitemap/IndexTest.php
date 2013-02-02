@@ -4,7 +4,7 @@ namespace Sitemap;
 
 class IndexTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIndex()
+    public function testIndexContainer()
     {
         $sitemap1 = new Sitemap;
         $sitemap1->setLocation('http://example.com/sitemap.xml');
