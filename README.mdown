@@ -12,13 +12,15 @@ $basic = new SitemapEntry;
 $basic->setLocation('http://example.com/page-1');
 $basic->setLastMod(time());
 
+// Different collection types.
+
 $collection = new URLSetCollection;
 $collection->addSitemap($basic);
 
-// OR
-
 $collection = new SitemapIndexCollection;
 $collection->addSitemap($basic);
+
+$collection->output();
 ```
 
 Output
