@@ -1,5 +1,5 @@
 {
-	"name": "ThePixelDeveloper/sitemap",
+	"name": "thepixeldeveloper/sitemap",
 	"type": "library",
 	"description": "XML sitemap generation",
 	"keywords": ["sitemap", "xml"],
