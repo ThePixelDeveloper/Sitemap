@@ -14,8 +14,8 @@ class Sitemap extends \Sitemap\Writers\XML
     public function output()
     {
         $writer = $this->writer();
-        $writer->writeElement('loc', $this->sitemap->getLocation());
-        $writer->writeElement('lastmod', $this->sitemap->getLastMod());
+        $this->writeElementIfNotNull('loc', $this->sitemap->getLocation());
+        $this->writeElementIfNotNull('lastmod', $this->sitemap->getLastMod());
         return $writer->flush();
     }
 }

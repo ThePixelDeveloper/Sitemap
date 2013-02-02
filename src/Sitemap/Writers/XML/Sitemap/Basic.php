@@ -13,8 +13,8 @@ class Basic extends \Sitemap\Writers\XML\Sitemap
     {
         $writer = $this->writer();
         $writer->writeRaw(parent::output());
-        $writer->writeElement('changefreq', $this->sitemap->getChangeFreq());
-        $writer->writeElement('priority', $this->sitemap->getPriority());
+        $this->writeElementIfNotNull('changefreq', $this->sitemap->getChangeFreq());
+        $this->writeElementIfNotNull('priority', $this->sitemap->getPriority());
         return $writer->flush();
     }
 }
