@@ -2,7 +2,7 @@
 
 namespace Sitemap\Sitemap;
 
-class BasicSitemap
+class SitemapEntry
 {
     private $location;
 
