@@ -10,7 +10,7 @@ class Collection
 
     public function addSitemap(BasicSitemap $sitemap)
     {
-        $this->sitemaps[spl_object_hash($sitemap)] = $sitemap;
+        $this->sitemaps[serialize($sitemap)] = $sitemap;
     }
 
     public function getSitemaps()
