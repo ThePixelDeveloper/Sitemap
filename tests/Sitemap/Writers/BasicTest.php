@@ -4,7 +4,7 @@ namespace Sitemap\Writers;
 
 use Sitemap\Sitemap\BasicSitemap;
 use Sitemap\Collection;
-use Sitemap\Writers\XML\URLSet;
+use Sitemap\Writers\XML\URLSetXMLWriter;
 
 class BasicTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,7 +24,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $index->addSitemap($basic1);
         $index->addSitemap($basic2);
 
-        $writer = new URLSet($index);
+        $writer = new URLSetXMLWriter($index);
 
         $this->assertXmlStringEqualsXmlFile(__DIR__.'/../../controls/basic.xml', (string) $writer->output());
     }

@@ -4,7 +4,7 @@ namespace Sitemap\Writers;
 
 use Sitemap\Sitemap\BasicSitemap;
 use Sitemap\Collection;
-use Sitemap\Writers\XML\Index;
+use Sitemap\Writers\XML\IndexXMLWriter;
 
 class IndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,7 +22,7 @@ class IndexTest extends \PHPUnit_Framework_TestCase
         $index->addSitemap($sitemap1);
         $index->addSitemap($sitemap2);
 
-        $writer = new Index($index);
+        $writer = new IndexXMLWriter($index);
 
         $this->assertXmlStringEqualsXmlFile(__DIR__.'/../../controls/index.xml', (string) $writer->output());
     }

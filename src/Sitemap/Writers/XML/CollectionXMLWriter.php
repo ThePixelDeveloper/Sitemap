@@ -5,23 +5,27 @@ namespace Sitemap\Writers\XML;
 use Sitemap\Writers\XML;
 use Sitemap\Collection;
 
-class URLSet extends XML
+abstract class CollectionXMLWriter extends XML
 {
-    private $urlset;
+    private $collection;
 
-    public function __construct(Collection $urlset)
+    public function __construct(Collection $collection)
     {
-        $this->index = $urlset;
+        $this->collection = $collection;
     }
+
+    abstract protected function rootElement();
+
+    abstract protected function sitemapWrapperElement();
 
     public function output()
     {
         $writer = $this->writer();
         $writer->startDocument('1.0', 'UTF-8');
-        $writer->startElementNs(null, 'urlset', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+        $this->rootElement();
 
-        foreach ($this->index->getSitemaps() as $sitemap) {
-            $writer->startElement('url');
+        foreach ($this->collection->getSitemaps() as $sitemap) {
+            $this->sitemapWrapperElement();
             $writer->writeRaw(new \Sitemap\Writers\XML\Sitemap\Basic($sitemap));
             $writer->endElement();
         }
