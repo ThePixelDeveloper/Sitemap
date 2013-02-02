@@ -3,7 +3,7 @@
 namespace Sitemap\Writers;
 
 use Sitemap\Sitemap\Basic;
-use Sitemap\Index;
+use Sitemap\Collection;
 
 class BasicTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $basic2->setChangeFreq('weekly');
         $basic2->setLocation('http://www.example.com/catalog?item=12&desc=vacation_hawaii');
 
-        $index = new \Sitemap\URLSet;
+        $index = new Collection;
         $index->addSitemap($basic1);
         $index->addSitemap($basic2);
 

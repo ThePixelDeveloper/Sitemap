@@ -2,6 +2,8 @@
 
 namespace Sitemap;
 
+use Sitemap\Collection;
+
 class IndexTest extends \PHPUnit_Framework_TestCase
 {
     public function testIndexContainer()
@@ -14,7 +16,7 @@ class IndexTest extends \PHPUnit_Framework_TestCase
         $sitemap2->setLocation('http://example.com/blog.xml');
         $sitemap2->setLastMod(time());
 
-        $index = new Index;
+        $index = new Collection;
 
         $index->addSitemap($sitemap1);
         $index->addSitemap($sitemap2);

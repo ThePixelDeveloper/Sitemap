@@ -3,12 +3,13 @@
 namespace Sitemap\Writers\XML;
 
 use Sitemap\Writers\XML;
+use Sitemap\Collection;
 
 class URLSet extends XML
 {
     private $urlset;
 
-    public function __construct(\Sitemap\URLSet $urlset)
+    public function __construct(Collection $urlset)
     {
         $this->index = $urlset;
     }

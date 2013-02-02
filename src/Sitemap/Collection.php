@@ -2,7 +2,7 @@
 
 namespace Sitemap;
 
-class Index
+class Collection
 {
     private $sitemaps = array();
 

@@ -3,12 +3,13 @@
 namespace Sitemap\Writers\XML;
 
 use Sitemap\Writers\XML;
+use Sitemap\Collection;
 
 class Index extends XML
 {
     private $index;
 
-    public function __construct(\Sitemap\Index $index)
+    public function __construct(Collection $index)
     {
         $this->index = $index;
     }

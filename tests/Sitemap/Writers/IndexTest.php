@@ -3,7 +3,7 @@
 namespace Sitemap\Writers;
 
 use Sitemap\Sitemap;
-use Sitemap\Index;
+use Sitemap\Collection;
 
 class IndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class IndexTest extends \PHPUnit_Framework_TestCase
         $sitemap2->setLocation('http://www.example.com/sitemap2.xml.gz');
         $sitemap2->setLastMod('2005-01-01');
 
-        $index = new Index;
+        $index = new Collection;
         $index->addSitemap($sitemap1);
         $index->addSitemap($sitemap2);
 
