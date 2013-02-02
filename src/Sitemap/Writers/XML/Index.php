@@ -6,13 +6,20 @@ use Sitemap\Writers\XML;
 
 class Index extends XML
 {
+    private $index;
+
+    public function __construct(\Sitemap\Index $index)
+    {
+        $this->index = $index;
+    }
+
     public function output()
     {
         $writer = $this->writer();
 
         $writer->startElementNs(null, 'sitemapindex', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
-        foreach ($this->container->getSitemaps() as $sitemap) {
+        foreach ($this->index->getSitemaps() as $sitemap) {
             $writer->startElement('sitemap');
             $writer->writeRaw(new \Sitemap\Writers\XML\Sitemap($sitemap));
             $writer->endElement();
