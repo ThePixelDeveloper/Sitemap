@@ -2,11 +2,13 @@
 
 namespace Sitemap\Writers\XML;
 
+use Sitemap\Sitemap\BasicSitemap;
+
 class Sitemap extends \Sitemap\Writers\XML
 {
     protected $sitemap;
 
-    public function __construct(\Sitemap\Sitemap $sitemap)
+    public function __construct(BasicSitemap $sitemap)
     {
         $this->sitemap = $sitemap;
     }

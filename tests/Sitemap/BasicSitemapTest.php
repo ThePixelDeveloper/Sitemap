@@ -2,6 +2,8 @@
 
 namespace Sitemap;
 
+use Sitemap\Sitemap\BasicSitemap;
+
 class SitemapTest extends \PHPUnit_Framework_TestCase
 {
     public function sitemapProvider()
@@ -16,7 +18,7 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
      */
     public function testNew($location, $lastMod)
     {
-        $sitemap = new Sitemap;
+        $sitemap = new BasicSitemap;
         $sitemap->setLocation($location);
         $sitemap->setLastMod($lastMod);
 

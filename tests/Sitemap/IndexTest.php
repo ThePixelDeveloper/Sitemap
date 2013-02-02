@@ -3,16 +3,17 @@
 namespace Sitemap;
 
 use Sitemap\Collection;
+use Sitemap\Sitemap\BasicSitemap;
 
 class IndexTest extends \PHPUnit_Framework_TestCase
 {
     public function testIndexContainer()
     {
-        $sitemap1 = new Sitemap;
+        $sitemap1 = new BasicSitemap;
         $sitemap1->setLocation('http://example.com/sitemap.xml');
         $sitemap1->setLastMod(time());
 
-        $sitemap2 = new Sitemap;
+        $sitemap2 = new BasicSitemap;
         $sitemap2->setLocation('http://example.com/blog.xml');
         $sitemap2->setLastMod(time());
 

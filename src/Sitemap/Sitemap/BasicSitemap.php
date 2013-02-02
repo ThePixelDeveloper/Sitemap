@@ -2,13 +2,35 @@
 
 namespace Sitemap\Sitemap;
 
-use Sitemap\Sitemap;
-
-class Basic extends Sitemap
+class BasicSitemap
 {
+    private $location;
+
+    private $lastMod;
+
     private $priority;
 
     private $changeFreq;
+
+    public function setLastMod($lastMod)
+    {
+        $this->lastMod = $lastMod;
+    }
+
+    public function getLastMod()
+    {
+        return $this->lastMod;
+    }
+
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
+
+    public function getLocation()
+    {
+        return $this->location;
+    }
 
     public function setChangeFreq($changeFreq)
     {
