@@ -15,8 +15,7 @@ class Index extends XML
 
         foreach ($this->container->getSitemaps() as $sitemap) {
             $writer->startElement('sitemap');
-            $writer->writeElement('loc', $sitemap->getLocation());
-            $writer->writeElement('lastmod', $sitemap->getLastMod());
+            $writer->writeRaw(new \Sitemap\Writers\XML\Sitemap($sitemap));
             $writer->endElement();
         }
 
