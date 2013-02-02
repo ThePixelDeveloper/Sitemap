@@ -15,8 +15,10 @@ $basic->setLastMod(time());
 $collection = new URLSetCollection;
 $collection->addSitemap($basic);
 
-var_dump($collection->output());
+// OR
 
+$collection = new SitemapIndexCollection;
+$collection->addSitemap($basic);
 ```
 
 Output
@@ -28,6 +30,14 @@ Output
 			<loc>http://example.com/page-1</loc>
 			<lastmod>1359837115</lastmod>
 		</url>
+	</urlset>
+
+<?xml version="1.0" encoding="UTF-8"?>
+	<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+		<sitemap>
+			<loc>http://example.com/page-1</loc>
+			<lastmod>1359837115</lastmod>
+		</sitemap>
 	</urlset>
 ```
 
