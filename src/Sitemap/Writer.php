@@ -2,10 +2,10 @@
 
 namespace Sitemap;
 
-abstract class Writer
-{
-    abstract public function output();
+use Sitemap\Writers\OutputInterface;
 
+abstract class Writer implements OutputInterface
+{
     public function __toString()
     {
         return $this->output();
