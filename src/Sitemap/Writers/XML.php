@@ -10,7 +10,6 @@ abstract class XML extends Writer
     {
         $writer = new \XMLWriter;
         $writer->openMemory();
-        $writer->startDocument('1.0', 'UTF-8');
         return $writer;
     }
 }

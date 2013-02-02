@@ -16,7 +16,7 @@ class Index extends XML
     public function output()
     {
         $writer = $this->writer();
-
+        $writer->startDocument('1.0', 'UTF-8');
         $writer->startElementNs(null, 'sitemapindex', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
         foreach ($this->index->getSitemaps() as $sitemap) {
