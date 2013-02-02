@@ -12,7 +12,7 @@ $basic = new SitemapEntry;
 $basic->setLocation('http://example.com/page-1');
 $basic->setLastMod(time());
 
-$collection = new URLSetCollection();
+$collection = new URLSetCollection;
 $collection->addSitemap($basic);
 
 var_dump($collection->output());
