@@ -10,4 +10,6 @@ abstract class Writer
     {
         $this->container = $container;
     }
+
+    abstract public function output();
 }
