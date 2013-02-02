@@ -2,6 +2,8 @@
 
 namespace Sitemap\Sitemap;
 
+use XMLWriter;
+
 class SitemapEntry
 {
     private $location;
@@ -50,5 +52,30 @@ class SitemapEntry
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    public function output()
+    {
+        $writer = new XMLWriter;
+        $writer->openMemory();
+
+        $writer->writeRaw($this->writeElement('loc', $this->getLocation()));
+        $writer->writeRaw($this->writeElement('lastmod', $this->getLastMod()));
+        $writer->writeRaw($this->writeElement('changefreq', $this->getChangeFreq()));
+        $writer->writeRaw($this->writeElement('priority', $this->getPriority()));
+
+        return $writer->flush();
+    }
+
+    protected function writeElement($name, $value = null)
+    {
+        $writer = new XMLWriter;
+        $writer->openMemory();
+
+        if (!empty($value)) {
+            $writer->writeElement($name, $value);
+        }
+
+        return $writer->flush();
     }
 }

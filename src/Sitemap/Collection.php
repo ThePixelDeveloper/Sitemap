@@ -23,26 +23,11 @@ class Collection
 
         foreach ($this->sitemaps as $sitemap) {
             $writer->startElement($this->entryWrapper());
-            $writer->writeRaw($this->writeElement('loc', $sitemap->getLocation()));
-            $writer->writeRaw($this->writeElement('lastmod', $sitemap->getLastMod()));
-            $writer->writeRaw($this->writeElement('changefreq', $sitemap->getChangeFreq()));
-            $writer->writeRaw($this->writeElement('priority', $sitemap->getPriority()));
+            $writer->writeRaw($sitemap->output());
             $writer->endElement();
         }
 
         $writer->endElement();
-        return $writer->flush();
-    }
-
-    private function writeElement($name, $value = null)
-    {
-        $writer = new XMLWriter;
-        $writer->openMemory();
-
-        if (!empty($value)) {
-            $writer->writeElement($name, $value);
-        }
-
         return $writer->flush();
     }
 }
