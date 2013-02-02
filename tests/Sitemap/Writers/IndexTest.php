@@ -11,7 +11,7 @@ class IndexTest extends \PHPUnit_Framework_TestCase
     {
         $sitemap1 = new Sitemap;
         $sitemap1->setLocation('http://www.example.com/sitemap1.xml.gz');
-        $sitemap1->setLastMod('2004-10-01T18:23:17+00:0');
+        $sitemap1->setLastMod('2004-10-01T18:23:17+00:00');
 
         $sitemap2 = new Sitemap;
         $sitemap2->setLocation('http://www.example.com/sitemap2.xml.gz');
