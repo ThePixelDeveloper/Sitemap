@@ -8,6 +8,9 @@ abstract class XML extends Writer
 {
     protected function writer()
     {
-        return new \XMLWriter;
+        $writer = new \XMLWriter;
+        $writer->openMemory();
+        $writer->startDocument('1.0', 'UTF-8');
+        return $writer;
     }
 }
