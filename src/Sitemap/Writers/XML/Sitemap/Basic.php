@@ -4,7 +4,7 @@ namespace Sitemap\Writers\XML\Sitemap;
 
 class Basic extends \Sitemap\Writers\XML\Sitemap
 {
-    private $sitemap;
+    protected $sitemap;
 
     public function __construct(\Sitemap\Sitemap\Basic $sitemap)
     {
