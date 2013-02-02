@@ -4,8 +4,6 @@ namespace Sitemap\Writers\XML\Sitemap;
 
 class Basic extends \Sitemap\Writers\XML\Sitemap
 {
-    protected $sitemap;
-
     public function __construct(\Sitemap\Sitemap\Basic $sitemap)
     {
         $this->sitemap = $sitemap;
