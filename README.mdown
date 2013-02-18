@@ -43,8 +43,3 @@ Output
 	</sitemap>
 </urlset>
 ```
-
-Todo
-----
-
-Work on a cleaner, more obvious and extensible API.
