@@ -1,10 +1,8 @@
 <?php
 
-namespace Sitemap\Collection;
+namespace Sitemap\Formatter\XML;
 
-use Sitemap\Collection;
-
-class URLSetCollection extends Collection
+class URLSet extends \Sitemap\Formatter\XML
 {
     protected function collectionName()
     {

@@ -1,10 +1,8 @@
 <?php
 
-namespace Sitemap\Collection;
+namespace Sitemap\Formatter\XML;
 
-use Sitemap\Collection;
-
-class SitemapIndexCollection extends Collection
+class SitemapIndex extends \Sitemap\Formatter\XML
 {
     protected function collectionName()
     {

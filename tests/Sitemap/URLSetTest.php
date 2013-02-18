@@ -3,7 +3,7 @@
 namespace Sitemap;
 
 use Sitemap\Sitemap\SitemapEntry;
-use Sitemap\Collection\URLSetCollection;
+use Sitemap\Formatter\XML\URLSet;
 
 class URLSetTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,9 +19,10 @@ class URLSetTest extends \PHPUnit_Framework_TestCase
         $basic2->setChangeFreq('weekly');
         $basic2->setLocation('http://www.example.com/catalog?item=12&desc=vacation_hawaii');
 
-        $urlsetCollection = new URLSetCollection;
+        $urlsetCollection = new Collection;
         $urlsetCollection->addSitemap($basic1);
         $urlsetCollection->addSitemap($basic2);
+        $urlsetCollection->setFormatter(new URLSet);
 
         $this->assertXmlStringEqualsXmlFile(__DIR__.'/../controls/basic.xml', (string) $urlsetCollection->output());
     }

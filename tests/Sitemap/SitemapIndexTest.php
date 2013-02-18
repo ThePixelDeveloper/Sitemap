@@ -3,7 +3,7 @@
 namespace Sitemap;
 
 use Sitemap\Sitemap\SitemapEntry;
-use Sitemap\Collection\SitemapIndexCollection;
+use Sitemap\Formatter\XML\SitemapIndex;
 
 class SitemapIndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,10 +23,11 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
         $sitemap3->setLastMod('2005-01-01');
         // Duplicate entries end.
 
-        $index = new SitemapIndexCollection;
+        $index = new Collection;
         $index->addSitemap($sitemap1);
         $index->addSitemap($sitemap2);
         $index->addSitemap($sitemap3);
+        $index->setFormatter(new SitemapIndex);
 
         $this->assertXmlStringEqualsXmlFile(__DIR__.'/../controls/index.xml', (string) $index->output());
     }
