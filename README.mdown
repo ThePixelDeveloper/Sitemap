@@ -10,17 +10,16 @@ Usage
 
 ``` php
 
-$basic = new SitemapEntry;
+$basic = new \Sitemap\SitemapEntry;
 $basic->setLocation('http://example.com/page-1');
 $basic->setLastMod(time());
 
-// Different collection types.
-
-$collection = new URLSetCollection;
+$collection = new \Sitemap\Collection;
 $collection->addSitemap($basic);
 
-$collection = new SitemapIndexCollection;
-$collection->addSitemap($basic);
+// There's some different formatters available.
+$collection->setFormatter(new \Sitemap\Formatter\XML\URLSet);
+$collection->setFormatter(new \Sitemap\Formatter\XML\SitemapIndex);
 
 $collection->output();
 ```
