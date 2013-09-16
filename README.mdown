@@ -10,7 +10,7 @@ Usage
 
 ``` php
 
-$basic = new \Sitemap\SitemapEntry;
+$basic = new \Sitemap\Sitemap\SitemapEntry;
 $basic->setLocation('http://example.com/page-1');
 $basic->setLastMod(time());
 
