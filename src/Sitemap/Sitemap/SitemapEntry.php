@@ -20,6 +20,14 @@ class SitemapEntry
 
     protected $changeFreq;
 
+    public function __construct($loc = null, $lastMod = null, $changeFreq = null, $priority = null)
+    {
+        $this->setLocation($loc);
+        $this->setLastMod($lastMod);
+        $this->setChangeFreq($changeFreq);
+        $this->setPriority($priority);
+    }
+
     public function setLastMod($lastMod)
     {
         if ($lastMod instanceof \DateTime) {
