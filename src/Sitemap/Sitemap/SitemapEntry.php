@@ -6,17 +6,31 @@ use XMLWriter;
 
 class SitemapEntry
 {
-    private $location;
+    const CHANGEFREQ_ALWAYS  = 'always';
+    const CHANGEFREQ_HOURLY  = 'hourly';
+    const CHANGEFREQ_DAILY   = 'daily';
+    const CHANGEFREQ_WEEKLY  = 'weekly';
+    const CHANGEFREQ_MONTHLY = 'monthly';
+    const CHANGEFREQ_YEARLY  = 'yearly';
+    const CHANGEFREQ_NEVER   = 'never';
 
-    private $lastMod;
+    protected $location;
 
-    private $priority;
+    protected $lastMod;
 
-    private $changeFreq;
+    protected $priority;
+
+    protected $changeFreq;
 
     public function setLastMod($lastMod)
     {
+        if ($lastMode instanceof \DateTime) {
+            $lastMod = $lastMod->format('U');
+        }
+
         $this->lastMod = $lastMod;
+
+        return $this;
     }
 
     public function getLastMod()
@@ -27,6 +41,8 @@ class SitemapEntry
     public function setLocation($location)
     {
         $this->location = $location;
+
+        return $this;
     }
 
     public function getLocation()
@@ -36,7 +52,19 @@ class SitemapEntry
 
     public function setChangeFreq($changeFreq)
     {
-        $this->changeFreq = $changeFreq;
+        if (in_array($changeFreq, array(
+            self::CHANGEFREQ_ALWAYS,
+            self::CHANGEFREQ_HOURLY,
+            self::CHANGEFREQ_DAILY,
+            self::CHANGEFREQ_WEEKLY,
+            self::CHANGEFREQ_MONTHLY,
+            self::CHANGEFREQ_YEARLY,
+            self::CHANGEFREQ_NEVER,
+        )) {
+            $this->changeFreq = $changeFreq;
+        }
+
+        return $this;
     }
 
     public function getChangeFreq()
@@ -46,7 +74,15 @@ class SitemapEntry
 
     public function setPriority($priority)
     {
+        $priority = round((float) $priority, 1);
+
+        if ($priority < 0 || $priority > 1) {
+            $priority = 0.5;
+        }
+
         $this->priority = $priority;
+
+        return $this;
     }
 
     public function getPriority()
