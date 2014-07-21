@@ -2,8 +2,6 @@
 
 namespace Sitemap\Sitemap;
 
-use XMLWriter;
-
 class SitemapEntry
 {
     const CHANGEFREQ_ALWAYS  = 'always';
@@ -24,7 +22,7 @@ class SitemapEntry
 
     public function setLastMod($lastMod)
     {
-        if ($lastMode instanceof \DateTime) {
+        if ($lastMod instanceof \DateTime) {
             $lastMod = $lastMod->format('U');
         }
 
@@ -74,10 +72,13 @@ class SitemapEntry
 
     public function setPriority($priority)
     {
-        $priority = round((float) $priority, 1);
+        if ($priority !== null)
+        {
+            $priority = round((float) $priority, 1);
 
-        if ($priority < 0 || $priority > 1) {
-            $priority = 0.5;
+            if ($priority < 0 || $priority > 1) {
+                $priority = 0.5;
+            }
         }
 
         $this->priority = $priority;
