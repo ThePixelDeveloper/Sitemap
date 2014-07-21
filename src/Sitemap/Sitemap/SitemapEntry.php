@@ -31,7 +31,7 @@ class SitemapEntry
     public function setLastMod($lastMod)
     {
         if ($lastMod instanceof \DateTime) {
-            $lastMod = $lastMod->format('U');
+            $lastMod = $lastMod->format(\DateTime::DATE_W3C);
         }
 
         $this->lastMod = $lastMod;
