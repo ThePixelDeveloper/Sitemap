@@ -60,7 +60,7 @@ class SitemapEntry
             self::CHANGEFREQ_MONTHLY,
             self::CHANGEFREQ_YEARLY,
             self::CHANGEFREQ_NEVER,
-        )) {
+        ))) {
             $this->changeFreq = $changeFreq;
         }
 
