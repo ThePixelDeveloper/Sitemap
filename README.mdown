@@ -1,4 +1,4 @@
-Sitemap - XML Sitemap Generation for PHP 5.3+ 
+Sitemap - XML Sitemap Generation
 ==============================
 
 [![Build Status](https://travis-ci.org/ThePixelDeveloper/Sitemap-v2.png?branch=master)](https://travis-ci.org/ThePixelDeveloper/Sitemap-v2)
