@@ -20,7 +20,7 @@ class SitemapEntry
 
     protected $changeFreq;
 
-    public function __construct($loc = null, $lastMod = null, $changeFreq = null, $priority = null)
+    public function __construct($loc, $lastMod = null, $changeFreq = null, $priority = null)
     {
         $this->setLocation($loc);
         $this->setLastMod($lastMod);
