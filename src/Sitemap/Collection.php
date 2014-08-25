@@ -24,4 +24,9 @@ class Collection
     {
         return $this->formatter->render($this->sitemaps);
     }
+
+    public function hasSitemaps()
+    {
+        return !empty($this->sitemaps);
+    }
 }
