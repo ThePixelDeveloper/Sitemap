@@ -31,7 +31,7 @@ abstract class XML implements Formatter
         return $writer->flush();
     }
 
-    private function writeElement($name, $value = null)
+    protected function writeElement($name, $value = null)
     {
         $writer = new XMLWriter;
         $writer->openMemory();

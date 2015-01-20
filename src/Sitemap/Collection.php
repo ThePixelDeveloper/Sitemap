@@ -2,15 +2,13 @@
 
 namespace Sitemap;
 
-use Sitemap\Sitemap\SitemapEntry;
-
 class Collection
 {
     private $sitemaps = array();
 
     private $formatter;
 
-    public function addSitemap(SitemapEntry $sitemap)
+    public function addSitemap($sitemap)
     {
         $this->sitemaps[serialize($sitemap)] = $sitemap;
     }
