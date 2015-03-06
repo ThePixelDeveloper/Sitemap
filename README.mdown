@@ -5,7 +5,7 @@ Sitemap - XML Sitemap Generation
 
 Sitemap is a tool to generate XML sitemaps quickly.
 
-Usage
+Basic Usage
 -----
 
 ``` php
@@ -40,5 +40,70 @@ Output
 		<loc>http://example.com/page-1</loc>
 		<lastmod>1359837115</lastmod>
 	</sitemap>
+</urlset>
+```
+
+Google Images Usage
+-----
+
+``` php
+
+// Image 1
+$image1 = new Sitemap\Sitemap\ImageEntry('https://s3.amazonaws.com/path/to/image');
+
+// Image 2 with multiple attributes
+$image2 = new Sitemap\Sitemap\ImageEntry('https://s3.amazonaws.com/path/to/image2');
+$image2->setCaption('Test Caption');
+$image2->setGeoLocation('Limerick, Ireland');
+$image2->setTitle('Test Title');
+$image2->setLicense('http://www.license.com');
+
+$basic1 = new Sitemap\Sitemap\SitemapImageEntry('http://www.example.com/1');
+$basic1->addImages($image1);
+$basic1->addImages($image2);
+
+$basic2 = new Sitemap\Sitemap\SitemapImageEntry('http://www.example.com/2');
+$basic2->addImages($image1);
+$basic2->addImages($image2);
+
+$collection = new Sitemap\Collection;
+$collection->addSitemap($basic1);
+$collection->addSitemap($basic2);
+$collection->setFormatter(new SitemapImage);
+$collection->output();
+```
+
+Output
+
+``` xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>http://www.example.com/1</loc>
+        <image:image>
+            <image:loc>https://s3.amazonaws.com/path/to/image</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://s3.amazonaws.com/path/to/image2</image:loc>
+            <image:caption>Test Caption</image:caption>
+            <image:geo_location>Limerick, Ireland</image:geo_location>
+            <image:title>Test Title</image:title>
+            <image:license>http://www.license.com</image:license>
+        </image:image>
+    </url>
+    <url>
+        <loc>http://www.example.com/2</loc>
+        <image:image>
+            <image:loc>https://s3.amazonaws.com/path/to/image</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://s3.amazonaws.com/path/to/image2</image:loc>
+            <image:caption>Test Caption</image:caption>
+            <image:geo_location>Limerick, Ireland</image:geo_location>
+            <image:title>Test Title</image:title>
+            <image:license>http://www.license.com</image:license>
+        </image:image>
+    </url>
 </urlset>
 ```
