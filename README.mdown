@@ -40,5 +40,5 @@ Output
 		<loc>http://example.com/page-1</loc>
 		<lastmod>1359837115</lastmod>
 	</sitemap>
-</urlset>
+</sitemapindex>
 ```
