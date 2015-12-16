@@ -30,6 +30,11 @@ class Url implements OutputInterface
     protected $priority;
 
     /**
+     * @var OutputInterface[]
+     */
+    protected $subElements;
+
+    /**
      * Url constructor
      *
      * @param string      $loc
@@ -89,6 +94,10 @@ class Url implements OutputInterface
         $this->optionalWriteElement($XMLWriter, 'changefreq', $this->getChangeFreq());
         $this->optionalWriteElement($XMLWriter, 'priority', $this->getPriority());
 
+        foreach ($this->getSubelements() as $subelement) {
+            $subelement->generateXML($XMLWriter);
+        }
+
         $XMLWriter->endElement();
     }
 
@@ -102,5 +111,25 @@ class Url implements OutputInterface
         if ($value) {
             $XMLWriter->writeElement($name, $value);
         }
+    }
+
+    /**
+     * @return OutputInterface[]
+     */
+    public function getSubElements()
+    {
+        return $this->subElements;
+    }
+
+    /**
+     * @param OutputInterface $subElement
+     *
+     * @return $this
+     */
+    public function addSubElement($subElement)
+    {
+        $this->subElements[] = $subElement;
+
+        return $this;
     }
 }

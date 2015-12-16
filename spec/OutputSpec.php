@@ -82,13 +82,13 @@ XML;
         $image2->setTitle('Test Title');
         $image2->setLicense('http://www.license.com');
 
-        $imageUrl = new Url\Image('http://www.example.com/1');
-        $imageUrl->addImage($image);
-        $imageUrl->addImage($image2);
+        $imageUrl = new Url('http://www.example.com/1');
+        $imageUrl->addSubElement($image);
+        $imageUrl->addSubElement($image2);
 
-        $imageUrl2 = new Url\Image('http://www.example.com/2');
-        $imageUrl2->addImage($image);
-        $imageUrl2->addImage($image2);
+        $imageUrl2 = new Url('http://www.example.com/2');
+        $imageUrl2->addSubElement($image);
+        $imageUrl2->addSubElement($image2);
 
         $sitemapIndex->addUrl($imageUrl);
         $sitemapIndex->addUrl($imageUrl2);
