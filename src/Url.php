@@ -84,9 +84,11 @@ class Url implements OutputInterface
     {
         $XMLWriter->startElement('url');
         $XMLWriter->writeElement('loc', $this->getLoc());
+
         $this->optionalWriteElement($XMLWriter, 'lastmod', $this->getLastMod());
         $this->optionalWriteElement($XMLWriter, 'changefreq', $this->getChangeFreq());
         $this->optionalWriteElement($XMLWriter, 'priority', $this->getPriority());
+
         $XMLWriter->endElement();
     }
 
