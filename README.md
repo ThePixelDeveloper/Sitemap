@@ -12,37 +12,50 @@ A tool to generate XML sitemaps
 Usage
 -----
 
+Generating a _urlset_ sitemap
+
 ``` php
 
-$basic = new \Sitemap\Sitemap\SitemapEntry('http://example.com/page-1');
-$basic->setLastMod(time());
+$urlSet = new Thepixeldeveloper\Sitemap\Urlset(); 
 
-$collection = new \Sitemap\Collection;
-$collection->addSitemap($basic);
-
-// There's some different formatters available.
-$collection->setFormatter(new \Sitemap\Formatter\XML\URLSet);
-$collection->setFormatter(new \Sitemap\Formatter\XML\SitemapIndex);
-
-$collection->output();
+foreach ($entities as $entity) {
+  $urlSet->addUrl(
+      new Thepixeldeveloper\Sitemap\Url(
+          $loc,
+          $lastMod,
+          $changeFreq,
+          $priority
+      )
+  );
+}
 ```
 
-Output
+Generating a _sitemapindex_ sitemap
 
-``` xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	<url>
-		<loc>http://example.com/page-1</loc>
-		<lastmod>1359837115</lastmod>
-	</url>
-</urlset>
 
-<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	<sitemap>
-		<loc>http://example.com/page-1</loc>
-		<lastmod>1359837115</lastmod>
-	</sitemap>
-</urlset>
+``` php
+
+$sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex(); 
+
+foreach ($entities as $entity) {
+  $sitemapIndex->addUrl(
+      new Thepixeldeveloper\Sitemap\Sitemap(
+          $loc,
+          $lastMod
+      )
+  );
+}
+```
+
+Then pass either SitemapIndex or Urlset to a Formatter to generate output
+
+
+``` php
+
+$formatter = new Thepixeldeveloper\Sitemap\Formatter();
+
+$output = $formatter->format($sitemapIndex);
+
+echo $output;
+
 ```
