@@ -10,14 +10,6 @@ class SitemapIndex implements OutputInterface
     protected $sitemaps = [];
 
     /**
-     * @return Sitemap[]
-     */
-    public function getSitemaps()
-    {
-        return $this->sitemaps;
-    }
-
-    /**
      * @param Sitemap $sitemap
      *
      * @return $this
@@ -36,7 +28,8 @@ class SitemapIndex implements OutputInterface
     {
         $XMLWriter->startElement('sitemapindex');
         $XMLWriter->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
-        $XMLWriter->writeAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd');
+        $XMLWriter->writeAttribute('xsi:schemaLocation',
+            'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd');
         $XMLWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
         foreach ($this->getSitemaps() as $sitemap) {
@@ -44,5 +37,13 @@ class SitemapIndex implements OutputInterface
         }
 
         $XMLWriter->endElement();
+    }
+
+    /**
+     * @return Sitemap[]
+     */
+    public function getSitemaps()
+    {
+        return $this->sitemaps;
     }
 }

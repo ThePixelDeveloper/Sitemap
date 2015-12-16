@@ -20,6 +20,24 @@ class Output
     protected $indentString = '    ';
 
     /**
+     * @param OutputInterface $collection
+     *
+     * @return string
+     */
+    public function getOutput(OutputInterface $collection)
+    {
+        $xmlWriter = new \XMLWriter();
+        $xmlWriter->openMemory();
+        $xmlWriter->startDocument('1.0', 'UTF-8');
+        $xmlWriter->setIndent($this->isIndented());
+        $xmlWriter->setIndentString($this->getIndentString());
+
+        $collection->generateXML($xmlWriter);
+
+        return trim($xmlWriter->flush(true));
+    }
+
+    /**
      * @return boolean
      */
     public function isIndented()
@@ -57,23 +75,5 @@ class Output
         $this->indentString = $indentString;
 
         return $this;
-    }
-
-    /**
-     * @param OutputInterface $collection
-     *
-     * @return string
-     */
-    public function getOutput(OutputInterface $collection)
-    {
-        $xmlWriter = new \XMLWriter();
-        $xmlWriter->openMemory();
-        $xmlWriter->startDocument('1.0', 'UTF-8');
-        $xmlWriter->setIndent($this->isIndented());
-        $xmlWriter->setIndentString($this->getIndentString());
-
-        $collection->generateXML($xmlWriter);
-
-        return trim($xmlWriter->flush(true));
     }
 }

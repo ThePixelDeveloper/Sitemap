@@ -32,6 +32,21 @@ class Sitemap implements OutputInterface
     }
 
     /**
+     * @param \XMLWriter $XMLWriter
+     */
+    public function generateXML(\XMLWriter $XMLWriter)
+    {
+        $XMLWriter->startElement('sitemap');
+        $XMLWriter->writeElement('loc', $this->getLoc());
+
+        if ($lastMod = $this->getLastMod()) {
+            $XMLWriter->writeElement('lastmod', $lastMod);
+        }
+
+        $XMLWriter->endElement();
+    }
+
+    /**
      * @return string
      */
     public function getLoc()
@@ -45,20 +60,5 @@ class Sitemap implements OutputInterface
     public function getLastMod()
     {
         return $this->lastMod;
-    }
-
-    /**
-     * @param \XMLWriter $XMLWriter
-     */
-    public function generateXML(\XMLWriter $XMLWriter)
-    {
-        $XMLWriter->startElement('sitemap');
-        $XMLWriter->writeElement('loc', $this->getLoc());
-    
-        if ($lastMod = $this->getLastMod()) {
-            $XMLWriter->writeElement('lastmod', $lastMod);
-        }
-    
-        $XMLWriter->endElement();
     }
 }

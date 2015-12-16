@@ -51,11 +51,42 @@ class Url implements OutputInterface
     }
 
     /**
+     * @param \XMLWriter $XMLWriter
+     */
+    public function generateXML(\XMLWriter $XMLWriter)
+    {
+        $XMLWriter->startElement('url');
+        $XMLWriter->writeElement('loc', $this->getLoc());
+
+        $this->optionalWriteElement($XMLWriter, 'lastmod', $this->getLastMod());
+        $this->optionalWriteElement($XMLWriter, 'changefreq', $this->getChangeFreq());
+        $this->optionalWriteElement($XMLWriter, 'priority', $this->getPriority());
+
+        foreach ($this->getSubelements() as $subelement) {
+            $subelement->generateXML($XMLWriter);
+        }
+
+        $XMLWriter->endElement();
+    }
+
+    /**
      * @return string
      */
     public function getLoc()
     {
         return $this->loc;
+    }
+
+    /**
+     * @param \XMLWriter $XMLWriter
+     * @param string     $name
+     * @param string     $value
+     */
+    protected function optionalWriteElement(\XMLWriter $XMLWriter, $name, $value)
+    {
+        if ($value) {
+            $XMLWriter->writeElement($name, $value);
+        }
     }
 
     /**
@@ -80,37 +111,6 @@ class Url implements OutputInterface
     public function getPriority()
     {
         return $this->priority;
-    }
-
-    /**
-     * @param \XMLWriter $XMLWriter
-     */
-    public function generateXML(\XMLWriter $XMLWriter)
-    {
-        $XMLWriter->startElement('url');
-        $XMLWriter->writeElement('loc', $this->getLoc());
-
-        $this->optionalWriteElement($XMLWriter, 'lastmod', $this->getLastMod());
-        $this->optionalWriteElement($XMLWriter, 'changefreq', $this->getChangeFreq());
-        $this->optionalWriteElement($XMLWriter, 'priority', $this->getPriority());
-
-        foreach ($this->getSubelements() as $subelement) {
-            $subelement->generateXML($XMLWriter);
-        }
-
-        $XMLWriter->endElement();
-    }
-
-    /**
-     * @param \XMLWriter $XMLWriter
-     * @param string     $name
-     * @param string     $value
-     */
-    protected function optionalWriteElement(\XMLWriter $XMLWriter, $name, $value)
-    {
-        if ($value) {
-            $XMLWriter->writeElement($name, $value);
-        }
     }
 
     /**

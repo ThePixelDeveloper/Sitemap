@@ -45,6 +45,22 @@ class Image implements OutputInterface
     }
 
     /**
+     * @param \XMLWriter $XMLWriter
+     */
+    public function generateXML(\XMLWriter $XMLWriter)
+    {
+        $XMLWriter->startElement('image:image');
+        $XMLWriter->writeElement('image:loc', $this->getLoc());
+
+        $this->optionalWriteElement($XMLWriter, 'image:caption', $this->getCaption());
+        $this->optionalWriteElement($XMLWriter, 'image:geo_location', $this->getGeoLocation());
+        $this->optionalWriteElement($XMLWriter, 'image:title', $this->getTitle());
+        $this->optionalWriteElement($XMLWriter, 'image:license', $this->getLicense());
+
+        $XMLWriter->endElement();
+    }
+
+    /**
      * @return string
      */
     public function getLoc()
@@ -54,6 +70,7 @@ class Image implements OutputInterface
 
     /**
      * @param $loc
+     *
      * @return $this
      */
     public function setLoc($loc)
@@ -61,6 +78,18 @@ class Image implements OutputInterface
         $this->loc = $loc;
 
         return $this;
+    }
+
+    /**
+     * @param \XMLWriter $XMLWriter
+     * @param string     $name
+     * @param string     $value
+     */
+    protected function optionalWriteElement(\XMLWriter $XMLWriter, $name, $value)
+    {
+        if ($value) {
+            $XMLWriter->writeElement($name, $value);
+        }
     }
 
     /**
@@ -141,33 +170,5 @@ class Image implements OutputInterface
         $this->license = $license;
 
         return $this;
-    }
-
-    /**
-     * @param \XMLWriter $XMLWriter
-     */
-    public function generateXML(\XMLWriter $XMLWriter)
-    {
-        $XMLWriter->startElement('image:image');
-        $XMLWriter->writeElement('image:loc', $this->getLoc());
-
-        $this->optionalWriteElement($XMLWriter, 'image:caption', $this->getCaption());
-        $this->optionalWriteElement($XMLWriter, 'image:geo_location', $this->getGeoLocation());
-        $this->optionalWriteElement($XMLWriter, 'image:title', $this->getTitle());
-        $this->optionalWriteElement($XMLWriter, 'image:license', $this->getLicense());
-
-        $XMLWriter->endElement();
-    }
-
-    /**
-     * @param \XMLWriter $XMLWriter
-     * @param string     $name
-     * @param string     $value
-     */
-    protected function optionalWriteElement(\XMLWriter $XMLWriter, $name, $value)
-    {
-        if ($value) {
-            $XMLWriter->writeElement($name, $value);
-        }
     }
 }
