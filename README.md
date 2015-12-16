@@ -51,11 +51,7 @@ Then pass either SitemapIndex or Urlset to a Formatter to generate output
 
 
 ``` php
-
 $formatter = new Thepixeldeveloper\Sitemap\Formatter();
 
-$output = $formatter->format($sitemapIndex);
-
-echo $output;
-
+echo $formatter->format($sitemapIndex);
 ```
