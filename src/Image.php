@@ -2,40 +2,80 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
+/**
+ * Class Image
+ *
+ * @package Thepixeldeveloper\Sitemap
+ */
 class Image implements OutputInterface
 {
-    protected $location;
+    /**
+     * @var string
+     */
+    protected $loc;
 
+    /**
+     * @var string
+     */
     protected $caption;
 
+    /**
+     * @var string
+     */
     protected $geoLocation;
 
+    /**
+     * @var string
+     */
     protected $title;
 
+    /**
+     * @var string
+     */
     protected $license;
 
+    /**
+     * Image constructor
+     *
+     * @param $location
+     */
     public function __construct($location)
     {
-        $this->setLocation($location);
+        $this->setLoc($location);
     }
 
-    public function getLocation()
+    /**
+     * @return string
+     */
+    public function getLoc()
     {
-        return $this->location;
+        return $this->loc;
     }
 
-    public function setLocation($location)
+    /**
+     * @param $loc
+     * @return $this
+     */
+    public function setLoc($loc)
     {
-        $this->location = $location;
+        $this->loc = $loc;
 
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getCaption()
     {
         return $this->caption;
     }
 
+    /**
+     * @param $caption
+     *
+     * @return $this
+     */
     public function setCaption($caption)
     {
         $this->caption = $caption;
@@ -43,11 +83,19 @@ class Image implements OutputInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getGeoLocation()
     {
         return $this->geoLocation;
     }
 
+    /**
+     * @param $geoLocation
+     *
+     * @return $this
+     */
     public function setGeoLocation($geoLocation)
     {
         $this->geoLocation = $geoLocation;
@@ -55,11 +103,19 @@ class Image implements OutputInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle()
     {
         return $this->title;
     }
 
+    /**
+     * @param $title
+     * 
+     * @return $this
+     */
     public function setTitle($title)
     {
         $this->title = $title;
@@ -67,11 +123,19 @@ class Image implements OutputInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getLicense()
     {
         return $this->license;
     }
 
+    /**
+     * @param $license
+     *
+     * @return $this
+     */
     public function setLicense($license)
     {
         $this->license = $license;
@@ -79,10 +143,13 @@ class Image implements OutputInterface
         return $this;
     }
 
+    /**
+     * @param \XMLWriter $XMLWriter
+     */
     public function generateXML(\XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('image:image');
-        $XMLWriter->writeElement('image:loc', $this->getLocation());
+        $XMLWriter->writeElement('image:loc', $this->getLoc());
 
         $this->optionalWriteElement($XMLWriter, 'image:caption', $this->getCaption());
         $this->optionalWriteElement($XMLWriter, 'image:geo_location', $this->getGeoLocation());
