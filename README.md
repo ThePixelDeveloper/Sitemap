@@ -1,5 +1,5 @@
-Sitemap - XML Sitemap Generation
-==============================
+Thepixeldeveloper\Sitemap
+=========================
 
 [![Author](http://img.shields.io/badge/author-@colonelrosa-blue.svg?style=flat-square)](https://twitter.com/colonelrosa)
 [![Build Status](https://img.shields.io/travis/ThePixelDeveloper/Sitemap-v2/master.svg?style=flat-square)](https://travis-ci.org/ThePixelDeveloper/Sitemap-v2)
@@ -7,7 +7,7 @@ Sitemap - XML Sitemap Generation
 [![Packagist Version](https://img.shields.io/packagist/v/thepixeldeveloper/sitemap.svg?style=flat-square)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Total Downloads](https://img.shields.io/packagist/dt/thepixeldeveloper/sitemap.svg?style=flat-square)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 
-Sitemap is a tool to generate XML sitemaps quickly.
+A tool to generate XML sitemaps
 
 Usage
 -----
