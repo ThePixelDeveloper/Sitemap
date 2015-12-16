@@ -4,9 +4,9 @@ namespace spec\Thepixeldeveloper\Sitemap;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Thepixeldeveloper\Sitemap\Image;
 use Thepixeldeveloper\Sitemap\Sitemap;
 use Thepixeldeveloper\Sitemap\SitemapIndex;
+use Thepixeldeveloper\Sitemap\Subelements\Image;
 use Thepixeldeveloper\Sitemap\Url;
 use Thepixeldeveloper\Sitemap\Urlset;
 

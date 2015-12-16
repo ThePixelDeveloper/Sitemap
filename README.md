@@ -53,7 +53,7 @@ Advanced Usage
 ``` php
 $urlset = new Urlset();
 
-$image = new Thepixeldeveloper\Sitemap\Image('https://s3.amazonaws.com/path/to/image');
+$image = new Thepixeldeveloper\Sitemap\Subelements\Image('https://s3.amazonaws.com/path/to/image');
 
 $imageUrl = new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1');
 $imageUrl->addSubElement($image);

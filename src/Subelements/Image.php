@@ -1,11 +1,13 @@
 <?php
 
-namespace Thepixeldeveloper\Sitemap;
+namespace Thepixeldeveloper\Sitemap\Subelements;
+
+use Thepixeldeveloper\Sitemap\OutputInterface;
 
 /**
  * Class Image
  *
- * @package Thepixeldeveloper\Sitemap
+ * @package Thepixeldeveloper\Sitemap\Subelements
  */
 class Image implements OutputInterface
 {
