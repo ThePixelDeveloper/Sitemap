@@ -84,9 +84,9 @@ class Url implements OutputInterface
     {
         $XMLWriter->startElement('url');
         $XMLWriter->writeElement('loc', $this->getLoc());
-        $XMLWriter->writeElement('lastmod', $this->getLastMod());
-        $XMLWriter->writeElement('changefreq', $this->getChangeFreq());
-        $XMLWriter->writeElement('priority', $this->getPriority());
+        $this->optionalWriteElement($XMLWriter, 'lastmod', $this->getLastMod());
+        $this->optionalWriteElement($XMLWriter, 'changefreq', $this->getChangeFreq());
+        $this->optionalWriteElement($XMLWriter, 'priority', $this->getPriority());
         $XMLWriter->endElement();
     }
 
@@ -95,7 +95,7 @@ class Url implements OutputInterface
      * @param string     $name
      * @param string     $value
      */
-    protected function writeElement(\XMLWriter $XMLWriter, $name, $value)
+    protected function optionalWriteElement(\XMLWriter $XMLWriter, $name, $value)
     {
         if ($value) {
             $XMLWriter->writeElement($name, $value);
