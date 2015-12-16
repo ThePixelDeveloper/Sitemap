@@ -41,9 +41,7 @@ Then pass either SitemapIndex or Urlset to `Output` to generate output
 
 
 ``` php
-$formatter = new Thepixeldeveloper\Sitemap\Output();
-
-echo $formatter->getOutput($sitemapIndex);
+echo (new Thepixeldeveloper\Sitemap\Output())->getOutput($sitemapIndex);
 ```
 
 Advanced Usage
@@ -57,7 +55,7 @@ $urlset = new Urlset();
 $image = new Thepixeldeveloper\Sitemap\Image('https://s3.amazonaws.com/path/to/image');
 
 $imageUrl = new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1');
-$imageUrl->addSubElement($image);;
+$imageUrl->addSubElement($image);
 
 $urlset->addUrl($imageUrl);
 
@@ -68,8 +66,7 @@ Output
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://www.example.com/1</loc>
         <image:image>
