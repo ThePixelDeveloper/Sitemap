@@ -9,13 +9,12 @@ Thepixeldeveloper\Sitemap
 
 A tool to generate XML sitemaps
 
-Usage
+Basic Usage
 -----
 
 Generating a _urlset_ sitemap
 
 ``` php
-
 $urlSet = new Thepixeldeveloper\Sitemap\Urlset(); 
 
 foreach ($entities as $entity) {
@@ -29,7 +28,6 @@ Generating a _sitemapindex_ sitemap
 
 
 ``` php
-
 $sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex(); 
 
 foreach ($entities as $entity) {
@@ -39,39 +37,29 @@ foreach ($entities as $entity) {
 }
 ```
 
-Then pass either SitemapIndex or Urlset to a Formatter to generate output
+Then pass either SitemapIndex or Urlset to `Output` to generate output
 
 
 ``` php
 $formatter = new Thepixeldeveloper\Sitemap\Formatter();
 
-echo $formatter->format($sitemapIndex);
+echo $formatter->getOutput($sitemapIndex);
 ```
 
+Advanced Usage
+--------------
 
-Generating a sitemap with Google Images
+**Google Images**
 
 ``` php
 $urlset = new Urlset();
 
-$image2 = new Image('https://s3.amazonaws.com/path/to/image2');
-$image2->setCaption('Test Caption');
-$image2->setGeoLocation('Limerick, Ireland');
-$image2->setTitle('Test Title');
-$image2->setLicense('http://www.license.com');
-
 $image = new Image('https://s3.amazonaws.com/path/to/image');
 
 $imageUrl = new Url('http://www.example.com/1');
-$imageUrl->addSubElement($image);
-$imageUrl->addSubElement($image2);
-
-$imageUrl2 = new Url('http://www.example.com/2');
-$imageUrl2->addSubElement($image);
-$imageUrl2->addSubElement($image2);
+$imageUrl->addSubElement($image);;
 
 $urlset->addUrl($imageUrl);
-$urlset->addUrl($imageUrl2);
 
 $output = new Thepixeldeveloper\Sitemap\Output();
 
@@ -88,26 +76,6 @@ Output
         <loc>http://www.example.com/1</loc>
         <image:image>
             <image:loc>https://s3.amazonaws.com/path/to/image</image:loc>
-        </image:image>
-        <image:image>
-            <image:loc>https://s3.amazonaws.com/path/to/image2</image:loc>
-            <image:caption>Test Caption</image:caption>
-            <image:geo_location>Limerick, Ireland</image:geo_location>
-            <image:title>Test Title</image:title>
-            <image:license>http://www.license.com</image:license>
-        </image:image>
-    </url>
-    <url>
-        <loc>http://www.example.com/2</loc>
-        <image:image>
-            <image:loc>https://s3.amazonaws.com/path/to/image</image:loc>
-        </image:image>
-        <image:image>
-            <image:loc>https://s3.amazonaws.com/path/to/image2</image:loc>
-            <image:caption>Test Caption</image:caption>
-            <image:geo_location>Limerick, Ireland</image:geo_location>
-            <image:title>Test Title</image:title>
-            <image:license>http://www.license.com</image:license>
         </image:image>
     </url>
 </urlset>
