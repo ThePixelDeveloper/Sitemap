@@ -1,7 +1,11 @@
 Sitemap - XML Sitemap Generation
 ==============================
 
-[![Build Status](https://travis-ci.org/ThePixelDeveloper/Sitemap-v2.png?branch=master)](https://travis-ci.org/ThePixelDeveloper/Sitemap-v2)
+[![Author](http://img.shields.io/badge/author-@colonelrosa-blue.svg?style=flat-square)](https://twitter.com/colonelrosa)
+[![Build Status](https://img.shields.io/travis/ThePixelDeveloper/Sitemap-v2/master.svg?style=flat-square)](https://travis-ci.org/ThePixelDeveloper/Sitemap-v2)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+[![Packagist Version](https://img.shields.io/packagist/v/thepixeldeveloper/sitemap.svg?style=flat-square)](https://packagist.org/packages/thepixeldeveloper/sitemap)
+[![Total Downloads](https://img.shields.io/packagist/dt/thepixeldeveloper/sitemap.svg?style=flat-square)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 
 Sitemap is a tool to generate XML sitemaps quickly.
 
