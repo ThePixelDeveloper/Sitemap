@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Thepixeldeveloper\Sitemap\Formatter;
+namespace spec\Thepixeldeveloper\Sitemap\Generator;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -15,7 +15,7 @@ class SitemapSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Thepixeldeveloper\Sitemap\Formatter\Sitemap');
+        $this->shouldHaveType('Thepixeldeveloper\Sitemap\Generator\Sitemap');
     }
 
     function it_should_return_xml_for_a_given_object(Sitemap $sitemap, \XMLWriter $writer)

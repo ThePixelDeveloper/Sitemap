@@ -1,6 +1,6 @@
 <?php
 
-namespace Thepixeldeveloper\Sitemap\Formatter;
+namespace Thepixeldeveloper\Sitemap\Generator;
 
 class Url
 {
