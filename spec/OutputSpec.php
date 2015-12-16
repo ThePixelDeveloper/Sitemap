@@ -72,15 +72,15 @@ XML;
 </urlset>
 XML;
 
-        $sitemapIndex = new Urlset();
-
-        $image  = new Image('https://s3.amazonaws.com/path/to/image');
+        $urlset = new Urlset();
 
         $image2 = new Image('https://s3.amazonaws.com/path/to/image2');
         $image2->setCaption('Test Caption');
         $image2->setGeoLocation('Limerick, Ireland');
         $image2->setTitle('Test Title');
         $image2->setLicense('http://www.license.com');
+
+        $image = new Image('https://s3.amazonaws.com/path/to/image');
 
         $imageUrl = new Url('http://www.example.com/1');
         $imageUrl->addSubElement($image);
@@ -90,9 +90,9 @@ XML;
         $imageUrl2->addSubElement($image);
         $imageUrl2->addSubElement($image2);
 
-        $sitemapIndex->addUrl($imageUrl);
-        $sitemapIndex->addUrl($imageUrl2);
+        $urlset->addUrl($imageUrl);
+        $urlset->addUrl($imageUrl2);
 
-        $this->getOutput($sitemapIndex)->shouldReturn($xml);
+        $this->getOutput($urlset)->shouldReturn($xml);
     }
 }
