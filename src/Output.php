@@ -2,15 +2,20 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
+/**
+ * Class Output
+ *
+ * @package Thepixeldeveloper\Sitemap
+ */
 class Output
 {
     /**
-     * @var bool
+     * @var bool Is the output indented
      */
     protected $indented = true;
 
     /**
-     * @var string
+     * @var string What string is used for indentation
      */
     protected $indentString = '    ';
 
@@ -24,10 +29,14 @@ class Output
 
     /**
      * @param boolean $indented
+     *
+     * @return $this
      */
     public function setIndented($indented)
     {
         $this->indented = $indented;
+
+        return $this;
     }
 
     /**
@@ -40,12 +49,21 @@ class Output
 
     /**
      * @param string $indentString
+     *
+     * @return $this
      */
     public function setIndentString($indentString)
     {
         $this->indentString = $indentString;
+
+        return $this;
     }
 
+    /**
+     * @param OutputInterface $collection
+     *
+     * @return string
+     */
     public function getOutput(OutputInterface $collection)
     {
         $xmlWriter = new \XMLWriter();

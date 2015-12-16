@@ -4,10 +4,13 @@ namespace Thepixeldeveloper\Sitemap;
 
 class SitemapIndex implements OutputInterface
 {
+    /**
+     * @var Sitemap[]
+     */
     protected $sitemaps = [];
 
     /**
-     * @return mixed
+     * @return Sitemap[]
      */
     public function getSitemaps()
     {
@@ -26,6 +29,9 @@ class SitemapIndex implements OutputInterface
         return $this;
     }
 
+    /**
+     * @param \XMLWriter $XMLWriter
+     */
     public function generateXML(\XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('sitemapindex');

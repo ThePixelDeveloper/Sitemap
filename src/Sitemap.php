@@ -2,17 +2,28 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
+/**
+ * Class Sitemap
+ *
+ * @package Thepixeldeveloper\Sitemap
+ */
 class Sitemap implements OutputInterface
 {
+    /**
+     * @var string Location (URL)
+     */
     protected $loc;
 
+    /**
+     * @var string Last modified time
+     */
     protected $lastMod;
 
     /**
-     * Url constructor.
+     * Url constructor
      *
-     * @param string $loc
-     * @param null   $lastMod
+     * @param string      $loc
+     * @param string|null $lastMod
      */
     public function __construct($loc, $lastMod = null)
     {
@@ -29,13 +40,16 @@ class Sitemap implements OutputInterface
     }
 
     /**
-     * @return null
+     * @return string|null
      */
     public function getLastMod()
     {
         return $this->lastMod;
     }
-    
+
+    /**
+     * @param \XMLWriter $XMLWriter
+     */
     public function generateXML(\XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('sitemap');

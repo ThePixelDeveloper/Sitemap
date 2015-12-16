@@ -2,12 +2,20 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
+/**
+ * Class Urlset
+ *
+ * @package Thepixeldeveloper\Sitemap
+ */
 class Urlset implements OutputInterface
 {
+    /**
+     * @var Url[]
+     */
     protected $urls = [];
 
     /**
-     * @return mixed
+     * @return Url[]
      */
     public function getUrls()
     {
@@ -26,6 +34,9 @@ class Urlset implements OutputInterface
         return $this;
     }
 
+    /**
+     * @param \XMLWriter $XMLWriter
+     */
     public function generateXML(\XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('urlset');
