@@ -41,7 +41,7 @@ Then pass either SitemapIndex or Urlset to `Output` to generate output
 
 
 ``` php
-$formatter = new Thepixeldeveloper\Sitemap\Formatter();
+$formatter = new Thepixeldeveloper\Sitemap\Output();
 
 echo $formatter->getOutput($sitemapIndex);
 ```
