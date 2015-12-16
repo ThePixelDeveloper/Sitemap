@@ -54,16 +54,14 @@ Advanced Usage
 ``` php
 $urlset = new Urlset();
 
-$image = new Image('https://s3.amazonaws.com/path/to/image');
+$image = new Thepixeldeveloper\Sitemap\Image('https://s3.amazonaws.com/path/to/image');
 
-$imageUrl = new Url('http://www.example.com/1');
+$imageUrl = new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1');
 $imageUrl->addSubElement($image);;
 
 $urlset->addUrl($imageUrl);
 
-$output = new Thepixeldeveloper\Sitemap\Output();
-
-$output->getOutput($urlset);
+echo (new Thepixeldeveloper\Sitemap\Output())->getOutput($urlset);
 ```
 
 Output
