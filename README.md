@@ -13,7 +13,7 @@ A tool to generate XML sitemaps
 Basic Usage
 -----
 
-Generating a _urlset_ sitemap
+Generating a urlset sitemap
 
 ``` php
 $urlSet = new Thepixeldeveloper\Sitemap\Urlset(); 
@@ -25,7 +25,7 @@ foreach ($entities as $entity) {
 }
 ```
 
-Generating a _sitemapindex_ sitemap
+Generating a sitemapindex sitemap
 
 
 ``` php
@@ -48,17 +48,34 @@ echo (new Thepixeldeveloper\Sitemap\Output())->getOutput($sitemapIndex);
 Advanced Usage
 --------------
 
+**Indenting output**
+
+Output is indented by default, can be turned off as follows
+
+``` php
+echo (new Thepixeldeveloper\Sitemap\Output())
+    ->setIndented(false)
+    ->getOutput($sitemapIndex);
+```
+
+Configuration
+
+Name | Default | Values
+---- | ------- | ------
+setIndented | true | boolean
+setIndentString | `    ` (4 spaces) | string 
+
+
 **Google Images**
 
 ``` php
-$urlset = new Urlset();
+$urlset = new Thepixeldeveloper\Sitemap\Urlset();
+$image  = new Thepixeldeveloper\Sitemap\Subelements\Image('https://s3.amazonaws.com/path/to/image');
 
-$image = new Thepixeldeveloper\Sitemap\Subelements\Image('https://s3.amazonaws.com/path/to/image');
+$url = (new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1'))
+    ->addSubelement($image);
 
-$imageUrl = new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1');
-$imageUrl->addSubElement($image);
-
-$urlset->addUrl($imageUrl);
+$urlset->addUrl($url);
 
 echo (new Thepixeldeveloper\Sitemap\Output())->getOutput($urlset);
 ```
