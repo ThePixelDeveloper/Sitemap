@@ -2,7 +2,7 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
-class Url
+class Url implements OutputInterface
 {
     protected $loc;
 
@@ -58,5 +58,22 @@ class Url
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    public function generateXML(\XMLWriter $XMLWriter)
+    {
+        $XMLWriter->startElement('url');
+        $XMLWriter->writeElement('loc', $this->getLoc());
+        $XMLWriter->writeElement('lastmod', $this->getLastMod());
+        $XMLWriter->writeElement('changefreq', $this->getChangeFreq());
+        $XMLWriter->writeElement('priority', $this->getPriority());
+        $XMLWriter->endElement();
+    }
+
+    protected function writeElement(\XMLWriter $XMLWriter, $name, $value)
+    {
+        if ($value) {
+            $XMLWriter->writeElement($name, $value);
+        }
     }
 }

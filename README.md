@@ -20,12 +20,7 @@ $urlSet = new Thepixeldeveloper\Sitemap\Urlset();
 
 foreach ($entities as $entity) {
   $urlSet->addUrl(
-      new Thepixeldeveloper\Sitemap\Url(
-          $loc,
-          $lastMod,
-          $changeFreq,
-          $priority
-      )
+      new Thepixeldeveloper\Sitemap\Url($loc, $lastMod, $changeFreq, $priority)
   );
 }
 ```
@@ -39,10 +34,7 @@ $sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex();
 
 foreach ($entities as $entity) {
   $sitemapIndex->addUrl(
-      new Thepixeldeveloper\Sitemap\Sitemap(
-          $loc,
-          $lastMod
-      )
+      new Thepixeldeveloper\Sitemap\Sitemap($loc, $lastMod)
   );
 }
 ```

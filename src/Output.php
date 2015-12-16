@@ -2,12 +2,7 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
-use Thepixeldeveloper\Sitemap\Generator\Sitemap as SitemapGenerator;
-use Thepixeldeveloper\Sitemap\Generator\SitemapIndex as SitemapIndexGenerator;
-use Thepixeldeveloper\Sitemap\Generator\Url as UrlGenerator;
-use Thepixeldeveloper\Sitemap\Generator\Urlset as UrlsetGenerator;
-
-class Formatter
+class Output
 {
     /**
      * @var bool
@@ -51,7 +46,7 @@ class Formatter
         $this->indentString = $indentString;
     }
 
-    public function format($collection)
+    public function getOutput(OutputInterface $collection)
     {
         $xmlWriter = new \XMLWriter();
         $xmlWriter->openMemory();
@@ -59,17 +54,7 @@ class Formatter
         $xmlWriter->setIndent($this->isIndented());
         $xmlWriter->setIndentString($this->getIndentString());
 
-        if ($collection instanceof SitemapIndex) {
-            $generator = new SitemapIndexGenerator($xmlWriter, new SitemapGenerator($xmlWriter));
-        } elseif ($collection instanceof Urlset) {
-            $generator = new UrlsetGenerator($xmlWriter, new UrlGenerator($xmlWriter));
-        }
-
-        if (!isset($generator)) {
-            throw new \InvalidArgumentException(get_class($collection) . 'is not a support collection');
-        }
-
-        $generator->generate($collection);
+        $collection->generateXML($xmlWriter);
 
         return trim($xmlWriter->flush(true));
     }
