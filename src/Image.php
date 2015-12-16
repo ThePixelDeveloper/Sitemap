@@ -113,7 +113,7 @@ class Image implements OutputInterface
 
     /**
      * @param $title
-     * 
+     *
      * @return $this
      */
     public function setTitle($title)
