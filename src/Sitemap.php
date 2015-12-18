@@ -2,6 +2,8 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
+use XMLWriter;
+
 /**
  * Class Sitemap
  *
@@ -30,9 +32,9 @@ class Sitemap implements OutputInterface
     }
 
     /**
-     * @param \XMLWriter $XMLWriter
+     * @param XMLWriter $XMLWriter
      */
-    public function generateXML(\XMLWriter $XMLWriter)
+    public function generateXML(XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('sitemap');
         $XMLWriter->writeElement('loc', $this->getLoc());

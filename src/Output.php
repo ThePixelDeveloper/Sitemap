@@ -2,6 +2,8 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
+use XMLWriter;
+
 /**
  * Class Output
  *
@@ -26,7 +28,7 @@ class Output
      */
     public function getOutput(OutputInterface $collection)
     {
-        $xmlWriter = new \XMLWriter();
+        $xmlWriter = new XMLWriter();
         $xmlWriter->openMemory();
         $xmlWriter->startDocument('1.0', 'UTF-8');
         $xmlWriter->setIndent($this->isIndented());

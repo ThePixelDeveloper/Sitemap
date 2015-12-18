@@ -2,14 +2,16 @@
 
 namespace Thepixeldeveloper\Sitemap\Subelements;
 
+use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
 use Thepixeldeveloper\Sitemap\OutputInterface;
+use XMLWriter;
 
 /**
  * Class Image
  *
  * @package Thepixeldeveloper\Sitemap\Subelements
  */
-class Image implements OutputInterface
+class Image implements OutputInterface, AppendAttributeInterface
 {
     /**
      * @var string
@@ -47,9 +49,9 @@ class Image implements OutputInterface
     }
 
     /**
-     * @param \XMLWriter $XMLWriter
+     * @param XMLWriter $XMLWriter
      */
-    public function generateXML(\XMLWriter $XMLWriter)
+    public function generateXML(XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('image:image');
         $XMLWriter->writeElement('image:loc', $this->getLoc());
@@ -71,11 +73,11 @@ class Image implements OutputInterface
     }
 
     /**
-     * @param \XMLWriter $XMLWriter
-     * @param string     $name
-     * @param string     $value
+     * @param XMLWriter $XMLWriter
+     * @param string    $name
+     * @param string    $value
      */
-    protected function optionalWriteElement(\XMLWriter $XMLWriter, $name, $value)
+    protected function optionalWriteElement(XMLWriter $XMLWriter, $name, $value)
     {
         if ($value) {
             $XMLWriter->writeElement($name, $value);
@@ -160,5 +162,13 @@ class Image implements OutputInterface
         $this->license = $license;
 
         return $this;
+    }
+
+    /**
+     * @param XMLWriter $XMLWriter
+     */
+    public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
+    {
+        $XMLWriter->writeAttribute('xmlns:image', 'http://www.google.com/schemas/sitemap-image/1.1');
     }
 }

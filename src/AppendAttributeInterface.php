@@ -4,12 +4,12 @@ namespace Thepixeldeveloper\Sitemap;
 
 use XMLWriter;
 
-interface OutputInterface
+interface AppendAttributeInterface
 {
     /**
      * @param XMLWriter $XMLWriter
      *
      * @return void
      */
-    public function generateXML(XMLWriter $XMLWriter);
+    public function appendAttributeToCollectionXML(XMLWriter $XMLWriter);
 }

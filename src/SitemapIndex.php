@@ -2,6 +2,8 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
+use XMLWriter;
+
 class SitemapIndex implements OutputInterface
 {
     /**
@@ -22,9 +24,9 @@ class SitemapIndex implements OutputInterface
     }
 
     /**
-     * @param \XMLWriter $XMLWriter
+     * @param XMLWriter $XMLWriter
      */
-    public function generateXML(\XMLWriter $XMLWriter)
+    public function generateXML(XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('sitemapindex');
         $XMLWriter->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');

@@ -2,6 +2,8 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
+use XMLWriter;
+
 /**
  * Class Url
  *
@@ -33,6 +35,10 @@ class Url implements OutputInterface
      * @var OutputInterface[]
      */
     protected $subElements;
+    /**
+     * @var array
+     */
+    protected $seenClasses = [];
 
     /**
      * Url constructor
@@ -45,10 +51,17 @@ class Url implements OutputInterface
     }
 
     /**
-     * @param \XMLWriter $XMLWriter
+     * @param XMLWriter $XMLWriter
      */
-    public function generateXML(\XMLWriter $XMLWriter)
+    public function generateXML(XMLWriter $XMLWriter)
     {
+        foreach ($this->getSubelements() as $subelement) {
+            if (!$this->hasSeenClass($subelement) && $subelement instanceof AppendAttributeInterface) {
+                $subelement->appendAttributeToCollectionXML($XMLWriter);
+                $this->seeClass($subelement);
+            }
+        }
+
         $XMLWriter->startElement('url');
         $XMLWriter->writeElement('loc', $this->getLoc());
 
@@ -57,10 +70,42 @@ class Url implements OutputInterface
         $this->optionalWriteElement($XMLWriter, 'priority', $this->getPriority());
 
         foreach ($this->getSubelements() as $subelement) {
-            $subelement->generateXML($XMLWriter);
+            if ($subelement instanceof OutputInterface) {
+                $subelement->generateXML($XMLWriter);
+            }
         }
 
         $XMLWriter->endElement();
+    }
+
+    /**
+     * @return OutputInterface[]
+     */
+    public function getSubElements()
+    {
+        return $this->subElements;
+    }
+
+    /**
+     * @param $object
+     *
+     * @return bool
+     */
+    protected function hasSeenClass($object)
+    {
+        return in_array(get_class($object), $this->seenClasses, true);
+    }
+
+    /**
+     * @param $object
+     *
+     * @return $this
+     */
+    protected function seeClass($object)
+    {
+        $this->seenClasses[] = get_class($object);
+
+        return $this;
     }
 
     /**
@@ -72,11 +117,11 @@ class Url implements OutputInterface
     }
 
     /**
-     * @param \XMLWriter $XMLWriter
-     * @param string     $name
-     * @param string     $value
+     * @param XMLWriter $XMLWriter
+     * @param string    $name
+     * @param string    $value
      */
-    protected function optionalWriteElement(\XMLWriter $XMLWriter, $name, $value)
+    protected function optionalWriteElement(XMLWriter $XMLWriter, $name, $value)
     {
         if ($value) {
             $XMLWriter->writeElement($name, $value);
@@ -132,23 +177,7 @@ class Url implements OutputInterface
     }
 
     /**
-     * @return OutputInterface[]
-     */
-    public function getSubElements()
-    {
-        return $this->subElements;
-    }
-
-    /**
-     * @param OutputInterface[] $subElements
-     */
-    public function setSubElements($subElements)
-    {
-        $this->subElements = $subElements;
-    }
-
-    /**
-     * @param OutputInterface $subElement
+     * @param mixed $subElement
      *
      * @return $this
      */
