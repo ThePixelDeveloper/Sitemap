@@ -39,11 +39,11 @@ class Image implements OutputInterface
     /**
      * Image constructor
      *
-     * @param $location
+     * @param $loc
      */
-    public function __construct($location)
+    public function __construct($loc)
     {
-        $this->setLoc($location);
+        $this->loc = $loc;
     }
 
     /**
@@ -68,18 +68,6 @@ class Image implements OutputInterface
     public function getLoc()
     {
         return $this->loc;
-    }
-
-    /**
-     * @param $loc
-     *
-     * @return $this
-     */
-    public function setLoc($loc)
-    {
-        $this->loc = $loc;
-
-        return $this;
     }
 
     /**

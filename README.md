@@ -19,9 +19,12 @@ Generating a urlset sitemap
 $urlSet = new Thepixeldeveloper\Sitemap\Urlset(); 
 
 foreach ($entities as $entity) {
-  $urlSet->addUrl(
-      new Thepixeldeveloper\Sitemap\Url($loc, $lastMod, $changeFreq, $priority)
-  );
+  $url = new Thepixeldeveloper\Sitemap\Url($loc);
+  $url->setLastMod($lastMod);
+  $url->setChangeFreq($changeFreq);
+  $url->setPriority($priority);
+
+  $urlSet->addUrl($url);
 }
 ```
 
@@ -32,9 +35,10 @@ Generating a sitemapindex sitemap
 $sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex(); 
 
 foreach ($entities as $entity) {
-  $sitemapIndex->addUrl(
-      new Thepixeldeveloper\Sitemap\Sitemap($loc, $lastMod)
-  );
+  $url = new Thepixeldeveloper\Sitemap\Sitemap($loc);
+  $url->setLastMod($lastMod);
+  
+  $sitemapIndex->addUrl($url);
 }
 ```
 
@@ -63,7 +67,7 @@ Configuration
 Name | Default | Values
 ---- | ------- | ------
 setIndented | true | boolean
-setIndentString | `    ` (4 spaces) | string 
+setIndentString | 4 spaces | string 
 
 
 **Google Images**
