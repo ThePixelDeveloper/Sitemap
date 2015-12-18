@@ -37,17 +37,11 @@ class Url implements OutputInterface
     /**
      * Url constructor
      *
-     * @param string      $loc
-     * @param string|null $lastMod
-     * @param string|null $changeFreq
-     * @param string|null $priority
+     * @param string $loc
      */
-    public function __construct($loc, $lastMod = null, $changeFreq = null, $priority = null)
+    public function __construct($loc)
     {
         $this->loc = $loc;
-        $this->lastMod = $lastMod;
-        $this->changeFreq = $changeFreq;
-        $this->priority = $priority;
     }
 
     /**
@@ -98,11 +92,27 @@ class Url implements OutputInterface
     }
 
     /**
+     * @param string $lastMod
+     */
+    public function setLastMod($lastMod)
+    {
+        $this->lastMod = $lastMod;
+    }
+
+    /**
      * @return null|string
      */
     public function getChangeFreq()
     {
         return $this->changeFreq;
+    }
+
+    /**
+     * @param string $changeFreq
+     */
+    public function setChangeFreq($changeFreq)
+    {
+        $this->changeFreq = $changeFreq;
     }
 
     /**
@@ -114,11 +124,27 @@ class Url implements OutputInterface
     }
 
     /**
+     * @param string $priority
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    }
+
+    /**
      * @return OutputInterface[]
      */
     public function getSubElements()
     {
         return $this->subElements;
+    }
+
+    /**
+     * @param OutputInterface[] $subElements
+     */
+    public function setSubElements($subElements)
+    {
+        $this->subElements = $subElements;
     }
 
     /**

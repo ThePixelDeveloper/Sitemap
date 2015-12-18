@@ -22,13 +22,11 @@ class Sitemap implements OutputInterface
     /**
      * Url constructor
      *
-     * @param string      $loc
-     * @param string|null $lastMod
+     * @param string $loc
      */
-    public function __construct($loc, $lastMod = null)
+    public function __construct($loc)
     {
         $this->loc = $loc;
-        $this->lastMod = $lastMod;
     }
 
     /**
@@ -60,5 +58,13 @@ class Sitemap implements OutputInterface
     public function getLastMod()
     {
         return $this->lastMod;
+    }
+
+    /**
+     * @param string $lastMod
+     */
+    public function setLastMod($lastMod)
+    {
+        $this->lastMod = $lastMod;
     }
 }
