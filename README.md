@@ -18,14 +18,12 @@ Generating a urlset sitemap
 ``` php
 $urlSet = new Thepixeldeveloper\Sitemap\Urlset(); 
 
-foreach ($entities as $entity) {
-  $url = new Thepixeldeveloper\Sitemap\Url($loc);
-  $url->setLastMod($lastMod);
-  $url->setChangeFreq($changeFreq);
-  $url->setPriority($priority);
+$url = (new Thepixeldeveloper\Sitemap\Url($loc))
+  ->setLastMod($lastMod);
+  ->setChangeFreq($changeFreq);
+  ->setPriority($priority);
 
-  $urlSet->addUrl($url);
-}
+$urlSet->addUrl($url);
 ```
 
 Generating a sitemapindex sitemap
@@ -34,12 +32,10 @@ Generating a sitemapindex sitemap
 ``` php
 $sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex(); 
 
-foreach ($entities as $entity) {
-  $url = new Thepixeldeveloper\Sitemap\Sitemap($loc);
-  $url->setLastMod($lastMod);
+$url = (new Thepixeldeveloper\Sitemap\Sitemap($loc))
+  ->setLastMod($lastMod);
   
-  $sitemapIndex->addUrl($url);
-}
+$sitemapIndex->addUrl($url);
 ```
 
 Then pass either SitemapIndex or Urlset to `Output` to generate output
@@ -59,7 +55,7 @@ Output is indented by default, can be turned off as follows
 ``` php
 echo (new Thepixeldeveloper\Sitemap\Output())
     ->setIndented(false)
-    ->getOutput($sitemapIndex);
+    ->getOutput($urlSet);
 ```
 
 Configuration
@@ -97,3 +93,10 @@ Output
     </url>
 </urlset>
 ```
+
+Why should I use this over [cartographer](https://github.com/tackk/cartographer)?
+----
+
+* This library has less complexity. All it's going to do is build an object graph and spit it out as XML
+* Has support for a growing list of sub elements ie: mobile and images
+* No dependencies. A library outputting XML doesn't need to rely on Flysystem
