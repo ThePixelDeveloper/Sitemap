@@ -3,10 +3,13 @@ Thepixeldeveloper\Sitemap
 
 [![Author](http://img.shields.io/badge/author-@colonelrosa-blue.svg)](https://twitter.com/colonelrosa)
 [![Build Status](https://img.shields.io/travis/ThePixelDeveloper/Sitemap/master.svg)](https://travis-ci.org/ThePixelDeveloper/Sitemap)
+[![HHVM Status](http://hhvm.h4cc.de/badge/thepixeldeveloper/sitemap.png?style=flat)](http://hhvm.h4cc.de/package/thepixeldeveloper/sitemap)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Packagist Version](https://img.shields.io/packagist/v/thepixeldeveloper/sitemap.svg)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Total Downloads](https://img.shields.io/packagist/dt/thepixeldeveloper/sitemap.svg)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ed6d56e8-c908-44dc-9154-a8edc8b168bc.svg)](https://insight.sensiolabs.com/projects/ed6d56e8-c908-44dc-9154-a8edc8b168bc)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/?branch=master)
+
 
 A tool to generate XML sitemaps
 
