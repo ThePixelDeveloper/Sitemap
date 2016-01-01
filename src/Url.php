@@ -34,7 +34,7 @@ class Url implements OutputInterface
     /**
      * @var OutputInterface[]
      */
-    protected $subElements;
+    protected $subElements = [];
     /**
      * @var array
      */
