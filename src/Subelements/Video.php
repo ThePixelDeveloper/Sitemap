@@ -151,7 +151,7 @@ class Video implements OutputInterface, AppendAttributeInterface
         $XMLWriter->writeElement('video:description', $this->getDescription());
 
         $this->optionalWriteElement($XMLWriter, 'video:content_loc', $this->getContentLoc());
-        $this->optionalWriteElement($XMLWriter, 'video:player_loc', $this->playerLoc);
+        $this->optionalWriteElement($XMLWriter, 'video:player_loc', $this->getPlayerLoc());
         $this->optionalWriteElement($XMLWriter, 'video:duration', $this->getDuration());
         $this->optionalWriteElement($XMLWriter, 'video:expiration_date', $this->getExpirationDate());
         $this->optionalWriteElement($XMLWriter, 'video:rating', $this->getRating());

@@ -98,7 +98,7 @@ Configuration
 Name | Default | Values
 ---- | ------- | ------
 setIndented | true | boolean
-setIndentString | 4 spaces | string 
+setIndentString | 4 spaces | string
 
 
 Why should I use this over [cartographer](https://github.com/tackk/cartographer)?
