@@ -7,6 +7,11 @@ use Prophecy\Argument;
 
 class VideoSpec extends ObjectBehavior
 {
+    function let()
+    {
+        $this->beConstructedWith('thumbnail', 'title', 'description');
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Thepixeldeveloper\Sitemap\Subelements\Video');
@@ -14,17 +19,17 @@ class VideoSpec extends ObjectBehavior
 
     function it_should_have_a_thumbnail_loc()
     {
-        $this->getThumbnailLoc();
+        $this->getThumbnailLoc()->shouldReturn('thumbnail');
     }
 
     function it_should_have_a_title()
     {
-        $this->getTitle();
+        $this->getTitle()->shouldReturn('title');
     }
 
     function it_should_have_a_description()
     {
-        $this->getDescription();
+        $this->getDescription()->shouldReturn('description');
     }
 
     function it_should_have_a_content_loc()

@@ -109,6 +109,20 @@ class Video implements OutputInterface, AppendAttributeInterface
     protected $expirationDate;
 
     /**
+     * Video constructor.
+     *
+     * @param $thumbnailLoc
+     * @param $title
+     * @param $description
+     */
+    public function __construct($thumbnailLoc, $title, $description)
+    {
+        $this->thumbnailLoc = $thumbnailLoc;
+        $this->title        = $title;
+        $this->description  = $description;
+    }
+
+    /**
      * @return mixed
      */
     public function getThumbnailLoc()
