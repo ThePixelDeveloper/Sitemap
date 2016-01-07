@@ -9,4 +9,4 @@ php:
 before_script:
   - composer install
 
-script: vendor/bin/phpspec run
+script: composer test
