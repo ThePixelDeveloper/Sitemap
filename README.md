@@ -48,27 +48,6 @@ Then pass either SitemapIndex or Urlset to `Output` to generate output
 echo (new Thepixeldeveloper\Sitemap\Output())->getOutput($sitemapIndex);
 ```
 
-Advanced Usage
---------------
-
-**Indenting output**
-
-Output is indented by default, can be turned off as follows
-
-``` php
-echo (new Thepixeldeveloper\Sitemap\Output())
-    ->setIndented(false)
-    ->getOutput($urlSet);
-```
-
-Configuration
-
-Name | Default | Values
----- | ------- | ------
-setIndented | true | boolean
-setIndentString | 4 spaces | string 
-
-
 Subelements
 -----------
 
@@ -100,6 +79,26 @@ $url->addSubelement($subelement);
 ```
 
 and rendering is described above.
+
+Advanced Usage
+--------------
+
+**Indenting output**
+
+Output is indented by default, can be turned off as follows
+
+``` php
+echo (new Thepixeldeveloper\Sitemap\Output())
+    ->setIndented(false)
+    ->getOutput($urlSet);
+```
+
+Configuration
+
+Name | Default | Values
+---- | ------- | ------
+setIndented | true | boolean
+setIndentString | 4 spaces | string 
 
 
 Why should I use this over [cartographer](https://github.com/tackk/cartographer)?
