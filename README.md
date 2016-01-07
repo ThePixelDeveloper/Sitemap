@@ -69,33 +69,32 @@ setIndented | true | boolean
 setIndentString | 4 spaces | string 
 
 
-**Google Images**
+Subelements
+-----------
+
+You can add more specific information to a URL entry, ie video / image information
+
+**Image**
 
 ``` php
-$urlset = new Thepixeldeveloper\Sitemap\Urlset();
-$image  = new Thepixeldeveloper\Sitemap\Subelements\Image('https://s3.amazonaws.com/path/to/image');
-
-$url = (new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1'))
-    ->addSubelement($image);
-
-$urlset->addUrl($url);
-
-echo (new Thepixeldeveloper\Sitemap\Output())->getOutput($urlset);
+$subelement = new Thepixeldeveloper\Sitemap\Subelements\Image('https://s3.amazonaws.com/path/to/image');
 ```
 
-Output
+**Video**
 
-``` xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-    <url>
-        <loc>http://www.example.com/1</loc>
-        <image:image>
-            <image:loc>https://s3.amazonaws.com/path/to/image</image:loc>
-        </image:image>
-    </url>
-</urlset>
+``` php
+$subelement = new Thepixeldeveloper\Sitemap\Subelements\Video('thumbnail', 'title', 'description');
 ```
+
+Then you need to add the subelement to the URL
+
+``` php
+$url = new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1')
+$url->addSubelement($subelement);
+```
+
+and rendering is described above.
+
 
 Why should I use this over [cartographer](https://github.com/tackk/cartographer)?
 ----
