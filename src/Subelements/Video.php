@@ -2,7 +2,11 @@
 
 namespace Thepixeldeveloper\Sitemap\Subelements;
 
-class Video
+use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
+use Thepixeldeveloper\Sitemap\OutputInterface;
+use XMLWriter;
+
+class Video implements OutputInterface, AppendAttributeInterface
 {
     /**
      * @var
@@ -65,6 +69,11 @@ class Video
     protected $restriction;
 
     /**
+     * @var array
+     */
+    protected $tags = [];
+
+    /**
      * @var
      */
     protected $category;
@@ -83,6 +92,11 @@ class Video
      * @var
      */
     protected $viewCount;
+
+    /**
+     * @var
+     */
+    protected $uploader;
 
     /**
      * @var
@@ -183,6 +197,14 @@ class Video
     }
 
     /**
+     * @return array
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
      * @return mixed
      */
     public function getCategory()
@@ -225,6 +247,14 @@ class Video
     /**
      * @return mixed
      */
+    public function getUploader()
+    {
+        return $this->uploader;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPlatform()
     {
         return $this->platform;
@@ -236,5 +266,58 @@ class Video
     public function getLive()
     {
         return $this->live;
+    }
+
+    public function generateXML(XMLWriter $XMLWriter)
+    {
+        $XMLWriter->startElement('video:video');
+
+        $XMLWriter->writeElement('video:thumbnail_loc', $this->getThumbnailLoc());
+        $XMLWriter->writeElement('video:title', $this->getTitle());
+        $XMLWriter->writeElement('video:description', $this->getDescription());
+
+        $this->optionalWriteElement($XMLWriter, 'video:content_loc', $this->getContentLoc());
+        $this->optionalWriteElement($XMLWriter, 'video:player_loc', $this->playerLoc);
+        $this->optionalWriteElement($XMLWriter, 'video:duration', $this->getDuration());
+        $this->optionalWriteElement($XMLWriter, 'video:expiration_date', $this->getExpirationDate());
+        $this->optionalWriteElement($XMLWriter, 'video:rating', $this->getRating());
+        $this->optionalWriteElement($XMLWriter, 'video:view_count', $this->getViewCount());
+        $this->optionalWriteElement($XMLWriter, 'video:publication_date', $this->getPublicationDate());
+        $this->optionalWriteElement($XMLWriter, 'video:family_friendly', $this->getFamilyFriendly());
+
+        foreach ($this->getTags() as $tag) {
+            $this->optionalWriteElement($XMLWriter, 'video:tag', $tag);
+        }
+
+        $this->optionalWriteElement($XMLWriter, 'video:category', $this->getCategory());
+        $this->optionalWriteElement($XMLWriter, 'video:restriction', $this->getRestriction());
+        $this->optionalWriteElement($XMLWriter, 'video:gallery_loc', $this->getGalleryLoc());
+        $this->optionalWriteElement($XMLWriter, 'video:price', $this->getPrice());
+        $this->optionalWriteElement($XMLWriter, 'video:requires_subscription', $this->getRequiresSubscription());
+        $this->optionalWriteElement($XMLWriter, 'video:uploader', $this->getUploader());
+        $this->optionalWriteElement($XMLWriter, 'video:platform', $this->getPlatform());
+        $this->optionalWriteElement($XMLWriter, 'video:live', $this->getLive());
+
+        $XMLWriter->endElement();
+    }
+
+    /**
+     * @param XMLWriter $XMLWriter
+     * @param string    $name
+     * @param string    $value
+     */
+    protected function optionalWriteElement(XMLWriter $XMLWriter, $name, $value)
+    {
+        if ($value) {
+            $XMLWriter->writeElement($name, $value);
+        }
+    }
+
+    /**
+     * @param XMLWriter $XMLWriter
+     */
+    public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
+    {
+        $XMLWriter->writeAttribute('xmlns:video', 'http://www.google.com/schemas/sitemap-video/1.1');
     }
 }

@@ -67,7 +67,10 @@ class VideoSpec extends ObjectBehavior
         $this->getFamilyFriendly();
     }
 
-    // Tags
+    function it_should_have_tags()
+    {
+        $this->getTags();
+    }
 
     function it_should_have_a_category()
     {
@@ -92,6 +95,11 @@ class VideoSpec extends ObjectBehavior
     function it_should_have_a_requires_subscription()
     {
         $this->getRequiresSubscription();
+    }
+
+    function it_should_have_an_uploader()
+    {
+        $this->getUploader();
     }
 
     function it_should_have_a_platform()
