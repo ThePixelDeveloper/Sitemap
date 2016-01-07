@@ -86,6 +86,12 @@ $subelement = new Thepixeldeveloper\Sitemap\Subelements\Image('https://s3.amazon
 $subelement = new Thepixeldeveloper\Sitemap\Subelements\Video('thumbnail', 'title', 'description');
 ```
 
+**Mobile**
+
+``` php
+$subelement = new Thepixeldeveloper\Sitemap\Subelements\Mobile();
+```
+
 Then you need to add the subelement to the URL
 
 ``` php
