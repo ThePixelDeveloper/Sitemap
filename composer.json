@@ -19,5 +19,8 @@
 		"psr-4": {
 			"Thepixeldeveloper\\Sitemap\\": "src/"
 		}
+	},
+	"scripts": {
+		"test": "phpspec run"
 	}
 }
