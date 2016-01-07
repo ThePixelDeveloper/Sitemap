@@ -125,161 +125,21 @@ class Video implements OutputInterface, AppendAttributeInterface
     /**
      * @return mixed
      */
-    public function getThumbnailLoc()
-    {
-        return $this->thumbnailLoc;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContentLoc()
-    {
-        return $this->contentLoc;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getPlayerLoc()
     {
         return $this->playerLoc;
     }
 
     /**
-     * @return mixed
+     * @param mixed $playerLoc
+     *
+     * @return Video
      */
-    public function getDuration()
+    public function setPlayerLoc($playerLoc)
     {
-        return $this->duration;
-    }
+        $this->playerLoc = $playerLoc;
 
-    /**
-     * @return mixed
-     */
-    public function getExpirationDate()
-    {
-        return $this->expirationDate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRating()
-    {
-        return $this->rating;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getViewCount()
-    {
-        return $this->viewCount;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPublicationDate()
-    {
-        return $this->publicationDate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFamilyFriendly()
-    {
-        return $this->familyFriendly;
-    }
-
-    /**
-     * @return array
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRestriction()
-    {
-        return $this->restriction;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getGalleryLoc()
-    {
-        return $this->galleryLoc;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRequiresSubscription()
-    {
-        return $this->requiresSubscription;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUploader()
-    {
-        return $this->uploader;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlatform()
-    {
-        return $this->platform;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLive()
-    {
-        return $this->live;
+        return $this;
     }
 
     public function generateXML(XMLWriter $XMLWriter)
@@ -316,6 +176,30 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getThumbnailLoc()
+    {
+        return $this->thumbnailLoc;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * @param XMLWriter $XMLWriter
      * @param string    $name
      * @param string    $value
@@ -325,6 +209,326 @@ class Video implements OutputInterface, AppendAttributeInterface
         if ($value) {
             $XMLWriter->writeElement($name, $value);
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContentLoc()
+    {
+        return $this->contentLoc;
+    }
+
+    /**
+     * @param mixed $contentLoc
+     *
+     * @return Video
+     */
+    public function setContentLoc($contentLoc)
+    {
+        $this->contentLoc = $contentLoc;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param mixed $duration
+     *
+     * @return Video
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExpirationDate()
+    {
+        return $this->expirationDate;
+    }
+
+    /**
+     * @param mixed $expirationDate
+     *
+     * @return Video
+     */
+    public function setExpirationDate($expirationDate)
+    {
+        $this->expirationDate = $expirationDate;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param mixed $rating
+     *
+     * @return Video
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getViewCount()
+    {
+        return $this->viewCount;
+    }
+
+    /**
+     * @param mixed $viewCount
+     *
+     * @return Video
+     */
+    public function setViewCount($viewCount)
+    {
+        $this->viewCount = $viewCount;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublicationDate()
+    {
+        return $this->publicationDate;
+    }
+
+    /**
+     * @param mixed $publicationDate
+     *
+     * @return Video
+     */
+    public function setPublicationDate($publicationDate)
+    {
+        $this->publicationDate = $publicationDate;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFamilyFriendly()
+    {
+        return $this->familyFriendly;
+    }
+
+    /**
+     * @param mixed $familyFriendly
+     *
+     * @return Video
+     */
+    public function setFamilyFriendly($familyFriendly)
+    {
+        $this->familyFriendly = $familyFriendly;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param array $tags
+     *
+     * @return Video
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     *
+     * @return Video
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRestriction()
+    {
+        return $this->restriction;
+    }
+
+    /**
+     * @param mixed $restriction
+     *
+     * @return Video
+     */
+    public function setRestriction($restriction)
+    {
+        $this->restriction = $restriction;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGalleryLoc()
+    {
+        return $this->galleryLoc;
+    }
+
+    /**
+     * @param mixed $galleryLoc
+     *
+     * @return Video
+     */
+    public function setGalleryLoc($galleryLoc)
+    {
+        $this->galleryLoc = $galleryLoc;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     *
+     * @return Video
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequiresSubscription()
+    {
+        return $this->requiresSubscription;
+    }
+
+    /**
+     * @param mixed $requiresSubscription
+     *
+     * @return Video
+     */
+    public function setRequiresSubscription($requiresSubscription)
+    {
+        $this->requiresSubscription = $requiresSubscription;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUploader()
+    {
+        return $this->uploader;
+    }
+
+    /**
+     * @param mixed $uploader
+     *
+     * @return Video
+     */
+    public function setUploader($uploader)
+    {
+        $this->uploader = $uploader;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlatform()
+    {
+        return $this->platform;
+    }
+
+    /**
+     * @param mixed $platform
+     *
+     * @return Video
+     */
+    public function setPlatform($platform)
+    {
+        $this->platform = $platform;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLive()
+    {
+        return $this->live;
+    }
+
+    /**
+     * @param mixed $live
+     *
+     * @return Video
+     */
+    public function setLive($live)
+    {
+        $this->live = $live;
+
+        return $this;
     }
 
     /**
