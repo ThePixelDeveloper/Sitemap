@@ -38,7 +38,7 @@ $sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex();
 $url = (new Thepixeldeveloper\Sitemap\Sitemap($loc))
   ->setLastMod($lastMod);
   
-$sitemapIndex->addUrl($url);
+$sitemapIndex->addSitemap($url);
 ```
 
 Then pass either SitemapIndex or Urlset to `Output` to generate output
