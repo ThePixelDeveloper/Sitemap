@@ -7,6 +7,7 @@ use Prophecy\Argument;
 use Thepixeldeveloper\Sitemap\Sitemap;
 use Thepixeldeveloper\Sitemap\SitemapIndex;
 use Thepixeldeveloper\Sitemap\Subelements\Image;
+use Thepixeldeveloper\Sitemap\Subelements\Link;
 use Thepixeldeveloper\Sitemap\Url;
 use Thepixeldeveloper\Sitemap\Urlset;
 
@@ -92,6 +93,53 @@ XML;
 
         $urlset->addUrl($imageUrl);
         $urlset->addUrl($imageUrl2);
+
+        $this->getOutput($urlset)->shouldReturn($xml);
+    }
+
+    function it_should_generate_a_sitemap_with_links()
+    {
+        $xml = <<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>http://www.example.com/english/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="http://www.example.com/deutsch/"/>
+        <xhtml:link rel="alternate" hreflang="de-ch" href="http://www.example.com/schweiz-deutsch/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="http://www.example.com/english/"/>
+    </url>
+    <url>
+        <loc>http://www.example.com/deutsch/</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="http://www.example.com/english/"/>
+        <xhtml:link rel="alternate" hreflang="de-ch" href="http://www.example.com/schweiz-deutsch/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="http://www.example.com/deutsch/"/>
+    </url>
+    <url>
+        <loc>http://www.example.com/schweiz-deutsch/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="http://www.example.com/deutsch/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="http://www.example.com/english/"/>
+        <xhtml:link rel="alternate" hreflang="de-ch" href="http://www.example.com/schweiz-deutsch/"/>
+    </url>
+</urlset>
+XML;
+        $urlset = new Urlset();
+        $url = new Url('http://www.example.com/english/');
+        $url->addSubElement(new Link('de', 'http://www.example.com/deutsch/'));
+        $url->addSubElement(new Link('de-ch', 'http://www.example.com/schweiz-deutsch/'));
+        $url->addSubElement(new Link('en', 'http://www.example.com/english/'));
+        $urlset->addUrl($url);
+
+        $url = new Url('http://www.example.com/deutsch/');
+        $url->addSubElement(new Link('en', 'http://www.example.com/english/'));
+        $url->addSubElement(new Link('de-ch', 'http://www.example.com/schweiz-deutsch/'));
+        $url->addSubElement(new Link('de', 'http://www.example.com/deutsch/'));
+        $urlset->addUrl($url);
+
+        $url = new Url('http://www.example.com/schweiz-deutsch/');
+        $url->addSubElement(new Link('de', 'http://www.example.com/deutsch/'));
+        $url->addSubElement(new Link('en', 'http://www.example.com/english/'));
+        $url->addSubElement(new Link('de-ch', 'http://www.example.com/schweiz-deutsch/'));
+        $urlset->addUrl($url);
 
         $this->getOutput($urlset)->shouldReturn($xml);
     }
