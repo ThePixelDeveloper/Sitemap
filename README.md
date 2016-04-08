@@ -74,7 +74,7 @@ $subelement = new Thepixeldeveloper\Sitemap\Subelements\Mobile();
 **Link**
 
 ``` php
-$subelement = new Thepixeldeveloper\Sitemap\Subelement\Link('de', 'http://www.example.com/schweiz-deutsch/');
+$subelement = new Thepixeldeveloper\Sitemap\Subelements\Link('de', 'http://www.example.com/schweiz-deutsch/');
 ```
 
 Then you need to add the subelement to the URL
