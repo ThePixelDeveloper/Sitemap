@@ -1,0 +1,18 @@
+application {
+  name = "sitemap"
+  type = "php"
+}
+
+customization "php" {
+  php_version = "5.6"
+}
+
+project {
+  name = "thepixeldeveloper"
+  infrastructure = "thepixeldeveloper-sitemap"
+}
+
+infrastructure "thepixeldeveloper-sitemap" {  
+  type = "aws"
+  flavor = "simple"
+}
