@@ -22,8 +22,8 @@ Generating a urlset sitemap
 $urlSet = new Thepixeldeveloper\Sitemap\Urlset(); 
 
 $url = (new Thepixeldeveloper\Sitemap\Url($loc))
-  ->setLastMod($lastMod);
-  ->setChangeFreq($changeFreq);
+  ->setLastMod($lastMod)
+  ->setChangeFreq($changeFreq)
   ->setPriority($priority);
 
 $urlSet->addUrl($url);
