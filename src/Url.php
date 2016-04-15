@@ -138,10 +138,14 @@ class Url implements OutputInterface
 
     /**
      * @param string $lastMod
+     *
+     * @return $this
      */
     public function setLastMod($lastMod)
     {
         $this->lastMod = $lastMod;
+
+        return $this;
     }
 
     /**
@@ -154,10 +158,14 @@ class Url implements OutputInterface
 
     /**
      * @param string $changeFreq
+     *
+     * @return $this
      */
     public function setChangeFreq($changeFreq)
     {
         $this->changeFreq = $changeFreq;
+
+        return $this;
     }
 
     /**
@@ -170,10 +178,14 @@ class Url implements OutputInterface
 
     /**
      * @param string $priority
+     *
+     * @return $this
      */
     public function setPriority($priority)
     {
         $this->priority = $priority;
+
+        return $this;
     }
 
     /**
