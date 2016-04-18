@@ -77,6 +77,16 @@ $subelement = new Thepixeldeveloper\Sitemap\Subelements\Mobile();
 $subelement = new Thepixeldeveloper\Sitemap\Subelements\Link('de', 'http://www.example.com/schweiz-deutsch/');
 ```
 
+**News**
+
+``` php
+$subelement = (new Thepixeldeveloper\Sitemap\Subelements\News())
+    ->setPublicationDate(new \DateTime())
+    ->setPublicationLanguage('en')
+    ->setPublicationName('Site Name')
+    ->setTitle('Some title');
+```
+
 Then you need to add the subelement to the URL
 
 ``` php
