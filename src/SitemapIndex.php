@@ -12,16 +12,20 @@ use XMLWriter;
 class SitemapIndex implements OutputInterface
 {
     /**
-     * @var Sitemap[]
+     * Array of Sitemap entries.
+     *
+     * @var OutputInterface[]
      */
     protected $sitemaps = [];
 
     /**
-     * @param Sitemap $sitemap
+     * Add a new Sitemap object to the collection.
+     *
+     * @param OutputInterface $sitemap
      *
      * @return $this
      */
-    public function addSitemap(Sitemap $sitemap)
+    public function addSitemap(OutputInterface $sitemap)
     {
         $this->sitemaps[] = $sitemap;
 
@@ -29,14 +33,19 @@ class SitemapIndex implements OutputInterface
     }
 
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function generateXML(XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('sitemapindex');
         $XMLWriter->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
-        $XMLWriter->writeAttribute('xsi:schemaLocation',
-            'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd');
+
+        $XMLWriter->writeAttribute(
+            'xsi:schemaLocation',
+            'http://www.sitemaps.org/schemas/sitemap/0.9 ' .
+            'http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
+        );
+
         $XMLWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
         foreach ($this->getSitemaps() as $sitemap) {
@@ -47,7 +56,9 @@ class SitemapIndex implements OutputInterface
     }
 
     /**
-     * @return Sitemap[]
+     * Get an array of Sitemap objects.
+     *
+     * @return OutputInterface[]
      */
     public function getSitemaps()
     {
