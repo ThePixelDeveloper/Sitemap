@@ -117,6 +117,8 @@ class Url implements OutputInterface
     }
 
     /**
+     * Only write the XML element if it has a truthy value.
+     *
      * @param XMLWriter $XMLWriter
      * @param string    $name
      * @param string    $value
@@ -129,6 +131,8 @@ class Url implements OutputInterface
     }
 
     /**
+     * Get last modification time.
+     *
      * @return null|string
      */
     public function getLastMod()
@@ -137,6 +141,8 @@ class Url implements OutputInterface
     }
 
     /**
+     * Set last modification time.
+     *
      * @param string $lastMod
      *
      * @return $this
@@ -149,6 +155,8 @@ class Url implements OutputInterface
     }
 
     /**
+     * Get change frequency.
+     *
      * @return null|string
      */
     public function getChangeFreq()
@@ -157,6 +165,8 @@ class Url implements OutputInterface
     }
 
     /**
+     * Set change frequency.
+     *
      * @param string $changeFreq
      *
      * @return $this
@@ -169,6 +179,8 @@ class Url implements OutputInterface
     }
 
     /**
+     * Url priority.
+     *
      * @return null|string
      */
     public function getPriority()
@@ -177,6 +189,8 @@ class Url implements OutputInterface
     }
 
     /**
+     * Set priority.
+     *
      * @param string $priority
      *
      * @return $this
@@ -189,6 +203,8 @@ class Url implements OutputInterface
     }
 
     /**
+     * Add a new sub element.
+     *
      * @param mixed $subElement
      *
      * @return $this

@@ -2,10 +2,16 @@
 
 namespace Thepixeldeveloper\Sitemap\Subelements;
 
+use Thepixeldeveloper\Sitemap\AbstractSubelement;
 use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
 use Thepixeldeveloper\Sitemap\OutputInterface;
 use XMLWriter;
 
+/**
+ * Class Video
+ *
+ * @package Thepixeldeveloper\Sitemap\Subelements
+ */
 class Video implements OutputInterface, AppendAttributeInterface
 {
     /**

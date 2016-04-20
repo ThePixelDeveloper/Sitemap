@@ -4,6 +4,11 @@ namespace Thepixeldeveloper\Sitemap;
 
 use XMLWriter;
 
+/**
+ * Interface OutputInterface
+ *
+ * @package Thepixeldeveloper\Sitemap
+ */
 interface OutputInterface
 {
     /**

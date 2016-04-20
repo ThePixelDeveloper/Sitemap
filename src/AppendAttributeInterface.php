@@ -4,6 +4,11 @@ namespace Thepixeldeveloper\Sitemap;
 
 use XMLWriter;
 
+/**
+ * Interface AppendAttributeInterface
+ *
+ * @package Thepixeldeveloper\Sitemap
+ */
 interface AppendAttributeInterface
 {
     /**
