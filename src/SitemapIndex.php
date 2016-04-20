@@ -4,6 +4,11 @@ namespace Thepixeldeveloper\Sitemap;
 
 use XMLWriter;
 
+/**
+ * Class SitemapIndex
+ *
+ * @package Thepixeldeveloper\Sitemap
+ */
 class SitemapIndex implements OutputInterface
 {
     /**

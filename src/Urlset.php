@@ -17,6 +17,8 @@ class Urlset implements OutputInterface
     protected $urls = [];
 
     /**
+     * Add a new Url
+     *
      * @param Url $url
      *
      * @return $this
@@ -29,6 +31,8 @@ class Urlset implements OutputInterface
     }
 
     /**
+     * Generate the XML for the urlset.
+     *
      * @param XMLWriter $XMLWriter
      */
     public function generateXML(XMLWriter $XMLWriter)
