@@ -12,16 +12,22 @@ use XMLWriter;
 class Output
 {
     /**
-     * @var bool Is the output indented
+     * Is the output indented.
+     *
+     * @var boolean
      */
     protected $indented = true;
 
     /**
-     * @var string What string is used for indentation
+     * What string is used for indentation.
+     *
+     * @var string
      */
     protected $indentString = '    ';
 
     /**
+     * Renders the Sitemap as an XML string.
+     *
      * @param OutputInterface $collection
      *
      * @return string
@@ -40,6 +46,8 @@ class Output
     }
 
     /**
+     * Output indented?
+     *
      * @return boolean
      */
     public function isIndented()
@@ -48,6 +56,8 @@ class Output
     }
 
     /**
+     * Indent the output?
+     *
      * @param boolean $indented
      *
      * @return $this
@@ -60,6 +70,8 @@ class Output
     }
 
     /**
+     * String used for indentation.
+     *
      * @return string
      */
     public function getIndentString()
@@ -68,6 +80,8 @@ class Output
     }
 
     /**
+     * Set the string used for indentation.
+     * 
      * @param string $indentString
      *
      * @return $this

@@ -12,12 +12,16 @@ use XMLWriter;
 class Sitemap implements OutputInterface
 {
     /**
-     * @var string Location (URL)
+     * Location (URL).
+     *
+     * @var string
      */
     protected $loc;
 
     /**
-     * @var string Last modified time
+     * Last modified time.
+     *
+     * @var string
      */
     protected $lastMod;
 
@@ -32,7 +36,7 @@ class Sitemap implements OutputInterface
     }
 
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function generateXML(XMLWriter $XMLWriter)
     {
@@ -47,6 +51,8 @@ class Sitemap implements OutputInterface
     }
 
     /**
+     * Get location (URL).
+     *
      * @return string
      */
     public function getLoc()
@@ -55,6 +61,8 @@ class Sitemap implements OutputInterface
     }
 
     /**
+     * Get the last modification time.
+     *
      * @return string|null
      */
     public function getLastMod()
@@ -63,10 +71,16 @@ class Sitemap implements OutputInterface
     }
 
     /**
+     * Set the last modification time.
+     *
      * @param string $lastMod
+     *
+     * @return $this
      */
     public function setLastMod($lastMod)
     {
         $this->lastMod = $lastMod;
+
+        return $this;
     }
 }

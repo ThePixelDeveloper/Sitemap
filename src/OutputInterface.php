@@ -12,6 +12,8 @@ use XMLWriter;
 interface OutputInterface
 {
     /**
+     * Generate the XML for a given element / sub-element.
+     *
      * @param XMLWriter $XMLWriter
      *
      * @return void
