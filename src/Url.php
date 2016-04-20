@@ -12,33 +12,46 @@ use XMLWriter;
 class Url implements OutputInterface
 {
     /**
-     * @var string Location (URL)
+     * Location (URL).
+     *
+     * @var string
      */
     protected $loc;
 
     /**
-     * @var string Last modified time
+     * Last modified time.
+     *
+     * @var string
      */
     protected $lastMod;
 
     /**
-     * @var string Change frequency of the location
+     * Change frequency of the location.
+     *
+     * @var string
      */
     protected $changeFreq;
 
     /**
-     * @var string Priority of page importance
+     * Priority of page importance.
+     *
+     * @var string
      */
     protected $priority;
 
     /**
+     * Array of sub-elements.
+     *
      * @var OutputInterface[]
      */
-    protected $subElements = [];
+    protected $subelements = [];
+
     /**
-     * @var array
+     * Sub-elements that append to the collection attributes.
+     *
+     * @var AppendAttributeInterface[]
      */
-    protected $seenClasses = [];
+    protected $subelementsThatAppend = [];
 
     /**
      * Url constructor
@@ -55,11 +68,8 @@ class Url implements OutputInterface
      */
     public function generateXML(XMLWriter $XMLWriter)
     {
-        foreach ($this->getSubelements() as $subelement) {
-            if (!$this->hasSeenClass($subelement) && $subelement instanceof AppendAttributeInterface) {
-                $subelement->appendAttributeToCollectionXML($XMLWriter);
-                $this->seeClass($subelement);
-            }
+        foreach ($this->getSubelementsThatAppend() as $subelement) {
+            $subelement->appendAttributeToCollectionXML($XMLWriter);
         }
 
         $XMLWriter->startElement('url');
@@ -70,45 +80,35 @@ class Url implements OutputInterface
         $this->optionalWriteElement($XMLWriter, 'priority', $this->getPriority());
 
         foreach ($this->getSubelements() as $subelement) {
-            if ($subelement instanceof OutputInterface) {
-                $subelement->generateXML($XMLWriter);
-            }
+            $subelement->generateXML($XMLWriter);
         }
 
         $XMLWriter->endElement();
     }
 
     /**
+     * Array of sub-elements.
+     *
      * @return OutputInterface[]
      */
-    public function getSubElements()
+    public function getSubelements()
     {
-        return $this->subElements;
+        return $this->subelements;
     }
 
     /**
-     * @param $object
+     * Array of sub-elements that append to the collections attributes.
      *
-     * @return bool
+     * @return AppendAttributeInterface[]
      */
-    protected function hasSeenClass($object)
+    public function getSubelementsThatAppend()
     {
-        return in_array(get_class($object), $this->seenClasses, true);
+        return $this->subelementsThatAppend;
     }
 
     /**
-     * @param $object
+     * Get location (URL).
      *
-     * @return $this
-     */
-    protected function seeClass($object)
-    {
-        $this->seenClasses[] = get_class($object);
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getLoc()
@@ -205,14 +205,34 @@ class Url implements OutputInterface
     /**
      * Add a new sub element.
      *
-     * @param mixed $subElement
+     * @param OutputInterface $subElement
      *
      * @return $this
      */
-    public function addSubElement($subElement)
+    public function addSubElement(OutputInterface $subElement)
     {
-        $this->subElements[] = $subElement;
+        $this->subelements[] = $subElement;
+
+        if ($this->isSubelementGoingToAppend($subElement)) {
+            $this->subelementsThatAppend[get_class($subElement)] = $subElement;
+        }
 
         return $this;
+    }
+
+    /**
+     * Checks if the sub-element is going to append collection attributes.
+     *
+     * @param OutputInterface $subelement
+     *
+     * @return boolean
+     */
+    protected function isSubelementGoingToAppend(OutputInterface $subelement)
+    {
+        if (!$subelement instanceof AppendAttributeInterface) {
+            return false;
+        }
+
+        return !in_array(get_class($subelement), $this->subelementsThatAppend, false);
     }
 }

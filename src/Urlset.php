@@ -12,18 +12,20 @@ use XMLWriter;
 class Urlset implements OutputInterface
 {
     /**
-     * @var Url[]
+     * Array of URL objects.
+     *
+     * @var OutputInterface[]
      */
     protected $urls = [];
 
     /**
-     * Add a new Url
+     * Add a new URL object.
      *
-     * @param Url $url
+     * @param OutputInterface $url
      *
      * @return $this
      */
-    public function addUrl(Url $url)
+    public function addUrl(OutputInterface $url)
     {
         $this->urls[] = $url;
 
@@ -31,9 +33,7 @@ class Urlset implements OutputInterface
     }
 
     /**
-     * Generate the XML for the urlset.
-     *
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function generateXML(XMLWriter $XMLWriter)
     {
@@ -55,7 +55,9 @@ class Urlset implements OutputInterface
     }
 
     /**
-     * @return Url[]
+     * Get array of URL objects.
+     * 
+     * @return OutputInterface[]
      */
     public function getUrls()
     {

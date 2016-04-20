@@ -14,7 +14,7 @@ use XMLWriter;
 class Mobile implements OutputInterface, AppendAttributeInterface
 {
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {
@@ -22,7 +22,7 @@ class Mobile implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function generateXML(XMLWriter $XMLWriter)
     {

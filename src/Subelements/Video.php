@@ -14,47 +14,67 @@ use XMLWriter;
 class Video implements OutputInterface, AppendAttributeInterface
 {
     /**
-     * @var
+     * URL pointing to an image thumbnail.
+     *
+     * @var string
      */
     protected $thumbnailLoc;
 
     /**
-     * @var
+     * Title of the video, max 100 characters.
+     *
+     * @var string
      */
     protected $title;
 
     /**
-     * @var
+     * Description of the video, max 2048 characters.
+     *
+     * @var string
      */
     protected $description;
 
     /**
-     * @var
+     * URL pointing to the actual media file (mp4).
+     *
+     * @var string
      */
     protected $contentLoc;
 
     /**
-     * @var
+     * URL pointing to the player file (normally a SWF).
+     *
+     * @var string
      */
     protected $playerLoc;
 
     /**
-     * @var
+     * Indicates whether the video is live.
+     *
+     * @var boolean
      */
     protected $live;
 
     /**
-     * @var
+     * Duration of the video in seconds.
+     *
+     * @var integer
      */
     protected $duration;
 
     /**
-     * @var
+     * String of space delimited platform values.
+     *
+     * Allowed values are web, mobile, and tv.
+     *
+     * @var string
      */
     protected $platform;
 
     /**
-     * @var
+     * Does the video require a subscription?
+     *
+     * @var boolean
      */
     protected $requiresSubscription;
 

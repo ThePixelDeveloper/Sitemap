@@ -14,40 +14,45 @@ use XMLWriter;
 class Link implements OutputInterface, AppendAttributeInterface
 {
     /**
+     * Language code for the page.
+     *
      * @var string
      */
-    protected $hreflang;
+    protected $hrefLang;
 
     /**
+     * Location of the translated page.
+     *
      * @var string
      */
     protected $href;
 
     /**
-     * Image constructor
+     * Link constructor.
      *
-     * @param $loc
+     * @param string $hrefLang
+     * @param string $href
      */
-    public function __construct($hreflang, $href)
+    public function __construct($hrefLang, $href)
     {
-        $this->hreflang = $hreflang;
+        $this->hrefLang = $hrefLang;
         $this->href = $href;
     }
 
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function generateXML(XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('xhtml:link');
         $XMLWriter->writeAttribute('rel', 'alternate');
-        $XMLWriter->writeAttribute('hreflang', $this->hreflang);
+        $XMLWriter->writeAttribute('hreflang', $this->hrefLang);
         $XMLWriter->writeAttribute('href', $this->href);
         $XMLWriter->endElement();
     }
 
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {
@@ -55,6 +60,8 @@ class Link implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Location of the translated page.
+     *
      * @return string
      */
     public function getHref()
@@ -63,10 +70,12 @@ class Link implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Language code for the page.
+     * 
      * @return string
      */
-    public function getHreflang()
+    public function getHrefLang()
     {
-        return $this->hreflang;
+        return $this->hrefLang;
     }
 }
