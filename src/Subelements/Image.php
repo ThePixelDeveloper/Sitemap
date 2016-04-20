@@ -14,26 +14,36 @@ use XMLWriter;
 class Image implements OutputInterface, AppendAttributeInterface
 {
     /**
+     * Location (URL).
+     *
      * @var string
      */
     protected $loc;
 
     /**
+     * The caption of the image.
+     *
      * @var string
      */
     protected $caption;
 
     /**
+     * The geographic location of the image.
+     *
      * @var string
      */
     protected $geoLocation;
 
     /**
+     * The title of the image.
+     *
      * @var string
      */
     protected $title;
 
     /**
+     * A URL to the license of the image.
+     *
      * @var string
      */
     protected $license;
@@ -41,7 +51,7 @@ class Image implements OutputInterface, AppendAttributeInterface
     /**
      * Image constructor
      *
-     * @param $loc
+     * @param string $loc
      */
     public function __construct($loc)
     {
@@ -49,7 +59,7 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function generateXML(XMLWriter $XMLWriter)
     {
@@ -65,6 +75,8 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Location (URL).
+     *
      * @return string
      */
     public function getLoc()
@@ -85,6 +97,8 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * The caption of the image.
+     *
      * @return string
      */
     public function getCaption()
@@ -93,7 +107,9 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param $caption
+     * Set the caption of the image.
+     *
+     * @param string $caption
      *
      * @return $this
      */
@@ -105,6 +121,8 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * The geographic location of the image.
+     *
      * @return string
      */
     public function getGeoLocation()
@@ -113,7 +131,9 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param $geoLocation
+     * Set the geographic location of the image.
+     *
+     * @param string $geoLocation
      *
      * @return $this
      */
@@ -125,6 +145,8 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * The title of the image.
+     *
      * @return string
      */
     public function getTitle()
@@ -133,7 +155,9 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param $title
+     * Set the title of the image.
+     *
+     * @param string $title
      *
      * @return $this
      */
@@ -145,6 +169,8 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * A URL to the license of the image.
+     *
      * @return string
      */
     public function getLicense()
@@ -153,7 +179,9 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param $license
+     * Set a URL to the license of the image.
+     *
+     * @param string $license
      *
      * @return $this
      */
@@ -165,7 +193,7 @@ class Image implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {
