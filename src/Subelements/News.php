@@ -5,6 +5,7 @@ namespace Thepixeldeveloper\Sitemap\Subelements;
 use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
 use Thepixeldeveloper\Sitemap\OutputInterface;
 use XMLWriter;
+
 /**
  * Class Image
  *
