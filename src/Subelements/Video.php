@@ -2,7 +2,6 @@
 
 namespace Thepixeldeveloper\Sitemap\Subelements;
 
-use Thepixeldeveloper\Sitemap\AbstractSubelement;
 use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
 use Thepixeldeveloper\Sitemap\OutputInterface;
 use XMLWriter;
