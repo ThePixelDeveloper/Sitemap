@@ -14,59 +14,64 @@ use XMLWriter;
 class News implements OutputInterface, AppendAttributeInterface
 {
     /**
+     * Location (URL).
+     *
      * @var string
      */
     protected $loc;
 
     /**
-     * Publication name
+     * Publication name.
      *
      * @var string
      */
     protected $publicationName;
 
     /**
-     * Publication language
+     * Publication language.
      *
      * @var string
      */
     protected $publicationLanguage;
 
     /**
-     * Access
+     * Access.
      *
      * @var string
      */
     protected $access;
 
     /**
-     * List of genres, comma-separated string values
+     * List of genres, comma-separated string values.
+     *
      * @var string
      */
     protected $genres;
 
     /**
-     * Date of publication
+     * Date of publication.
      *
      * @var \DateTime
      */
     protected $publicationDate;
 
     /**
-     * Title
+     * Title.
      *
      * @var string
      */
     protected $title;
 
     /**
-     * Key words, comma-separated string values
+     * Key words, comma-separated string values.
      *
      * @var string
      */
     protected $keywords;
 
     /**
+     * Publication name.
+     *
      * @return string
      */
     public function getPublicationName()
@@ -75,8 +80,11 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Set the publication name.
+     *
      * @param string $publicationName
-     * @return News
+     *
+     * @return $this
      */
     public function setPublicationName($publicationName)
     {
@@ -86,6 +94,8 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Publication language.
+     *
      * @return string
      */
     public function getPublicationLanguage()
@@ -94,8 +104,11 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Set the publication language.
+     *
      * @param string $publicationLanguage
-     * @return News
+     *
+     * @return $this
      */
     public function setPublicationLanguage($publicationLanguage)
     {
@@ -105,6 +118,8 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Access.
+     *
      * @return string
      */
     public function getAccess()
@@ -113,8 +128,11 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Set access.
+     *
      * @param string $access
-     * @return News
+     *
+     * @return $this
      */
     public function setAccess($access)
     {
@@ -124,6 +142,8 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * List of genres, comma-separated string values.
+     *
      * @return string
      */
     public function getGenres()
@@ -132,8 +152,11 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Set list of genres, comma-separated string values.
+     *
      * @param string $genres
-     * @return News
+     *
+     * @return $this
      */
     public function setGenres($genres)
     {
@@ -143,6 +166,8 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Date of publication.
+     *
      * @return \DateTime
      */
     public function getPublicationDate()
@@ -151,8 +176,11 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Set date of publication.
+     *
      * @param \DateTime $publicationDate
-     * @return News
+     *
+     * @return $this
      */
     public function setPublicationDate(\DateTime $publicationDate)
     {
@@ -162,6 +190,8 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Title.
+     *
      * @return string
      */
     public function getTitle()
@@ -170,8 +200,11 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Set title.
+     *
      * @param string $title
-     * @return News
+     *
+     * @return $this
      */
     public function setTitle($title)
     {
@@ -181,6 +214,8 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Key words, comma-separated string values.
+     *
      * @return string
      */
     public function getKeywords()
@@ -189,8 +224,11 @@ class News implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * Set key words, comma-separated string values.
+     *
      * @param string $keywords
-     * @return News
+     *
+     * @return $this
      */
     public function setKeywords($keywords)
     {
