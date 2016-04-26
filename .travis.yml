@@ -13,6 +13,6 @@ php:
   - hhvm
 
 before_script:
-  - composer install --prefer-dist --no-dev --classmap-authoritative --no-interaction --no-progress
+  - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
 
 script: composer test
