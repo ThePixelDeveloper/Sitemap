@@ -20,6 +20,11 @@
 			"Thepixeldeveloper\\Sitemap\\": "src/"
 		}
 	},
+	"autoload-dev": {
+		"psr-4": {
+			"spec\\Thepixeldeveloper\\Sitemap\\": "spec/"
+		}
+	},
 	"scripts": {
 		"test": "phpspec run"
 	}
