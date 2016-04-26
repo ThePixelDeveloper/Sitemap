@@ -2,8 +2,7 @@ Thepixeldeveloper\Sitemap
 =========================
 
 [![Author](http://img.shields.io/badge/author-@colonelrosa-blue.svg)](https://twitter.com/colonelrosa)
-[![Build Status](https://img.shields.io/travis/ThePixelDeveloper/Sitemap/master.svg)](https://travis-ci.org/ThePixelDeveloper/Sitemap)
-[![HHVM Status](http://hhvm.h4cc.de/badge/thepixeldeveloper/sitemap.png?style=flat)](http://hhvm.h4cc.de/package/thepixeldeveloper/sitemap)
+[![Version Status](http://php-eye.com/badge/thepixeldeveloper/sitemap/tested.svg?style=flat)](https://travis-ci.org/ThePixelDeveloper/Sitemap)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Packagist Version](https://img.shields.io/packagist/v/thepixeldeveloper/sitemap.svg)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Total Downloads](https://img.shields.io/packagist/dt/thepixeldeveloper/sitemap.svg)](https://packagist.org/packages/thepixeldeveloper/sitemap)
