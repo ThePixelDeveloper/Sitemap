@@ -2,9 +2,9 @@
 
 namespace Thepixeldeveloper\Sitemap\Subelements;
 
-use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
-use Thepixeldeveloper\Sitemap\OutputInterface;
 use XMLWriter;
+use Thepixeldeveloper\Sitemap\OutputInterface;
+use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
 
 /**
  * Class Video
@@ -79,66 +79,90 @@ class Video implements OutputInterface, AppendAttributeInterface
     protected $requiresSubscription;
 
     /**
-     * @var
+     * The price to download or view the video in ISO 4217 format.
+     *
+     * @link http://en.wikipedia.org/wiki/ISO_4217
+     *
+     * @var string
      */
     protected $price;
 
     /**
-     * @var
+     * Link to gallery of which this video appears in.
+     *
+     * @var string
      */
     protected $galleryLoc;
 
     /**
-     * @var
+     * A space-delimited list of countries where the video may or may not be played.
+     *
+     * @var string
      */
     protected $restriction;
 
     /**
+     * A tag associated with the video.
+     *
      * @var array
      */
     protected $tags = [];
 
     /**
-     * @var
+     * The video's category. For example, cooking.
+     *
+     * @var string
      */
     protected $category;
 
     /**
-     * @var
+     * No if the video should be available only to users with SafeSearch turned off.
+     *
+     * @var string
      */
     protected $familyFriendly;
 
     /**
-     * @var
+     * The date the video was first published, in W3C format.
+     *
+     * @var string
      */
     protected $publicationDate;
 
     /**
-     * @var
+     * The number of times the video has been viewed.
+     *
+     * @var integer
      */
     protected $viewCount;
 
     /**
-     * @var
+     * The video uploader's name. Only one <video:uploader> is allowed per video.
+     *
+     * @var string
      */
     protected $uploader;
 
     /**
-     * @var
+     * The rating of the video. Allowed values are float numbers in the range 0.0 to 5.0.
+     *
+     * @var float
      */
     protected $rating;
 
     /**
-     * @var
+     * The date after which the video will no longer be available, in W3C format.
+     *
+     * @var string
      */
     protected $expirationDate;
 
     /**
      * Video constructor.
      *
-     * @param $thumbnailLoc
-     * @param $title
-     * @param $description
+     * @param string $thumbnailLoc
+     * @param string $title
+     * @param string $description
      */
     public function __construct($thumbnailLoc, $title, $description)
     {
@@ -148,7 +172,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * URL pointing to the player file (normally a SWF).
+     *
+     * @return string
      */
     public function getPlayerLoc()
     {
@@ -156,9 +182,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $playerLoc
+     * URL pointing to the player file (normally a SWF).
      *
-     * @return Video
+     * @param string $playerLoc
+     *
+     * @return $this
      */
     public function setPlayerLoc($playerLoc)
     {
@@ -167,6 +195,9 @@ class Video implements OutputInterface, AppendAttributeInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function generateXML(XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('video:video');
@@ -201,7 +232,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * URL pointing to an image thumbnail.
+     *
+     * @return string
      */
     public function getThumbnailLoc()
     {
@@ -209,7 +242,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * Title of the video, max 100 characters.
+     *
+     * @return string
      */
     public function getTitle()
     {
@@ -217,7 +252,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * Description of the video, max 2048 characters.
+     *
+     * @return string
      */
     public function getDescription()
     {
@@ -225,9 +262,7 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param XMLWriter $XMLWriter
-     * @param string    $name
-     * @param string    $value
+     * {@inheritdoc}
      */
     protected function optionalWriteElement(XMLWriter $XMLWriter, $name, $value)
     {
@@ -237,7 +272,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * URL pointing to the actual media file (mp4).
+     *
+     * @return string
      */
     public function getContentLoc()
     {
@@ -245,9 +282,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $contentLoc
+     * URL pointing to the actual media file (mp4).
      *
-     * @return Video
+     * @param string $contentLoc
+     *
+     * @return $this
      */
     public function setContentLoc($contentLoc)
     {
@@ -257,7 +296,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * Duration of the video in seconds.
+     *
+     * @return integer
      */
     public function getDuration()
     {
@@ -265,9 +306,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $duration
+     * Duration of the video in seconds.
      *
-     * @return Video
+     * @param integer $duration
+     *
+     * @return $this
      */
     public function setDuration($duration)
     {
@@ -277,7 +320,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * The date after which the video will no longer be available, in W3C format.
+     *
+     * @return string
      */
     public function getExpirationDate()
     {
@@ -285,9 +330,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $expirationDate
+     * The date after which the video will no longer be available, in W3C format.
      *
-     * @return Video
+     * @param string $expirationDate
+     *
+     * @return $this
      */
     public function setExpirationDate($expirationDate)
     {
@@ -297,7 +344,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * The rating of the video. Allowed values are float numbers in the range 0.0 to 5.0.
+     *
+     * @return float
      */
     public function getRating()
     {
@@ -305,9 +354,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $rating
+     * The rating of the video. Allowed values are float numbers in the range 0.0 to 5.0.
      *
-     * @return Video
+     * @param float $rating
+     *
+     * @return $this
      */
     public function setRating($rating)
     {
@@ -317,7 +368,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * The number of times the video has been viewed.
+     *
+     * @return integer
      */
     public function getViewCount()
     {
@@ -325,9 +378,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $viewCount
+     * The number of times the video has been viewed.
      *
-     * @return Video
+     * @param integer $viewCount
+     *
+     * @return $this
      */
     public function setViewCount($viewCount)
     {
@@ -337,7 +392,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * The date the video was first published, in W3C format.
+     *
+     * @return string
      */
     public function getPublicationDate()
     {
@@ -345,9 +402,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $publicationDate
+     * The date the video was first published, in W3C format.
      *
-     * @return Video
+     * @param string $publicationDate
+     *
+     * @return $this
      */
     public function setPublicationDate($publicationDate)
     {
@@ -357,7 +416,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * No if the video should be available only to users with SafeSearch turned off.
+     *
+     * @return string
      */
     public function getFamilyFriendly()
     {
@@ -365,9 +426,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $familyFriendly
+     * No if the video should be available only to users with SafeSearch turned off.
      *
-     * @return Video
+     * @param string $familyFriendly
+     *
+     * @return $this
      */
     public function setFamilyFriendly($familyFriendly)
     {
@@ -377,6 +440,8 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * A tag associated with the video.
+     *
      * @return array
      */
     public function getTags()
@@ -385,9 +450,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
+     * A tag associated with the video.
+     *
      * @param array $tags
      *
-     * @return Video
+     * @return $this
      */
     public function setTags($tags)
     {
@@ -397,7 +464,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * The video's category. For example, cooking.
+     *
+     * @return string
      */
     public function getCategory()
     {
@@ -405,9 +474,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $category
+     * The video's category. For example, cooking.
      *
-     * @return Video
+     * @param string $category
+     *
+     * @return $this
      */
     public function setCategory($category)
     {
@@ -417,7 +488,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * A space-delimited list of countries where the video may or may not be played.
+     *
+     * @return string
      */
     public function getRestriction()
     {
@@ -425,9 +498,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $restriction
+     * A space-delimited list of countries where the video may or may not be played.
      *
-     * @return Video
+     * @param string $restriction
+     *
+     * @return $this
      */
     public function setRestriction($restriction)
     {
@@ -437,7 +512,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * Link to gallery of which this video appears in.
+     *
+     * @return string
      */
     public function getGalleryLoc()
     {
@@ -445,9 +522,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $galleryLoc
+     * Link to gallery of which this video appears in.
      *
-     * @return Video
+     * @param string $galleryLoc
+     *
+     * @return $this
      */
     public function setGalleryLoc($galleryLoc)
     {
@@ -457,7 +536,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * The price to download or view the video in ISO 4217 format.
+     *
+     * @return string
      */
     public function getPrice()
     {
@@ -465,9 +546,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $price
+     * The price to download or view the video in ISO 4217 format.
      *
-     * @return Video
+     * @param string $price
+     *
+     * @return $this
      */
     public function setPrice($price)
     {
@@ -477,7 +560,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * Does the video require a subscription?
+     *
+     * @return boolean
      */
     public function getRequiresSubscription()
     {
@@ -485,9 +570,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $requiresSubscription
+     * Does the video require a subscription?
      *
-     * @return Video
+     * @param boolean $requiresSubscription
+     *
+     * @return $this
      */
     public function setRequiresSubscription($requiresSubscription)
     {
@@ -497,7 +584,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * The video uploader's name. Only one <video:uploader> is allowed per video.
+     *
+     * @return string
      */
     public function getUploader()
     {
@@ -505,9 +594,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $uploader
+     * The video uploader's name. Only one <video:uploader> is allowed per video.
      *
-     * @return Video
+     * @param string $uploader
+     *
+     * @return $this
      */
     public function setUploader($uploader)
     {
@@ -517,7 +608,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * String of space delimited platform values.
+     *
+     * Allowed values are web, mobile, and tv.
+     *
+     * @return string
      */
     public function getPlatform()
     {
@@ -525,9 +620,13 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $platform
+     * String of space delimited platform values.
      *
-     * @return Video
+     * Allowed values are web, mobile, and tv.
+     *
+     * @param string $platform
+     *
+     * @return $this
      */
     public function setPlatform($platform)
     {
@@ -537,7 +636,9 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @return mixed
+     * Indicates whether the video is live.
+     *
+     * @return boolean
      */
     public function getLive()
     {
@@ -545,9 +646,11 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param mixed $live
+     * Indicates whether the video is live.
      *
-     * @return Video
+     * @param boolean $live
+     *
+     * @return $this
      */
     public function setLive($live)
     {
@@ -557,7 +660,7 @@ class Video implements OutputInterface, AppendAttributeInterface
     }
 
     /**
-     * @param XMLWriter $XMLWriter
+     * {@inheritdoc}
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {

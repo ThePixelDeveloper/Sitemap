@@ -2,9 +2,9 @@
 
 namespace Thepixeldeveloper\Sitemap\Subelements;
 
-use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
-use Thepixeldeveloper\Sitemap\OutputInterface;
 use XMLWriter;
+use Thepixeldeveloper\Sitemap\OutputInterface;
+use Thepixeldeveloper\Sitemap\AppendAttributeInterface;
 
 /**
  * Class Link
