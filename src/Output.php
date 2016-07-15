@@ -44,12 +44,12 @@ class Output
         $xmlWriter = new XMLWriter();
         $xmlWriter->openMemory();
         $xmlWriter->setIndent($this->isIndented());
-
+        $xmlWriter->startDocument('1.0', 'UTF-8');
+        
         foreach ($this->processingInstructions as $target => $content) {
             $xmlWriter->writePi($target, $content);
         }
-
-        $xmlWriter->startDocument('1.0', 'UTF-8');
+        
         $xmlWriter->setIndentString($this->getIndentString());
 
         $collection->generateXML($xmlWriter);
