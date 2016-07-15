@@ -97,6 +97,25 @@ and rendering is described above.
 Advanced Usage
 --------------
 
+**Processing Instructions**
+
+You can add processing instructions on the output as such.
+
+```php
+$output = new Thepixeldeveloper\Sitemap\Output();
+$output->addProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"');
+
+echo $output->getOutput($urlset);
+```
+
+Which will add 
+
+``` xml
+<?xml-stylesheet type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"?>
+```
+
+before the document starts.
+
 **Indenting output**
 
 Output is indented by default, can be turned off as follows

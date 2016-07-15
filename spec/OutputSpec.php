@@ -143,4 +143,31 @@ XML;
 
         $this->getOutput($urlset)->shouldReturn($xml);
     }
+
+    function it_should_write_processing_instructions()
+    {
+        $xml = <<<XML
+<?xml-stylesheet type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>http://www.example.com/english/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="http://www.example.com/deutsch/"/>
+        <xhtml:link rel="alternate" hreflang="de-ch" href="http://www.example.com/schweiz-deutsch/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="http://www.example.com/english/"/>
+    </url>
+</urlset>
+XML;
+
+        $urlset = new Urlset();
+        $url = new Url('http://www.example.com/english/');
+        $url->addSubElement(new Link('de', 'http://www.example.com/deutsch/'));
+        $url->addSubElement(new Link('de-ch', 'http://www.example.com/schweiz-deutsch/'));
+        $url->addSubElement(new Link('en', 'http://www.example.com/english/'));
+        $urlset->addUrl($url);
+
+        $this->addProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"');
+        $this->getOutput($urlset)->shouldReturn($xml);
+
+    }
 }

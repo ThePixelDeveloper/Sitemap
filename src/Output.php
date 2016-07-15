@@ -26,6 +26,13 @@ class Output
     protected $indentString = '    ';
 
     /**
+     * Processing instructions.
+     *
+     * @var array
+     */
+    protected $processingInstructions = [];
+
+    /**
      * Renders the Sitemap as an XML string.
      *
      * @param OutputInterface $collection
@@ -36,8 +43,13 @@ class Output
     {
         $xmlWriter = new XMLWriter();
         $xmlWriter->openMemory();
-        $xmlWriter->startDocument('1.0', 'UTF-8');
         $xmlWriter->setIndent($this->isIndented());
+
+        foreach ($this->processingInstructions as $target => $content) {
+            $xmlWriter->writePi($target, $content);
+        }
+
+        $xmlWriter->startDocument('1.0', 'UTF-8');
         $xmlWriter->setIndentString($this->getIndentString());
 
         $collection->generateXML($xmlWriter);
@@ -89,6 +101,21 @@ class Output
     public function setIndentString($indentString)
     {
         $this->indentString = $indentString;
+
+        return $this;
+    }
+
+    /**
+     * Adds a processing instruction.
+     *
+     * @param string $target
+     * @param string $content
+     *
+     * @return $this
+     */
+    public function addProcessingInstruction($target, $content)
+    {
+        $this->processingInstructions[$target] = $content;
 
         return $this;
     }
