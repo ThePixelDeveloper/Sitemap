@@ -56,10 +56,7 @@ class Urlset implements OutputInterface
 
         foreach ($this->getUrls() as $url) {
             foreach ($url->getSubelementsThatAppend() as $subelement) {
-                if (!$this->isSubelementAppended($subelement)) {
-                    $subelement->appendAttributeToCollectionXML($XMLWriter);
-                    $this->appendedSubelements[get_class($subelement)] = $subelement;
-                }
+                $this->appendSubelementAttribute($XMLWriter, $subelement);
             }
         }
 
@@ -81,14 +78,22 @@ class Urlset implements OutputInterface
     }
 
     /**
-     * Checks if the sub-element has been appended to the collection attributes.
+     * Appends the sub-element to the collection attributes if it has yet to be visited.
      *
+     * @param XMLWriter $XMLWriter
      * @param OutputInterface $subelement
      *
      * @return boolean
      */
-    protected function isSubelementAppended(OutputInterface $subelement)
+    public function appendSubelementAttribute(XMLWriter $XMLWriter, OutputInterface $subelement)
     {
-        return array_key_exists(get_class($subelement), $this->appendedSubelements);
+        if (array_key_exists(get_class($subelement), $this->appendedSubelements)) {
+            return false;
+        }
+
+        $subelement->appendAttributeToCollectionXML($XMLWriter);
+        $this->appendedSubelements[get_class($subelement)] = $subelement;
+
+        return true;
     }
 }
