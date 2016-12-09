@@ -68,10 +68,6 @@ class Url implements OutputInterface
      */
     public function generateXML(XMLWriter $XMLWriter)
     {
-        foreach ($this->getSubelementsThatAppend() as $subelement) {
-            $subelement->appendAttributeToCollectionXML($XMLWriter);
-        }
-
         $XMLWriter->startElement('url');
         $XMLWriter->writeElement('loc', $this->getLoc());
 
