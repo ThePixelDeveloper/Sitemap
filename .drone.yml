@@ -2,9 +2,11 @@ pipeline:
     build:
         image: php:${PHP_VERSION}
         commands:
-        - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-        - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
-        - composer test
+            - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+            - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
+            - composer test
+        environment:
+            COMPOSER_ALLOW_SUPERUSER: true
 
 matrix:
   PHP_VERSION:
