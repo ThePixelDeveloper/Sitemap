@@ -1,0 +1,12 @@
+build:
+  image: php:$$PHP_VERSION
+  commands:
+    - wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O - -q | php -- --quiet
+    - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
+    - composer test
+
+matrix:
+  PHP_VERSION:
+    - 5.6
+    - 7.0
+    - 7.1
