@@ -257,7 +257,7 @@ class News implements OutputInterface, AppendAttributeInterface
         $XMLWriter->endElement();
         $this->optionalWriteElement($XMLWriter, 'news:access', $this->getAccess());
         $this->optionalWriteElement($XMLWriter, 'news:genres', $this->getGenres());
-        $XMLWriter->writeElement('news:publication_date', $this->getPublicationDate()->format(DATE_ISO8601));
+        $XMLWriter->writeElement('news:publication_date', $this->getPublicationDate()->format(DATE_ATOM));
         $XMLWriter->writeElement('news:title', $this->getTitle());
         $this->optionalWriteElement($XMLWriter, 'news:keywords', $this->getKeywords());
         $XMLWriter->endElement();
