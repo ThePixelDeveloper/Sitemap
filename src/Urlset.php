@@ -19,6 +19,13 @@ class Urlset implements OutputInterface
     protected $urls = [];
 
     /**
+     * Sub-elements that have been appended to the collection attributes.
+     *
+     * @var AppendAttributeInterface[]
+     */
+    protected $appendedSubelements = [];
+
+    /**
      * Add a new URL object.
      *
      * @param OutputInterface $url
@@ -48,6 +55,12 @@ class Urlset implements OutputInterface
         $XMLWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
         foreach ($this->getUrls() as $url) {
+            foreach ($url->getSubelementsThatAppend() as $subelement) {
+                $this->appendSubelementAttribute($XMLWriter, $subelement);
+            }
+        }
+
+        foreach ($this->getUrls() as $url) {
             $url->generateXML($XMLWriter);
         }
 
@@ -62,5 +75,25 @@ class Urlset implements OutputInterface
     public function getUrls()
     {
         return $this->urls;
+    }
+
+    /**
+     * Appends the sub-element to the collection attributes if it has yet to be visited.
+     *
+     * @param XMLWriter $XMLWriter
+     * @param OutputInterface $subelement
+     *
+     * @return boolean
+     */
+    public function appendSubelementAttribute(XMLWriter $XMLWriter, OutputInterface $subelement)
+    {
+        if (array_key_exists(get_class($subelement), $this->appendedSubelements)) {
+            return false;
+        }
+
+        $subelement->appendAttributeToCollectionXML($XMLWriter);
+        $this->appendedSubelements[get_class($subelement)] = $subelement;
+
+        return true;
     }
 }
