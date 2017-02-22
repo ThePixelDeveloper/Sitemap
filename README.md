@@ -2,7 +2,7 @@ Thepixeldeveloper\Sitemap
 =========================
 
 [![Version Status](http://php-eye.com/badge/thepixeldeveloper/sitemap/tested.svg?style=flat)](https://travis-ci.org/ThePixelDeveloper/Sitemap)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
+[![license](https://img.shields.io/github/license/ThePixelDeveloper/Sitemap.svg)](ThePixelDeveloper/Sitemap)
 [![Packagist Version](https://img.shields.io/packagist/v/thepixeldeveloper/sitemap.svg)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Total Downloads](https://img.shields.io/packagist/dt/thepixeldeveloper/sitemap.svg)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ed6d56e8-c908-44dc-9154-a8edc8b168bc.svg)](https://insight.sensiolabs.com/projects/ed6d56e8-c908-44dc-9154-a8edc8b168bc)
