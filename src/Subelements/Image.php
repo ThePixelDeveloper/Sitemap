@@ -197,6 +197,6 @@ class Image implements OutputInterface, AppendAttributeInterface
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {
-        $XMLWriter->writeAttribute('xmlns:image', 'http://www.google.com/schemas/sitemap-image/1.1');
+        $XMLWriter->writeAttribute('xmlns:image', 'https://www.google.com/schemas/sitemap-image/1.1');
     }
 }

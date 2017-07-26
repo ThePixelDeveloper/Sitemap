@@ -242,7 +242,7 @@ class News implements OutputInterface, AppendAttributeInterface
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {
-        $XMLWriter->writeAttribute('xmlns:news', 'http://www.google.com/schemas/sitemap-news/0.9');
+        $XMLWriter->writeAttribute('xmlns:news', 'https://www.google.com/schemas/sitemap-news/0.9');
     }
 
     /**

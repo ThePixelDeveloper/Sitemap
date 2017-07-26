@@ -56,7 +56,7 @@ class Link implements OutputInterface, AppendAttributeInterface
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {
-        $XMLWriter->writeAttribute('xmlns:xhtml', 'http://www.w3.org/1999/xhtml');
+        $XMLWriter->writeAttribute('xmlns:xhtml', 'https://www.w3.org/1999/xhtml');
     }
 
     /**

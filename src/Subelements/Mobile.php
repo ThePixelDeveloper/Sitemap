@@ -18,7 +18,7 @@ class Mobile implements OutputInterface, AppendAttributeInterface
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {
-        $XMLWriter->writeAttribute('xmlns:mobile', 'http://www.google.com/schemas/sitemap-mobile/1.0');
+        $XMLWriter->writeAttribute('xmlns:mobile', 'https://www.google.com/schemas/sitemap-mobile/1.0');
     }
 
     /**

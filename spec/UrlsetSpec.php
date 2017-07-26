@@ -31,9 +31,9 @@ class UrlsetSpec extends ObjectBehavior
     function it_should_only_append_attributes_once_for_each_subelement_type(XMLWriter $xmlWriter, Url $url, Image $image, Video $video)
     {
         $xmlWriter->startElement('urlset')->shouldBeCalled();
-        $xmlWriter->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')->shouldBeCalled();
-        $xmlWriter->writeAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 ' . 'http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')->shouldBeCalled();
-        $xmlWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')->shouldBeCalled();
+        $xmlWriter->writeAttribute('xmlns:xsi', 'https://www.w3.org/2001/XMLSchema-instance')->shouldBeCalled();
+        $xmlWriter->writeAttribute('xsi:schemaLocation', 'https://www.sitemaps.org/schemas/sitemap/0.9 ' . 'https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')->shouldBeCalled();
+        $xmlWriter->writeAttribute('xmlns', 'https://www.sitemaps.org/schemas/sitemap/0.9')->shouldBeCalled();
 
         $url->getSubelementsThatAppend()->willReturn([$image, $video]);
         $this->appendSubelementAttribute($xmlWriter, $image)->shouldReturn(true);

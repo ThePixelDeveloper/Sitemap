@@ -9,7 +9,7 @@ class ImageSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith('http://www.example.com/');
+        $this->beConstructedWith('https://www.example.com/');
     }
 
     function it_is_initializable()
