@@ -47,10 +47,10 @@ XML;
     <url>
         <loc>https://www.example.com/1</loc>
         <image:image>
-            <image:loc>httpss://s3.amazonaws.com/path/to/image</image:loc>
+            <image:loc>https://s3.amazonaws.com/path/to/image</image:loc>
         </image:image>
         <image:image>
-            <image:loc>httpss://s3.amazonaws.com/path/to/image2</image:loc>
+            <image:loc>https://s3.amazonaws.com/path/to/image2</image:loc>
             <image:caption>Test Caption</image:caption>
             <image:geo_location>Limerick, Ireland</image:geo_location>
             <image:title>Test Title</image:title>
@@ -60,10 +60,10 @@ XML;
     <url>
         <loc>https://www.example.com/2</loc>
         <image:image>
-            <image:loc>httpss://s3.amazonaws.com/path/to/image</image:loc>
+            <image:loc>https://s3.amazonaws.com/path/to/image</image:loc>
         </image:image>
         <image:image>
-            <image:loc>httpss://s3.amazonaws.com/path/to/image2</image:loc>
+            <image:loc>https://s3.amazonaws.com/path/to/image2</image:loc>
             <image:caption>Test Caption</image:caption>
             <image:geo_location>Limerick, Ireland</image:geo_location>
             <image:title>Test Title</image:title>
@@ -75,13 +75,13 @@ XML;
 
         $urlset = new Urlset();
 
-        $image2 = new Image('httpss://s3.amazonaws.com/path/to/image2');
+        $image2 = new Image('https://s3.amazonaws.com/path/to/image2');
         $image2->setCaption('Test Caption');
         $image2->setGeoLocation('Limerick, Ireland');
         $image2->setTitle('Test Title');
         $image2->setLicense('https://www.license.com');
 
-        $image = new Image('httpss://s3.amazonaws.com/path/to/image');
+        $image = new Image('https://s3.amazonaws.com/path/to/image');
 
         $imageUrl = new Url('https://www.example.com/1');
         $imageUrl->addSubElement($image);
