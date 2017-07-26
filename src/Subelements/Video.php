@@ -81,7 +81,7 @@ class Video implements OutputInterface, AppendAttributeInterface
     /**
      * The price to download or view the video in ISO 4217 format.
      *
-     * @link http://en.wikipedia.org/wiki/ISO_4217
+     * @link https://en.wikipedia.org/wiki/ISO_4217
      *
      * @var string
      */
@@ -664,6 +664,6 @@ class Video implements OutputInterface, AppendAttributeInterface
      */
     public function appendAttributeToCollectionXML(XMLWriter $XMLWriter)
     {
-        $XMLWriter->writeAttribute('xmlns:video', 'http://www.google.com/schemas/sitemap-video/1.1');
+        $XMLWriter->writeAttribute('xmlns:video', 'https://www.google.com/schemas/sitemap-video/1.1');
     }
 }

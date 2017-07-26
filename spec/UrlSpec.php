@@ -9,7 +9,7 @@ class UrlSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith('http://www.example.com/');
+        $this->beConstructedWith('https://www.example.com/');
     }
 
     function it_is_initializable()
@@ -19,7 +19,7 @@ class UrlSpec extends ObjectBehavior
 
     function it_should_have_a_loc()
     {
-        $this->getLoc()->shouldReturn('http://www.example.com/');
+        $this->getLoc()->shouldReturn('https://www.example.com/');
     }
 
     function it_should_have_a_last_mod()
