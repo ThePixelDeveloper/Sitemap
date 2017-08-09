@@ -73,13 +73,17 @@ class Sitemap implements OutputInterface
     /**
      * Set the last modification time.
      *
-     * @param string $lastMod
+     * @param string|\DateTimeInterface $lastMod
      *
      * @return $this
      */
     public function setLastMod($lastMod)
     {
-        $this->lastMod = $lastMod;
+        if ($lastMod instanceof \DateTimeInterface) {
+            $this->lastMod = $lastMod->format(\DateTime::W3C);
+        } else {
+            $this->lastMod = $lastMod;
+        }
 
         return $this;
     }
