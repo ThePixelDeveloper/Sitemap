@@ -42,11 +42,11 @@ class SitemapIndex implements OutputInterface
 
         $XMLWriter->writeAttribute(
             'xsi:schemaLocation',
-            'https://www.sitemaps.org/schemas/sitemap/0.9 ' .
-            'https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
+            'http://www.sitemaps.org/schemas/sitemap/0.9 ' .
+            'http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
         );
 
-        $XMLWriter->writeAttribute('xmlns', 'https://www.sitemaps.org/schemas/sitemap/0.9');
+        $XMLWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
         foreach ($this->getSitemaps() as $sitemap) {
             $sitemap->generateXML($XMLWriter);
