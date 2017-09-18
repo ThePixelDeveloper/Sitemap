@@ -50,7 +50,7 @@ class Urlset implements OutputInterface
 
         $XMLWriter->writeAttribute('xsi:schemaLocation',
             'http://www.sitemaps.org/schemas/sitemap/0.9 ' .
-            'http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd');
+            'https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd');
 
         $XMLWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
