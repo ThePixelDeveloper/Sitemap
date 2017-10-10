@@ -5,11 +5,9 @@ cache:
   - vendor/
 
 before_script:
-- pecl install xdebug
-- docker-php-ext-enable xdebug
 - curl -sS https://getcomposer.org/installer | php
 - php composer.phar install
 
 test:
   script:
-  - vendor/bin/phpunit --configuration phpunit.xml --coverage-text --colors=never
+  - php composer.phar test
