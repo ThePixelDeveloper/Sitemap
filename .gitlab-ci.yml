@@ -1,13 +1,22 @@
-image: php:7.1-alpine
-
 cache:
-  paths:
-  - vendor/
+    paths:
+        - vendor/
 
 before_script:
-- curl -sS https://getcomposer.org/installer | php
-- php composer.phar install
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
 
-test:
-  script:
-  - php composer.phar test
+test:5.6:
+    image: php:5.6-alpine
+    script:
+        - php composer.phar test
+
+test:7.0:
+    image: php:7.0-alpine
+    script:
+        - php composer.phar test
+
+test:7.1:
+    image: php:7.1-alpine
+    script:
+        - php composer.phar test
