@@ -4,7 +4,7 @@ cache:
 
 before_script:
     - curl -sS https://getcomposer.org/installer | php
-    - php composer.phar install
+    - php composer.phar install --prefer-dist --classmap-authoritative --no-interaction --no-progress
 
 test:7.0:
     image: php:7.0-alpine
