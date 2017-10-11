@@ -3,8 +3,10 @@
 namespace Thepixeldeveloper\Sitemap;
 
 use DateTimeInterface;
+use Thepixeldeveloper\Sitemap\Interfaces\DriverInterface;
+use Thepixeldeveloper\Sitemap\Interfaces\VisitorInterface;
 
-class Url
+class Url implements VisitorInterface
 {
     /**
      * Location (URL).
@@ -33,6 +35,13 @@ class Url
      * @var string
      */
     private $priority;
+
+    /**
+     * Array of sub-elements.
+     *
+     * @var VisitorInterface[]
+     */
+    private $extensions = [];
 
     public function __construct(string $loc)
     {
@@ -93,5 +102,26 @@ class Url
     public function setPriority(string $priority)
     {
         $this->priority = $priority;
+    }
+
+    /**
+     * @param VisitorInterface $extension
+     */
+    public function addExtension(VisitorInterface $extension)
+    {
+        $this->extensions[] = $extension;
+    }
+
+    /**
+     * @return VisitorInterface[]
+     */
+    public function getExtensions(): array
+    {
+        return $this->extensions;
+    }
+
+    public function accept(DriverInterface $driver)
+    {
+        $driver->visitUrl($this);
     }
 }

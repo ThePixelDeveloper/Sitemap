@@ -45,7 +45,6 @@ class Urlset implements OutputInterface
     public function generateXML(XMLWriter $XMLWriter)
     {
         $XMLWriter->startElement('urlset');
-
         $XMLWriter->writeAttribute('xmlns:xsi', 'https://www.w3.org/2001/XMLSchema-instance');
 
         $XMLWriter->writeAttribute('xsi:schemaLocation',
