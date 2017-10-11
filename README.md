@@ -8,7 +8,6 @@ Thepixeldeveloper\Sitemap
 [![Monthly Downloads](https://poser.pugx.org/thepixeldeveloper/sitemap/d/monthly)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/?branch=master)
 
-
 A tool to generate XML sitemaps
 
 Basic Usage

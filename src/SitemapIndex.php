@@ -3,14 +3,25 @@
 namespace Thepixeldeveloper\Sitemap;
 
 use ArrayIterator;
+use Thepixeldeveloper\Sitemap\Interfaces\DriverInterface;
+use Thepixeldeveloper\Sitemap\Interfaces\VisitorInterface;
 use Thepixeldeveloper\Sitemap\Traits\CollectionTrait;
 
-class SitemapIndex extends ArrayIterator
+class SitemapIndex extends ArrayIterator implements VisitorInterface
 {
     use CollectionTrait;
 
     protected function isValid($value): bool
     {
         return $value instanceof Sitemap;
+    }
+
+    public function accept(DriverInterface $driver)
+    {
+        $driver->visitSitemapIndex($this);
+
+        foreach ($this->items as $item) {
+            $driver->visitSitemap($item);
+        }
     }
 }
