@@ -11,9 +11,9 @@ class SitemapIndex extends ArrayIterator implements VisitorInterface
 {
     use CollectionTrait;
 
-    protected function isValid($value): bool
+    protected function getObject(): ?string
     {
-        return $value instanceof Sitemap;
+        return Sitemap::class;
     }
 
     public function accept(DriverInterface $driver)

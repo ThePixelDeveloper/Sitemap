@@ -47,7 +47,7 @@ trait CollectionTrait
      */
     public function offsetSet($offset, $value)
     {
-        if (!$this->isValid($value)) {
+        if (!$this->getObject() instanceof $value) {
             throw new InvalidCollectionItemException($value);
         }
 
@@ -69,14 +69,10 @@ trait CollectionTrait
     }
 
     /**
-     * Validates the value before being inserted.
-     *
-     * @param $value
-     *
-     * @return bool
+     * @return null|string
      */
-    protected function isValid($value): bool
+    protected function getObject(): ?string
     {
-        return false;
+        return null;
     }
 }

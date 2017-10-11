@@ -9,9 +9,9 @@ class Urlset extends ArrayIterator
 {
     use CollectionTrait;
 
-    protected function isValid($value): bool
+    protected function getObject(): ?string
     {
-        return $value instanceof Url;
+        return Url::class;
     }
 }
 
