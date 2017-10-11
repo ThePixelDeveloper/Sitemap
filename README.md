@@ -2,9 +2,10 @@ Thepixeldeveloper\Sitemap
 =========================
 
 [![pipeline status](https://gitlab.com/thepixeldeveloper/sitemap/badges/master/pipeline.svg)](https://gitlab.com/thepixeldeveloper/sitemap/commits/master)
-[![license](https://img.shields.io/github/license/ThePixelDeveloper/Sitemap.svg)](ThePixelDeveloper/Sitemap)
-[![Packagist Version](https://img.shields.io/packagist/v/thepixeldeveloper/sitemap.svg)](https://packagist.org/packages/thepixeldeveloper/sitemap)
-[![Total Downloads](https://img.shields.io/packagist/dt/thepixeldeveloper/sitemap.svg)](https://packagist.org/packages/thepixeldeveloper/sitemap)
+[![License](https://poser.pugx.org/thepixeldeveloper/sitemap/license)](https://packagist.org/packages/thepixeldeveloper/sitemap)
+[![Latest Stable Version](https://poser.pugx.org/thepixeldeveloper/sitemap/v/stable)](https://packagist.org/packages/thepixeldeveloper/sitemap)
+[![Total Downloads](https://poser.pugx.org/thepixeldeveloper/sitemap/downloads)](https://packagist.org/packages/thepixeldeveloper/sitemap)
+[![Monthly Downloads](https://poser.pugx.org/thepixeldeveloper/sitemap/d/monthly)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/?branch=master)
 
 
