@@ -2,7 +2,6 @@
 
 namespace spec\Thepixeldeveloper\Sitemap;
 
-use Thepixeldeveloper\Sitemap\Sitemap;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -15,7 +14,7 @@ class SitemapSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(Sitemap::class);
+        $this->shouldHaveType('Thepixeldeveloper\Sitemap\Sitemap');
     }
 
     function it_should_have_a_loc()

@@ -2,7 +2,6 @@
 
 namespace spec\Thepixeldeveloper\Sitemap;
 
-use Thepixeldeveloper\Sitemap\Url;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -15,7 +14,7 @@ class UrlSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(Url::class);
+        $this->shouldHaveType('Thepixeldeveloper\Sitemap\Url');
     }
 
     function it_should_have_a_loc()

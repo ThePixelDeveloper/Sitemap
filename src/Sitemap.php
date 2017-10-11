@@ -1,86 +1,51 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Thepixeldeveloper\Sitemap;
 
-use XMLWriter;
+use DateTimeInterface;
 
-/**
- * Class Sitemap
- *
- * @package Thepixeldeveloper\Sitemap
- */
-class Sitemap implements OutputInterface
+class Sitemap
 {
     /**
      * Location (URL).
      *
      * @var string
      */
-    protected $loc;
+    private $loc;
 
     /**
      * Last modified time.
      *
-     * @var string
+     * @var DateTimeInterface
      */
-    protected $lastMod;
+    private $lastMod;
 
-    /**
-     * Url constructor
-     *
-     * @param string $loc
-     */
-    public function __construct($loc)
+    public function __construct(string $loc)
     {
         $this->loc = $loc;
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function generateXML(XMLWriter $XMLWriter)
-    {
-        $XMLWriter->startElement('sitemap');
-        $XMLWriter->writeElement('loc', $this->getLoc());
-
-        if ($lastMod = $this->getLastMod()) {
-            $XMLWriter->writeElement('lastmod', $lastMod);
-        }
-
-        $XMLWriter->endElement();
-    }
-
-    /**
-     * Get location (URL).
-     *
      * @return string
      */
-    public function getLoc()
+    public function getLoc(): string
     {
         return $this->loc;
     }
 
     /**
-     * Get the last modification time.
-     *
-     * @return string|null
+     * @return DateTimeInterface
      */
-    public function getLastMod()
+    public function getLastMod(): ?DateTimeInterface
     {
         return $this->lastMod;
     }
 
     /**
-     * Set the last modification time.
-     *
-     * @param string $lastMod
-     *
-     * @return $this
+     * @param DateTimeInterface $lastMod
      */
-    public function setLastMod($lastMod)
+    public function setLastMod(DateTimeInterface $lastMod)
     {
         $this->lastMod = $lastMod;
-
-        return $this;
     }
 }

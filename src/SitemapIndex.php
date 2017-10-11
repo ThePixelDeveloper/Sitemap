@@ -1,67 +1,16 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Thepixeldeveloper\Sitemap;
 
-use XMLWriter;
+use ArrayIterator;
+use Thepixeldeveloper\Sitemap\Traits\CollectionTrait;
 
-/**
- * Class SitemapIndex
- *
- * @package Thepixeldeveloper\Sitemap
- */
-class SitemapIndex implements OutputInterface
+class SitemapIndex extends ArrayIterator
 {
-    /**
-     * Array of Sitemap entries.
-     *
-     * @var OutputInterface[]
-     */
-    protected $sitemaps = [];
+    use CollectionTrait;
 
-    /**
-     * Add a new Sitemap object to the collection.
-     *
-     * @param OutputInterface $sitemap
-     *
-     * @return $this
-     */
-    public function addSitemap(OutputInterface $sitemap)
+    protected function isValid($value): bool
     {
-        $this->sitemaps[] = $sitemap;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function generateXML(XMLWriter $XMLWriter)
-    {
-        $XMLWriter->startElement('sitemapindex');
-        $XMLWriter->writeAttribute('xmlns:xsi', 'https://www.w3.org/2001/XMLSchema-instance');
-
-        $XMLWriter->writeAttribute(
-            'xsi:schemaLocation',
-            'http://www.sitemaps.org/schemas/sitemap/0.9 ' .
-            'https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
-        );
-
-        $XMLWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
-
-        foreach ($this->getSitemaps() as $sitemap) {
-            $sitemap->generateXML($XMLWriter);
-        }
-
-        $XMLWriter->endElement();
-    }
-
-    /**
-     * Get an array of Sitemap objects.
-     *
-     * @return OutputInterface[]
-     */
-    public function getSitemaps()
-    {
-        return $this->sitemaps;
+        return $value instanceof Sitemap;
     }
 }
