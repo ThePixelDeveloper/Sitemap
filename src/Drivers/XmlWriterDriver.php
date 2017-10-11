@@ -14,12 +14,51 @@ use Thepixeldeveloper\Sitemap\Url;
 use Thepixeldeveloper\Sitemap\Urlset;
 use XMLWriter;
 
+/**
+ * Class XmlWriterDriver
+ *
+ * Because this driver is forward only (can't go back and
+ * define additional attributes) there's some logic
+ *
+ * @package Thepixeldeveloper\Sitemap\Drivers
+ */
 class XmlWriterDriver implements DriverInterface
 {
     /**
      * @var XMLWriter
      */
     private $writer;
+
+    /**
+     * @var array
+     */
+    private $extensionAttributes = [
+        Video::class  => [
+            'name'   => 'xmlns:video',
+            'content' => 'https://www.google.com/schemas/sitemap-video/1.1',
+        ],
+        News::class   => [
+            'name'   => 'xmlns:news',
+            'content' => 'https://www.google.com/schemas/sitemap-news/0.9',
+        ],
+        Mobile::class => [
+            'name'   => 'xmlns:mobile',
+            'content' => 'https://www.google.com/schemas/sitemap-mobile/1.0',
+        ],
+        Mobile::class => [
+            'name'   => 'xmlns:xhtml',
+            'content' => 'http://www.w3.org/1999/xhtml',
+        ],
+        Image::class  => [
+            'name'   => 'xmlns:image',
+            'content' => 'http://www.google.com/schemas/sitemap-image/1.1',
+        ],
+    ];
+
+    /**
+     * @var array
+     */
+    private $extensions = [];
 
     /**
      * XmlWriterDriver constructor.
@@ -77,6 +116,16 @@ class XmlWriterDriver implements DriverInterface
 
     public function visitUrl(Url $url): void
     {
+        foreach ($url->getExtensions() as $extension) {
+            $extensionClass      = get_class($extension);
+            $extensionAttributes = $this->extensionAttributes[$extensionClass];
+
+            if (!in_array($extensionClass, $this->extensions, true)) {
+                $this->extensions[] = $extensionClass;
+                $this->writer->writeAttribute($extensionAttributes['name'], $extensionAttributes['content']);
+            }
+        }
+
         $this->writer->startElement('url');
         $this->writer->writeElement('loc', $url->getLoc());
 
