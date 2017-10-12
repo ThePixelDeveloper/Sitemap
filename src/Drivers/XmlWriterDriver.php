@@ -72,12 +72,12 @@ class XmlWriterDriver implements DriverInterface
         $this->writer = $writer;
     }
 
-    public function addProcessingInstructions(string $target, string $content): void
+    public function addProcessingInstructions(string $target, string $content)
     {
         $this->writer->writePI($target, $content);
     }
 
-    private function writeElement(string $name, $content): void
+    private function writeElement(string $name, $content)
     {
         if (!$content) {
             return;
@@ -90,7 +90,7 @@ class XmlWriterDriver implements DriverInterface
         }
     }
 
-    public function visitSitemapIndex(SitemapIndex $sitemapIndex): void
+    public function visitSitemapIndex(SitemapIndex $sitemapIndex)
     {
         $this->writer->startElement('sitemapindex');
         $this->writer->writeAttribute('xmlns:xsi', 'https://www.w3.org/2001/XMLSchema-instance');
@@ -107,7 +107,7 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->endElement();
     }
 
-    public function visitSitemap(Sitemap $sitemap): void
+    public function visitSitemap(Sitemap $sitemap)
     {
         $this->writer->startElement('sitemap');
         $this->writer->writeElement('loc', $sitemap->getLoc());
@@ -117,7 +117,7 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->endElement();
     }
 
-    public function visitUrlset(Urlset $urlset): void
+    public function visitUrlset(Urlset $urlset)
     {
         $this->writer->startElement('urlset');
 
@@ -143,7 +143,7 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->endElement();
     }
 
-    public function visitUrl(Url $url): void
+    public function visitUrl(Url $url)
     {
         foreach ($url->getExtensions() as $extension) {
             $extensionClass = get_class($extension);
@@ -168,7 +168,7 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->endElement();
     }
 
-    public function visitImageExtension(Image $image): void
+    public function visitImageExtension(Image $image)
     {
         $this->writer->startElement('image:image');
         $this->writeElement('image:loc', $image->getLoc());
@@ -179,7 +179,7 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->endElement();
     }
 
-    public function visitLinkExtension(Link $link): void
+    public function visitLinkExtension(Link $link)
     {
         $this->writer->startElement('xhtml:link');
         $this->writer->writeAttribute('rel', 'alternate');
@@ -188,12 +188,12 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->endElement();
     }
 
-    public function visitMobileExtension(Mobile $mobile): void
+    public function visitMobileExtension(Mobile $mobile)
     {
         $this->writer->writeElement('mobile:mobile');
     }
 
-    public function visitNewsExtension(News $news): void
+    public function visitNewsExtension(News $news)
     {
         $this->writer->startElement('news:news');
 
@@ -211,7 +211,7 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->endElement();
     }
 
-    public function visitVideoExtension(Video $video): void
+    public function visitVideoExtension(Video $video)
     {
         $this->writer->startElement('video:video');
 

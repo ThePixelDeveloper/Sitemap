@@ -14,23 +14,23 @@ use Thepixeldeveloper\Sitemap\Urlset;
 
 interface DriverInterface
 {
-    public function visitSitemapIndex(SitemapIndex $sitemapIndex): void;
+    public function visitSitemapIndex(SitemapIndex $sitemapIndex);
 
-    public function visitSitemap(Sitemap $sitemap): void;
+    public function visitSitemap(Sitemap $sitemap);
 
-    public function visitUrlset(Urlset $urlset): void;
+    public function visitUrlset(Urlset $urlset);
 
-    public function visitUrl(Url $url): void;
+    public function visitUrl(Url $url);
 
-    public function visitImageExtension(Image $image): void;
+    public function visitImageExtension(Image $image);
 
-    public function visitLinkExtension(Link $link): void;
+    public function visitLinkExtension(Link $link);
 
-    public function visitMobileExtension(Mobile $mobile): void;
+    public function visitMobileExtension(Mobile $mobile);
 
-    public function visitNewsExtension(News $news): void;
+    public function visitNewsExtension(News $news);
 
-    public function visitVideoExtension(Video $video): void;
+    public function visitVideoExtension(Video $video);
 
     public function output(): string;
 }

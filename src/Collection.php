@@ -11,7 +11,7 @@ abstract class Collection implements VisitorInterface
      */
     private $items;
 
-    public function add(VisitorInterface $value): void
+    public function add(VisitorInterface $value)
     {
         $type = $this->type();
 
