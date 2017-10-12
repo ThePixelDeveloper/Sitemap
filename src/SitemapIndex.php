@@ -2,16 +2,11 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
-use ArrayIterator;
 use Thepixeldeveloper\Sitemap\Interfaces\DriverInterface;
-use Thepixeldeveloper\Sitemap\Interfaces\VisitorInterface;
-use Thepixeldeveloper\Sitemap\Traits\CollectionTrait;
 
-class SitemapIndex extends ArrayIterator implements VisitorInterface
+class SitemapIndex extends Collection
 {
-    use CollectionTrait;
-
-    protected function getObject()
+    public function type(): string
     {
         return Sitemap::class;
     }
@@ -20,7 +15,7 @@ class SitemapIndex extends ArrayIterator implements VisitorInterface
     {
         $driver->visitSitemapIndex($this);
 
-        foreach ($this->items as $item) {
+        foreach ($this->all() as $item) {
             $driver->visitSitemap($item);
         }
     }

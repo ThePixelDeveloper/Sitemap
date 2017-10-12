@@ -2,16 +2,11 @@
 
 namespace Thepixeldeveloper\Sitemap;
 
-use ArrayIterator;
 use Thepixeldeveloper\Sitemap\Interfaces\DriverInterface;
-use Thepixeldeveloper\Sitemap\Interfaces\VisitorInterface;
-use Thepixeldeveloper\Sitemap\Traits\CollectionTrait;
 
-class Urlset extends ArrayIterator implements VisitorInterface
+class Urlset extends Collection
 {
-    use CollectionTrait;
-
-    protected function getObject()
+    public function type(): string
     {
         return Url::class;
     }
