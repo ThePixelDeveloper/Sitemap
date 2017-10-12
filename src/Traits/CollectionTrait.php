@@ -71,7 +71,7 @@ trait CollectionTrait
     /**
      * @return null|string
      */
-    protected function getObject(): ?string
+    protected function getObject()
     {
         return null;
     }
