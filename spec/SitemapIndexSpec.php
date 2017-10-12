@@ -2,14 +2,13 @@
 
 namespace spec\Thepixeldeveloper\Sitemap;
 
-use Thepixeldeveloper\Sitemap\SitemapIndex;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use Thepixeldeveloper\Sitemap\Url;
 
 class SitemapIndexSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_only_accepts_a_sitemap(Url $url)
     {
-        $this->shouldHaveType(SitemapIndex::class);
+        $this->shouldThrow(\InvalidArgumentException::class)->during('add', [$url]);
     }
 }

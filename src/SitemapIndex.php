@@ -16,7 +16,7 @@ class SitemapIndex extends Collection
         $driver->visitSitemapIndex($this);
 
         foreach ($this->all() as $item) {
-            $driver->visitSitemap($item);
+            $item->accept($driver);
         }
     }
 }

@@ -2,14 +2,13 @@
 
 namespace spec\Thepixeldeveloper\Sitemap;
 
-use Thepixeldeveloper\Sitemap\Urlset;
+use Thepixeldeveloper\Sitemap\Sitemap;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class UrlsetSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_only_accepts_a_url(Sitemap $sitemap)
     {
-        $this->shouldHaveType(Urlset::class);
+        $this->shouldThrow(\InvalidArgumentException::class)->during('add', [$sitemap]);
     }
 }

@@ -3,8 +3,10 @@
 namespace Thepixeldeveloper\Sitemap;
 
 use DateTimeInterface;
+use Thepixeldeveloper\Sitemap\Interfaces\DriverInterface;
+use Thepixeldeveloper\Sitemap\Interfaces\VisitorInterface;
 
-class Sitemap
+class Sitemap implements VisitorInterface
 {
     /**
      * Location (URL).
@@ -47,5 +49,10 @@ class Sitemap
     public function setLastMod(DateTimeInterface $lastMod)
     {
         $this->lastMod = $lastMod;
+    }
+
+    public function accept(DriverInterface $driver)
+    {
+        $driver->visitSitemap($this);
     }
 }
