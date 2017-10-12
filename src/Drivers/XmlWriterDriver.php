@@ -32,11 +32,6 @@ class XmlWriterDriver implements DriverInterface
     /**
      * @var array
      */
-    private $processingInstructions = [];
-
-    /**
-     * @var array
-     */
     private $extensionAttributes = [
         Video::class  => [
             'name'    => 'xmlns:video',
@@ -74,16 +69,12 @@ class XmlWriterDriver implements DriverInterface
         $writer->openMemory();
         $writer->startDocument('1.0', 'UTF-8');
 
-        foreach ($this->processingInstructions as $target => $content) {
-            $writer->writePI($target, $content);
-        }
-
         $this->writer = $writer;
     }
 
     public function addProcessingInstructions(string $target, string $content): void
     {
-        $this->processingInstructions[$target] = $content;
+        $this->writer->writePI($target, $content);
     }
 
     private function writeElement(string $name, $content): void
@@ -108,6 +99,12 @@ class XmlWriterDriver implements DriverInterface
             'xsi:schemaLocation',
             'http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
         );
+
+        foreach ($sitemapIndex->all() as $item) {
+            $item->accept($this);
+        }
+
+        $this->writer->endElement();
     }
 
     public function visitSitemap(Sitemap $sitemap): void
@@ -115,9 +112,7 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->startElement('sitemap');
         $this->writer->writeElement('loc', $sitemap->getLoc());
 
-        if ($lastMod = $sitemap->getLastMod()) {
-            $this->writer->writeElement('lastmod', $lastMod->format(DATE_W3C));
-        }
+        $this->writeElement('lastmod', $sitemap->getLastMod());
 
         $this->writer->endElement();
     }

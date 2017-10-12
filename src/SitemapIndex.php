@@ -14,9 +14,5 @@ class SitemapIndex extends Collection
     public function accept(DriverInterface $driver)
     {
         $driver->visitSitemapIndex($this);
-
-        foreach ($this->all() as $item) {
-            $item->accept($driver);
-        }
     }
 }
