@@ -62,7 +62,7 @@ echo $driver->getOutput();
 Extensions
 ----------
 
-The following extensions are supported: [Image](Drivers/Image.php), [Link](), [Mobile](), [News]() and [Video](). They work in the
+The following extensions are supported: [Image](tree/master/src/Extensions/Image.php), [Link](tree/master/src/Extensions/Link.php), [Mobile](tree/master/src/Extensions/Mobile.php), [News](tree/master/src/Extensions/News.php) and [Video](tree/master/src/Extensions/Video.php). They work in the
 following way (taking image as an example):
 
 ``` php
@@ -100,10 +100,10 @@ $driver = new XmlWriterDriver();
 $driver->addProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"');
 ```
 
-Which will add 
+Which will add before the document starts.
 
 ``` xml
 <?xml-stylesheet type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"?>
 ```
 
-before the document starts.
+
