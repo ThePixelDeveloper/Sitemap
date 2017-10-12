@@ -11,7 +11,7 @@ class SitemapIndex extends ArrayIterator implements VisitorInterface
 {
     use CollectionTrait;
 
-    protected function getObject(): ?string
+    protected function getObject()
     {
         return Sitemap::class;
     }

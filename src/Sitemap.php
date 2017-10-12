@@ -36,7 +36,7 @@ class Sitemap
     /**
      * @return DateTimeInterface
      */
-    public function getLastMod(): ?DateTimeInterface
+    public function getLastMod()
     {
         return $this->lastMod;
     }

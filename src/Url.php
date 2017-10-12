@@ -59,7 +59,7 @@ class Url implements VisitorInterface
     /**
      * @return DateTimeInterface
      */
-    public function getLastMod(): ?DateTimeInterface
+    public function getLastMod()
     {
         return $this->lastMod;
     }
@@ -75,7 +75,7 @@ class Url implements VisitorInterface
     /**
      * @return string
      */
-    public function getChangeFreq(): ?string
+    public function getChangeFreq()
     {
         return $this->changeFreq;
     }
@@ -91,7 +91,7 @@ class Url implements VisitorInterface
     /**
      * @return string
      */
-    public function getPriority(): ?string
+    public function getPriority()
     {
         return $this->priority;
     }
