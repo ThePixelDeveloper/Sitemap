@@ -1,3 +1,5 @@
+**Notice**: This repository is a mirror of what's hosted on GitLab ([thepixeldeveloper/sitemap](https://gitlab.com/thepixeldeveloper/sitemap/)).
+
 # Thepixeldeveloper\Sitemap
 
 [![pipeline status](https://gitlab.com/thepixeldeveloper/sitemap/badges/master/pipeline.svg)](https://gitlab.com/thepixeldeveloper/sitemap/commits/master)
