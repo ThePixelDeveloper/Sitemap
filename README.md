@@ -10,8 +10,18 @@ Thepixeldeveloper\Sitemap
 
 A tool to generate XML sitemaps.
 
-Basic Usage
------
+* [Installation](#installation)
+* [Basic Usage](#basic-usage)
+* [Advanced Usage](#advanced-usage)
+* [Extensions](#extensions)
+
+## Installation
+
+``` bash
+composer require "thepixeldeveloper/sitemap"
+```
+
+## Basic Usage
 
 Generating a typical (\<urlset\>) sitemap.
 
@@ -59,8 +69,7 @@ $urlset->accept($driver);
 echo $driver->getOutput();
 ```
 
-Extensions
-----------
+## Extensions
 
 The following extensions are supported: [Image](tree/master/src/Extensions/Image.php), [Link](tree/master/src/Extensions/Link.php), [Mobile](tree/master/src/Extensions/Mobile.php), [News](tree/master/src/Extensions/News.php) and [Video](tree/master/src/Extensions/Video.php). They work in the
 following way (taking image as an example):
@@ -84,8 +93,7 @@ $url->addExtension($image);
 ...
 ```
 
-Advanced Usage
---------------
+## Advanced Usage
 
 **Processing Instructions**
 
