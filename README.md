@@ -8,90 +8,81 @@ Thepixeldeveloper\Sitemap
 [![Monthly Downloads](https://poser.pugx.org/thepixeldeveloper/sitemap/d/monthly)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/?branch=master)
 
-A tool to generate XML sitemaps
+A tool to generate XML sitemaps.
 
 Basic Usage
 -----
 
-Generating a urlset sitemap
+Generating a typical (\<urlset\>) sitemap.
 
 ``` php
-$urlSet = new Thepixeldeveloper\Sitemap\Urlset(); 
+<?php declare(strict_types=1);
 
-$url = (new Thepixeldeveloper\Sitemap\Url($loc))
-  ->setLastMod($lastMod)
-  ->setChangeFreq($changeFreq)
-  ->setPriority($priority);
+use Thepixeldeveloper\Sitemap\Urlset;
+use Thepixeldeveloper\Sitemap\Url;
+use Thepixeldeveloper\Sitemap\Drivers\XmlWriterDriver;
 
-$urlSet->addUrl($url);
+$url = new Url($loc);
+$url->setLastMod($lastMod);
+$url->setChangeFreq($changeFreq);
+$url->setPriority($priority);
+
+$urlset = new Urlset();
+$urlSet->add($url);
+
+$driver = new XmlWriterDriver();
+$urlset->accept($driver);
+
+echo $driver->getOutput();
 ```
 
-Generating a sitemapindex sitemap
-
+Generating a parent (\<sitemapindex\>) sitemap.
 
 ``` php
-$sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex(); 
+<?php declare(strict_types=1);
 
-$url = (new Thepixeldeveloper\Sitemap\Sitemap($loc))
-  ->setLastMod($lastMod);
-  
-$sitemapIndex->addSitemap($url);
+use Thepixeldeveloper\Sitemap\SitemapIndex;
+use Thepixeldeveloper\Sitemap\Sitemap;
+use Thepixeldeveloper\Sitemap\Drivers\XmlWriterDriver;
+
+// Sitemap entry.
+$url = new Sitemap($loc);
+$url->setLastMod($lastMod);
+
+// Add it to a collection.
+$urlset = new SitemapIndex();
+$urlSet->add($url);
+
+$driver = new XmlWriterDriver();
+$urlset->accept($driver);
+
+echo $driver->getOutput();
 ```
 
-Then pass either SitemapIndex or Urlset to `Output` to generate output
+Extensions
+----------
 
+The following extensions are supported: [Image](), [Link](), [Mobile](), [News]() and [Video]().
+They work in the following way: (taking image as an example)
 
 ``` php
-echo (new Thepixeldeveloper\Sitemap\Output())->getOutput($sitemapIndex);
+<?php declare(strict_types=1);
+
+use Thepixeldeveloper\Sitemap\Urlset;
+use Thepixeldeveloper\Sitemap\Url;
+use Thepixeldeveloper\Sitemap\Extensions\Image;
+
+$url = new Url($loc);
+$url->setLastMod($lastMod);
+$url->setChangeFreq($changeFreq);
+$url->setPriority($priority);
+
+$image = new Image('https://image-location.com');
+
+$url->addExtension($image);
+
+...
 ```
-
-Subelements
------------
-
-You can add more specific information to a URL entry, ie video / image information
-
-**Image**
-
-``` php
-$subelement = new Thepixeldeveloper\Sitemap\Subelements\Image('https://s3.amazonaws.com/path/to/image');
-```
-
-**Video**
-
-``` php
-$subelement = new Thepixeldeveloper\Sitemap\Subelements\Video('thumbnail', 'title', 'description');
-```
-
-**Mobile**
-
-``` php
-$subelement = new Thepixeldeveloper\Sitemap\Subelements\Mobile();
-```
-
-**Link**
-
-``` php
-$subelement = new Thepixeldeveloper\Sitemap\Subelements\Link('de', 'http://www.example.com/schweiz-deutsch/');
-```
-
-**News**
-
-``` php
-$subelement = (new Thepixeldeveloper\Sitemap\Subelements\News())
-    ->setPublicationDate(new \DateTime())
-    ->setPublicationLanguage('en')
-    ->setPublicationName('Site Name')
-    ->setTitle('Some title');
-```
-
-Then you need to add the subelement to the URL
-
-``` php
-$url = new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1')
-$url->addSubelement($subelement);
-```
-
-and rendering is described above.
 
 Advanced Usage
 --------------
@@ -101,10 +92,12 @@ Advanced Usage
 You can add processing instructions on the output as such.
 
 ```php
-$output = new Thepixeldeveloper\Sitemap\Output();
-$output->addProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"');
+<?php declare(strict_types=1);
 
-echo $output->getOutput($urlset);
+use Thepixeldeveloper\Sitemap\Drivers\XmlWriterDriver;
+
+$driver = new XmlWriterDriver();
+$driver->addProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"');
 ```
 
 Which will add 
@@ -114,24 +107,6 @@ Which will add
 ```
 
 before the document starts.
-
-**Indenting output**
-
-Output is indented by default, can be turned off as follows
-
-``` php
-echo (new Thepixeldeveloper\Sitemap\Output())
-    ->setIndented(false)
-    ->getOutput($urlSet);
-```
-
-Configuration
-
-Name | Default | Values
----- | ------- | ------
-setIndented | true | boolean
-setIndentString | 4 spaces | string
-
 
 Why should I use this over [cartographer](https://github.com/tackk/cartographer)?
 ----
