@@ -1,5 +1,4 @@
-Thepixeldeveloper\Sitemap
-=========================
+# Thepixeldeveloper\Sitemap
 
 [![pipeline status](https://gitlab.com/thepixeldeveloper/sitemap/badges/master/pipeline.svg)](https://gitlab.com/thepixeldeveloper/sitemap/commits/master)
 [![License](https://poser.pugx.org/thepixeldeveloper/sitemap/license)](https://packagist.org/packages/thepixeldeveloper/sitemap)
