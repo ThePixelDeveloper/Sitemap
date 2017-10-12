@@ -107,7 +107,7 @@ class XmlWriterDriver implements DriverInterface
 
         $this->writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
-        foreach ($urlset as $item) {
+        foreach ($urlset->all() as $item) {
             $item->accept($this);
         }
 

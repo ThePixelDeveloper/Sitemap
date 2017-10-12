@@ -6,9 +6,12 @@ use Thepixeldeveloper\Sitemap\Interfaces\VisitorInterface;
 
 abstract class Collection implements VisitorInterface
 {
+    /**
+     * @var VisitorInterface[]
+     */
     private $items;
 
-    public function add($value): void
+    public function add(VisitorInterface $value): void
     {
         $type = $this->type();
 
@@ -19,6 +22,9 @@ abstract class Collection implements VisitorInterface
         throw new \InvalidArgumentException('$value needs to be an instance of ' . $type);
     }
 
+    /**
+     * @return VisitorInterface[]
+     */
     public function all(): array
     {
         return $this->items;
