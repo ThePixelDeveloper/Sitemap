@@ -62,8 +62,8 @@ echo $driver->getOutput();
 Extensions
 ----------
 
-The following extensions are supported: [Image](), [Link](), [Mobile](), [News]() and [Video]().
-They work in the following way: (taking image as an example)
+The following extensions are supported: [Image](Drivers/Image.php), [Link](), [Mobile](), [News]() and [Video](). They work in the
+following way (taking image as an example):
 
 ``` php
 <?php declare(strict_types=1);
@@ -107,10 +107,3 @@ Which will add
 ```
 
 before the document starts.
-
-Why should I use this over [cartographer](https://github.com/tackk/cartographer)?
-----
-
-* This library has less complexity. All it's going to do is build an object graph and spit it out as XML
-* Has support for a growing list of sub elements ie: mobile and images
-* No dependencies. A library outputting XML doesn't need to rely on Flysystem
