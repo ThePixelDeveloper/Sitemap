@@ -18,6 +18,5 @@ test:7.1:
 
 test:7.2:
     image: php:7.2-rc-alpine
-    allow_failure: true
     script:
         - php composer.phar test
