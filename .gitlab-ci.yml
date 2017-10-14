@@ -6,12 +6,10 @@ stages:
     cache:
         paths:
             - vendor/
-            - ~/.composer/vendor/
 
 .composer_install: &composer_install
     before_script:
         - curl -sS https://getcomposer.org/installer | php
-        - php composer.phar global require hirak/prestissimo
         - php composer.phar install --prefer-dist --classmap-authoritative --no-interaction --no-progress
 
 .composer_test: &composer_test
