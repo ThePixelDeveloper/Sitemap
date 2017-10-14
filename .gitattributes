@@ -1,4 +1,6 @@
 .gitattributes export-ignore
+.gitlab-ci.yml export-ignore
 .gitignore export-ignore
 phpspec.yml export-ignore
 /spec export-ignore
+README.md
