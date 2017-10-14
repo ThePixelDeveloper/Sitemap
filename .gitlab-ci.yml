@@ -4,9 +4,9 @@ stages:
 
 .composer_cache: &composer_cache
     cache:
-        policy: pull
         paths:
             - vendor/
+            - ~/.composer/vendor/
 
 .composer_install: &composer_install
     before_script:
