@@ -1,22 +1,53 @@
-cache:
-    paths:
-        - vendor/
+stages:
+    - mirror
+    - test
 
-before_script:
-    - curl -sS https://getcomposer.org/installer | php
-    - php composer.phar install --prefer-dist --classmap-authoritative --no-interaction --no-progress
+.composer_cache: &composer_cache
+    cache:
+        policy: pull
+        key: composer
+        paths:
+            - vendor/
+
+.composer_install: &composer_install
+    before_script:
+        - curl -sS https://getcomposer.org/installer | php
+        - php composer.phar global require hirak/prestissimo
+        - php composer.phar install --prefer-dist --classmap-authoritative --no-interaction --no-progress
+
+.composer_test: &composer_test
+    script:
+        - php composer.phar test
+
+mirror:github:
+    before_script:
+        - apk add --update --no-cache openssh
+        - eval $(ssh-agent -s)
+        - mkdir -p ~/.ssh
+        - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    image: alpine:latest
+    stage: mirror
+    script:
+        - ssh-add <(echo "$SSH_GITHUB_GITLAB")
+        - git push --mirror github
 
 test:7.0:
     image: php:7.0-alpine
-    script:
-        - php composer.phar test
+    stage: test
+    <<: *composer_install
+    <<: *composer_test
+    <<: *composer_cache
 
 test:7.1:
     image: php:7.1-alpine
-    script:
-        - php composer.phar test
+    stage: test
+    <<: *composer_install
+    <<: *composer_test
+    <<: *composer_cache
 
 test:7.2:
     image: php:7.2-rc-alpine
-    script:
-        - php composer.phar test
+    stage: test
+    <<: *composer_install
+    <<: *composer_test
+    <<: *composer_cache
