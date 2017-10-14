@@ -31,7 +31,7 @@ mirror:github:
     image: alpine:latest
     stage: mirror
     script:
-        - git push --mirror github
+        - git push --mirror git@github.com:ThePixelDeveloper/sitemap-mirror.git
 
 test:7.0:
     image: php:7.0-alpine
