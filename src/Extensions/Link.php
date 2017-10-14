@@ -32,7 +32,7 @@ class Link implements VisitorInterface
      * @param string $hrefLang
      * @param string $href
      */
-    public function __construct($hrefLang, $href)
+    public function __construct(string $hrefLang, string $href)
     {
         $this->hrefLang = $hrefLang;
         $this->href = $href;
@@ -43,7 +43,7 @@ class Link implements VisitorInterface
      *
      * @return string
      */
-    public function getHref()
+    public function getHref(): string
     {
         return $this->href;
     }
@@ -53,7 +53,7 @@ class Link implements VisitorInterface
      * 
      * @return string
      */
-    public function getHrefLang()
+    public function getHrefLang(): string
     {
         return $this->hrefLang;
     }

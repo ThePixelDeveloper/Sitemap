@@ -50,7 +50,7 @@ class News implements VisitorInterface
     /**
      * Date of publication.
      *
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $publicationDate;
 
@@ -167,7 +167,7 @@ class News implements VisitorInterface
     /**
      * Date of publication.
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
     public function getPublicationDate()
     {
@@ -177,11 +177,11 @@ class News implements VisitorInterface
     /**
      * Set date of publication.
      *
-     * @param \DateTime $publicationDate
+     * @param \DateTimeInterface $publicationDate
      *
      * @return $this
      */
-    public function setPublicationDate(\DateTime $publicationDate)
+    public function setPublicationDate(\DateTimeInterface $publicationDate)
     {
         $this->publicationDate = $publicationDate;
 

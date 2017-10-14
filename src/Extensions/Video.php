@@ -117,9 +117,9 @@ class Video implements VisitorInterface
     protected $familyFriendly;
 
     /**
-     * The date the video was first published, in W3C format.
+     * The date the video was first published.
      *
-     * @var string
+     * @var \DateTimeInterface
      */
     protected $publicationDate;
 
@@ -145,9 +145,9 @@ class Video implements VisitorInterface
     protected $rating;
 
     /**
-     * The date after which the video will no longer be available, in W3C format.
+     * The date after which the video will no longer be available
      *
-     * @var string
+     * @var \DateTimeInterface
      */
     protected $expirationDate;
 
@@ -268,9 +268,9 @@ class Video implements VisitorInterface
     }
 
     /**
-     * The date after which the video will no longer be available, in W3C format.
+     * The date after which the video will no longer be available.
      *
-     * @return string
+     * @return \DateTimeInterface
      */
     public function getExpirationDate()
     {
@@ -278,13 +278,13 @@ class Video implements VisitorInterface
     }
 
     /**
-     * The date after which the video will no longer be available, in W3C format.
+     * The date after which the video will no longer be available.
      *
-     * @param string $expirationDate
+     * @param \DateTimeInterface $expirationDate
      *
      * @return $this
      */
-    public function setExpirationDate($expirationDate)
+    public function setExpirationDate(\DateTimeInterface $expirationDate)
     {
         $this->expirationDate = $expirationDate;
 
@@ -342,7 +342,7 @@ class Video implements VisitorInterface
     /**
      * The date the video was first published, in W3C format.
      *
-     * @return string
+     * @return \DateTimeInterface
      */
     public function getPublicationDate()
     {
@@ -352,11 +352,11 @@ class Video implements VisitorInterface
     /**
      * The date the video was first published, in W3C format.
      *
-     * @param string $publicationDate
+     * @param \DateTimeInterface $publicationDate
      *
      * @return $this
      */
-    public function setPublicationDate($publicationDate)
+    public function setPublicationDate(\DateTimeInterface $publicationDate)
     {
         $this->publicationDate = $publicationDate;
 
