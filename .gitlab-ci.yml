@@ -26,7 +26,7 @@ mirror:github:
         - mkdir -p ~/.ssh
         - ssh-keyscan -H 'github.com' >> ~/.ssh/known_hosts
         - ssh-keyscan github.com | sort -u - ~/.ssh/known_hosts -o ~/.ssh/known_hosts
-        - bash -c "ssh-add <(echo '$SSH_PRIVATE_KEY')"
+        - bash -c "ssh-add <(echo '$SSH_GITHUB_GITLAB')"
 
     image: alpine:latest
     stage: mirror
