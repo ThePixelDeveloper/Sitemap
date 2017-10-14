@@ -5,7 +5,6 @@ stages:
 .composer_cache: &composer_cache
     cache:
         policy: pull
-        key: composer
         paths:
             - vendor/
 
