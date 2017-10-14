@@ -19,7 +19,7 @@ stages:
     script:
         - php composer.phar test
 
-mirror:github:
+github:
     before_script:
         - apk add --update --no-cache bash git openssh
         - eval $(ssh-agent -s)
@@ -33,21 +33,21 @@ mirror:github:
     script:
         - git push --mirror git@github.com:ThePixelDeveloper/sitemap-mirror.git
 
-test:7.0:
+php 7.0:
     image: php:7.0-alpine
     stage: test
     <<: *composer_install
     <<: *composer_test
     <<: *composer_cache
 
-test:7.1:
+php 7.1:
     image: php:7.1-alpine
     stage: test
     <<: *composer_install
     <<: *composer_test
     <<: *composer_cache
 
-test:7.2:
+php 7.2:
     image: php:7.2-rc-alpine
     stage: test
     <<: *composer_install
