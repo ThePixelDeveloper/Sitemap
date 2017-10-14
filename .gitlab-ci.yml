@@ -21,16 +21,16 @@ stages:
 
 mirror:github:
     before_script:
-        - apk add --update --no-cache openssh
+        - apk add --update --no-cache bash git openssh
         - eval $(ssh-agent -s)
         - mkdir -p ~/.ssh
         - ssh-keyscan -H 'github.com' >> ~/.ssh/known_hosts
         - ssh-keyscan github.com | sort -u - ~/.ssh/known_hosts -o ~/.ssh/known_hosts
+        - bash -c "ssh-add <(echo '$SSH_PRIVATE_KEY')"
 
     image: alpine:latest
     stage: mirror
     script:
-        - bash -c "ssh-add <(echo '$SSH_PRIVATE_KEY')"
         - git push --mirror github
 
 test:7.0:
