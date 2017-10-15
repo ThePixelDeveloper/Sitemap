@@ -4,3 +4,4 @@
 phpspec.yml export-ignore
 /spec export-ignore
 README.md
+LICENSE
