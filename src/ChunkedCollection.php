@@ -1,12 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Thepixeldeveloper\Sitemap\Splitter;
+namespace Thepixeldeveloper\Sitemap;
 
-use Thepixeldeveloper\Sitemap\Collection;
-use Thepixeldeveloper\Sitemap\Interfaces\CollectionSplitterInterface;
 use Thepixeldeveloper\Sitemap\Interfaces\VisitorInterface;
 
-class CollectionSplitter implements CollectionSplitterInterface
+abstract class ChunkedCollection
 {
     const LIMIT = 50000;
 
@@ -16,31 +14,23 @@ class CollectionSplitter implements CollectionSplitterInterface
     private $collections;
 
     /**
-     * @var Collection
-     */
-    private $collection;
-
-    /**
      * @var int
      */
     private $count;
 
     /**
      * SitemapSplitter constructor.
-     *
-     * @param Collection $collection
      */
-    public function __construct(Collection $collection)
+    public function __construct()
     {
         $this->collections = [];
-        $this->collection = $collection;
         $this->count = 0;
     }
 
     public function add(VisitorInterface $visitor)
     {
         if ($this->count === 0 || $this->count === self::LIMIT) {
-            $this->count = 0; $this->collections[] = clone $this->collection;
+            $this->count = 0; $this->collections[] = $this->getCollectionClass();
         }
 
         $this->collections[count($this->collections) - 1]->add($visitor);
@@ -54,4 +44,6 @@ class CollectionSplitter implements CollectionSplitterInterface
     {
         return $this->collections;
     }
+
+    abstract protected function getCollectionClass(): Collection;
 }

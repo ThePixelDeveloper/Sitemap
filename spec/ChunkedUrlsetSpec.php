@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Thepixeldeveloper\Sitemap\Splitter;
+namespace spec\Thepixeldeveloper\Sitemap;
 
 use PhpSpec\ObjectBehavior;
 use Thepixeldeveloper\Sitemap\Url;
 use Thepixeldeveloper\Sitemap\Urlset;
 
-class CollectionSplitterSpec extends ObjectBehavior
+class ChunkedUrlsetSpec extends ObjectBehavior
 {
     function let(Urlset $urlset)
     {
