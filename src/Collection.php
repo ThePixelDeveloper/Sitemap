@@ -17,9 +17,9 @@ abstract class Collection implements VisitorInterface
 
         if ($value instanceof $type) {
             $this->items[] = $value;
+        } else {
+            throw new \InvalidArgumentException('$value needs to be an instance of ' . $type);
         }
-
-        throw new \InvalidArgumentException('$value needs to be an instance of ' . $type);
     }
 
     /**
