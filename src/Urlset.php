@@ -16,4 +16,3 @@ class Urlset extends Collection
         $driver->visitUrlset($this);
     }
 }
-

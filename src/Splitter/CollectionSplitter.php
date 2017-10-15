@@ -8,6 +8,8 @@ use Thepixeldeveloper\Sitemap\Interfaces\VisitorInterface;
 
 class CollectionSplitter implements CollectionSplitterInterface
 {
+    const LIMIT = 50000;
+
     /**
      * @var Collection[]
      */
@@ -17,13 +19,6 @@ class CollectionSplitter implements CollectionSplitterInterface
      * @var Collection
      */
     private $collection;
-
-    const LIMIT = 50000;
-
-    /**
-     * @var int
-     */
-    private $limit;
 
     /**
      * @var int
@@ -39,13 +34,12 @@ class CollectionSplitter implements CollectionSplitterInterface
     {
         $this->collections = [];
         $this->collection = $collection;
-        $this->limit = self::LIMIT;
         $this->count = 0;
     }
 
     public function add(VisitorInterface $visitor)
     {
-        if ($this->count === 0 || $this->count === $this->limit) {
+        if ($this->count === 0 || $this->count === self::LIMIT) {
             $this->count = 0; $this->collections[] = clone $this->collection;
         }
 
@@ -53,6 +47,9 @@ class CollectionSplitter implements CollectionSplitterInterface
         $this->count++;
     }
 
+    /**
+     * @return array
+     */
     public function getCollections(): array
     {
         return $this->collections;
