@@ -1,3 +1,8 @@
+5.0.1
+-----
+
+Fixed a bug with the collection validation, was always throwing an exception.
+
 5.0.0
 -----
 
