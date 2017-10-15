@@ -38,7 +38,7 @@ abstract class ChunkedCollection
     }
 
     /**
-     * @return array
+     * @return Collection[]
      */
     public function getCollections(): array
     {
