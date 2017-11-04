@@ -28,6 +28,6 @@
 		}
 	},
 	"scripts": {
-		"test": "phpspec run"
+		"test": "phpunit"
 	}
 }

@@ -7,14 +7,21 @@ stages:
         paths:
             - vendor/
 
-.composer_install: &composer_install
+.install_dependencies: &install_dependencies
     before_script:
+        - apk add --update --no-cache autoconf coreutils autoconf gcc g++ make
+        - pecl install xdebug
+        - docker-php-ext-enable xdebug
         - curl -sS https://getcomposer.org/installer | php
         - php composer.phar install --prefer-dist --classmap-authoritative --no-interaction --no-progress
 
 .composer_test: &composer_test
     script:
         - php composer.phar test
+
+.code_coverage: &code_coverage
+    after_script:
+        - bash <(curl -s https://codecov.io/bash)
 
 github:
     before_script:
@@ -33,20 +40,23 @@ github:
 php 7.0:
     image: php:7.0-alpine
     stage: test
-    <<: *composer_install
+    <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
+    <<: *code_coverage
 
 php 7.1:
     image: php:7.1-alpine
     stage: test
-    <<: *composer_install
+    <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
+    <<: *code_coverage
 
 php 7.2:
     image: php:7.2-rc-alpine
     stage: test
-    <<: *composer_install
+    <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
+    <<: *code_coverage
