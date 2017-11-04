@@ -9,7 +9,7 @@ abstract class Collection implements VisitorInterface
     /**
      * @var VisitorInterface[]
      */
-    private $items;
+    private $items = [];
 
     public function add(VisitorInterface $value)
     {

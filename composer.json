@@ -12,10 +12,10 @@
 		}
 	],
 	"require": {
-		"php": ">=7.0"
+		"php": ">=7.0",
+		"phpunit/phpunit": "^6.4"
 	},
 	"require-dev": {
-		"phpspec/phpspec": "^4.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -24,7 +24,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"spec\\Thepixeldeveloper\\Sitemap\\": "spec/"
+			"Tests\\Thepixeldeveloper\\Sitemap\\": "tests/"
 		}
 	},
 	"scripts": {
