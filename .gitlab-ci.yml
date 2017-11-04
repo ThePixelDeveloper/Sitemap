@@ -21,7 +21,9 @@ stages:
 
 .code_coverage: &code_coverage
     after_script:
-        - bash <(curl -s https://codecov.io/bash)
+        - curl -s https://codecov.io/bash > .codecov
+        - chmod +x .codecov
+        - ./.codecov
 
 github:
     before_script:
