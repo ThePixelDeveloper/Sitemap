@@ -8,7 +8,7 @@ stages:
 
 .install_dependencies: &install_dependencies
     before_script:
-        - php composer.phar install --prefer-dist --classmap-authoritative --no-interaction --no-progress
+        - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
 
 .composer_test: &composer_test
     script:
