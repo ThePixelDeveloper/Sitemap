@@ -8,7 +8,6 @@ stages:
 
 .install_dependencies: &install_dependencies
     before_script:
-        - curl -sS https://getcomposer.org/installer | php
         - php composer.phar install --prefer-dist --classmap-authoritative --no-interaction --no-progress
 
 .composer_test: &composer_test
@@ -16,21 +15,21 @@ stages:
         - php composer.phar test
 
 php 7.0:
-    image: php:7.0-alpine
+    image: www.devkit.net:4567/thepixeldeveloper/docker-images/php-7.0:latest
     stage: test
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
 
 php 7.1:
-    image: php:7.1-alpine
+    image: www.devkit.net:4567/thepixeldeveloper/docker-images/php-7.1:latest
     stage: test
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
 
 php 7.2:
-    image: php:7.2-rc-alpine
+    image: www.devkit.net:4567/thepixeldeveloper/docker-images/php-7.2:latest
     stage: test
     <<: *install_dependencies
     <<: *composer_test
