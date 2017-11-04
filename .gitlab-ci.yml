@@ -1,5 +1,4 @@
 stages:
-    - mirror
     - test
 
 .composer_cache: &composer_cache
@@ -15,20 +14,6 @@ stages:
 .composer_test: &composer_test
     script:
         - php composer.phar test
-
-github:
-    before_script:
-        - apk add --update --no-cache bash git openssh
-        - eval $(ssh-agent -s)
-        - mkdir -p ~/.ssh
-        - ssh-keyscan -H 'github.com' >> ~/.ssh/known_hosts
-        - ssh-keyscan github.com | sort -u - ~/.ssh/known_hosts -o ~/.ssh/known_hosts
-        - bash -c "ssh-add <(echo '$SSH_GITHUB_GITLAB')"
-
-    image: alpine:latest
-    stage: mirror
-    script:
-        - git push --mirror git@github.com:ThePixelDeveloper/Sitemap.git
 
 php 7.0:
     image: php:7.0-alpine
