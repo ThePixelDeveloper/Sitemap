@@ -12,7 +12,7 @@ stages:
 
 .composer_test: &composer_test
     script:
-        - php composer.phar test
+        - composer test
 
 php 7.0:
     image: www.devkit.net:4567/thepixeldeveloper/docker-images/php-7.0:latest
