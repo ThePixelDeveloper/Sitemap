@@ -9,7 +9,7 @@ stages:
 
 .install_dependencies: &install_dependencies
     before_script:
-        - apk add --update --no-cache autoconf coreutils autoconf gcc g++ make
+        - apk add --update --no-cache bash autoconf coreutils autoconf gcc g++ make
         - pecl install xdebug
         - docker-php-ext-enable xdebug
         - curl -sS https://getcomposer.org/installer | php
