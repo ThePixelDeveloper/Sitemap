@@ -45,7 +45,7 @@ class XmlWriterDriver implements DriverInterface
             'name'    => 'xmlns:mobile',
             'content' => 'https://www.google.com/schemas/sitemap-mobile/1.0',
         ],
-        Mobile::class => [
+        Link::class => [
             'name'    => 'xmlns:xhtml',
             'content' => 'http://www.w3.org/1999/xhtml',
         ],
@@ -136,6 +136,21 @@ class XmlWriterDriver implements DriverInterface
             'http://www.sitemaps.org/schemas/sitemap/0.9'
         );
 
+        /**
+         * @var Url $item
+         */
+        foreach ($urlset->all() as $item) {
+            foreach ($item->getExtensions() as $extension) {
+                $extensionClass = get_class($extension);
+                $extensionAttributes = $this->extensionAttributes[$extensionClass];
+
+                if (!in_array($extensionClass, $this->extensions, true)) {
+                    $this->extensions[] = $extensionClass;
+                    $this->writer->writeAttribute($extensionAttributes['name'], $extensionAttributes['content']);
+                }
+            }
+        }
+
         foreach ($urlset->all() as $item) {
             $item->accept($this);
         }
@@ -145,16 +160,6 @@ class XmlWriterDriver implements DriverInterface
 
     public function visitUrl(Url $url)
     {
-        foreach ($url->getExtensions() as $extension) {
-            $extensionClass = get_class($extension);
-            $extensionAttributes = $this->extensionAttributes[$extensionClass];
-
-            if (!in_array($extensionClass, $this->extensions, true)) {
-                $this->extensions[] = $extensionClass;
-                $this->writer->writeAttribute($extensionAttributes['name'], $extensionAttributes['content']);
-            }
-        }
-
         $this->writer->startElement('url');
         $this->writeElement('loc', $url->getLoc());
         $this->writeElement('lastmod', $url->getLastMod());
