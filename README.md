@@ -2,11 +2,11 @@
 
 # Thepixeldeveloper\Sitemap
 
-[![pipeline status](https://gitlab.com/thepixeldeveloper/sitemap/badges/master/pipeline.svg)](https://gitlab.com/thepixeldeveloper/sitemap/commits/master)
+[![pipeline status](https://www.devkit.net/thepixeldeveloper/sitemap/badges/master/pipeline.svg)](https://www.devkit.net/thepixeldeveloper/sitemap/commits/master)
+[![coverage report](https://www.devkit.net/thepixeldeveloper/sitemap/badges/master/coverage.svg)](https://www.devkit.net/thepixeldeveloper/sitemap/commits/master)
 [![License](https://poser.pugx.org/thepixeldeveloper/sitemap/license)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Latest Stable Version](https://poser.pugx.org/thepixeldeveloper/sitemap/v/stable)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Total Downloads](https://poser.pugx.org/thepixeldeveloper/sitemap/downloads)](https://packagist.org/packages/thepixeldeveloper/sitemap)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/?branch=master)
 
 A tool to generate XML sitemaps.
 
