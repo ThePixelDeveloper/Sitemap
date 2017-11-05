@@ -1,5 +1,7 @@
 stages:
     - test
+    - coverage
+    - deploy
 
 .composer_cache: &composer_cache
     cache:
@@ -34,3 +36,27 @@ php 7.2:
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
+
+coverage:
+    image: www.devkit.net:4567/thepixeldeveloper/docker-images/php-7.1:latest
+    stage: coverage
+    <<: *install_dependencies
+    <<: *composer_cache
+    script:
+        - composer coverage
+    artifacts:
+        paths:
+          - coverage/
+
+pages:
+    stage: deploy
+    dependencies:
+        - coverage
+    script:
+        - mv coverage/ public/
+    artifacts:
+        paths:
+            - public
+    expire_in: 30 days
+    only:
+        - master
