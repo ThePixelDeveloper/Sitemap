@@ -96,13 +96,17 @@ XML;
     public function testImageExtension()
     {
         $image = new Image('https://example.com');
+        $image->setTitle('Title');
+        $image->setCaption('Captain');
+        $image->setLicense('MIT');
+        $image->setGeoLocation('Limerick, Ireland');
 
         $driver = new XmlWriterDriver();
         $driver->visitImageExtension($image);
 
         $expected = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
-<image:image><image:loc>https://example.com</image:loc></image:image>
+<image:image><image:loc>https://example.com</image:loc><image:caption>Captain</image:caption><image:geo_location>Limerick, Ireland</image:geo_location><image:title>Title</image:title><image:license>MIT</image:license></image:image>
 XML;
 
         $this->assertSame($expected, $driver->output());
@@ -143,13 +147,17 @@ XML;
         $news = new News();
         $news->setPublicationName('Example Publisher');
         $news->setTitle('Example Title');
+        $news->setPublicationLanguage('en');
+        $news->setAccess('paid');
+        $news->setKeywords('hello, world');
+        $news->setPublicationDate(new \DateTime('2017-11-05T12:01:27+00:00'));
 
         $driver = new XmlWriterDriver();
         $driver->visitNewsExtension($news);
 
         $expected = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
-<news:news><news:publication><news:name>Example Publisher</news:name></news:publication><news:title>Example Title</news:title></news:news>
+<news:news><news:publication><news:name>Example Publisher</news:name><news:language>en</news:language></news:publication><news:access>paid</news:access><news:publication_date>2017-11-05T12:01:27+00:00</news:publication_date><news:title>Example Title</news:title><news:keywords>hello, world</news:keywords></news:news>
 XML;
 
         $this->assertSame($expected, $driver->output());
