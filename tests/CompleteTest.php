@@ -9,6 +9,8 @@ use Thepixeldeveloper\Sitemap\Extensions\Link;
 use Thepixeldeveloper\Sitemap\Extensions\Mobile;
 use Thepixeldeveloper\Sitemap\Extensions\News;
 use Thepixeldeveloper\Sitemap\Extensions\Video;
+use Thepixeldeveloper\Sitemap\Sitemap;
+use Thepixeldeveloper\Sitemap\SitemapIndex;
 use Thepixeldeveloper\Sitemap\Url;
 use Thepixeldeveloper\Sitemap\Urlset;
 
@@ -29,12 +31,11 @@ class CompleteTest extends TestCase
         foreach ($extensions as $extension) {
             $url = new Url('http://example.com');
             $url->addExtension($extension);
-
             $urlset->add($url);
         }
 
         $driver = new XmlWriterDriver();
-        $driver->visitUrlset($urlset);
+        $urlset->accept($driver);
 
         $expected = <<<XML
 <urlset xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
@@ -73,6 +74,29 @@ class CompleteTest extends TestCase
         </video:video>
     </url>
 </urlset>
+XML;
+
+        $this->assertXmlStringEqualsXmlString($expected, $driver->output());
+    }
+
+    public function testCompleteIndex()
+    {
+        $sitemap = new Sitemap('http://example.com');
+
+        $sitemapIndex = new SitemapIndex();
+        $sitemapIndex->add($sitemap);
+
+        $driver = new XmlWriterDriver();
+        $sitemapIndex->accept($driver);
+
+        $expected = <<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
+    <sitemap>
+        <loc>http://example.com</loc>
+    </sitemap>
+</sitemapindex>
 XML;
 
         $this->assertXmlStringEqualsXmlString($expected, $driver->output());
