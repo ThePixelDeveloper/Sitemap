@@ -55,8 +55,8 @@ pages:
     script:
         - mv coverage/ public/
     artifacts:
+        expire_in: 30 days
         paths:
             - public
-    expire_in: 30 days
     only:
         - master
