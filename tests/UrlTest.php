@@ -12,11 +12,13 @@ class UrlTest extends TestCase
         $location = 'https://example.com';
 
         $url = new Url($location);
+        $url->setChangeFreq('monthly');
+        $url->setPriority('0.8');
 
         $this->assertSame($location, $url->getLoc());
         $this->assertSame([], $url->getExtensions());
-        $this->assertNull($url->getChangeFreq());
-        $this->assertNull($url->getPriority());
+        $this->assertSame('monthly', $url->getChangeFreq());
+        $this->assertSame('0.8', $url->getPriority());
         $this->assertNull($url->getLastMod());
     }
 }
