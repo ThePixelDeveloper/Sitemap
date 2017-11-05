@@ -29,6 +29,6 @@
 	},
 	"scripts": {
 		"test": "phpunit",
-		"coverage": "phpunit --coverage-text --coverage-html ./coverage"
+		"coverage": "phpunit --coverage-text --colors=never --coverage-html ./coverage"
 	}
 }
