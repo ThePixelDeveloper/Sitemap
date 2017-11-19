@@ -1,5 +1,3 @@
-**Notice**: This repository is a mirror of what's hosted on GitLab ([thepixeldeveloper/sitemap](https://gitlab.com/thepixeldeveloper/sitemap/)).
-
 # Thepixeldeveloper\Sitemap
 
 [![pipeline status](https://www.devkit.net/thepixeldeveloper/sitemap/badges/master/pipeline.svg)](https://www.devkit.net/thepixeldeveloper/sitemap/commits/master)
@@ -8,7 +6,7 @@
 [![Latest Stable Version](https://poser.pugx.org/thepixeldeveloper/sitemap/v/stable)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Total Downloads](https://poser.pugx.org/thepixeldeveloper/sitemap/downloads)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 
-A tool to generate XML sitemaps.
+A tool to generate XML sitemaps. Integrates with Symfony via [SitemapBundle](https://github.com/thepixeldeveloper/sitemapbundle)
 
 * [Installation](#installation)
 * [Basic Usage](#basic-usage)
