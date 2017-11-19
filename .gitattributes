@@ -1,7 +1,7 @@
+/tests export-ignore
 .gitattributes export-ignore
-.gitlab-ci.yml export-ignore
 .gitignore export-ignore
-phpspec.yml export-ignore
-/spec export-ignore
+.gitlab-ci.yml export-ignore
+CHANGELOG.md
+phpunit.xml export-ignore
 README.md
-LICENSE
