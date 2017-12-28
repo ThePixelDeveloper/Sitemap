@@ -17,28 +17,28 @@ stages:
         - composer test
 
 php 7.0:
-    image: $CI_REGISTRY/mathew-davies/DockerImages/php:7.0
+    image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.0
     stage: test
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
 
 php 7.1:
-    image: $CI_REGISTRY/mathew-davies/DockerImages/php:7.1
+    image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.1
     stage: test
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
 
 php 7.2:
-    image: $CI_REGISTRY/mathew-davies/DockerImages/php:7.2
+    image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.2
     stage: test
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
 
 coverage:
-    image: $CI_REGISTRY/mathew-davies/DockerImages/php:7.1
+    image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.1
     stage: coverage
     <<: *install_dependencies
     <<: *composer_cache
