@@ -64,7 +64,7 @@ $urlSet->add($url);
 $driver = new XmlWriterDriver();
 $urlset->accept($driver);
 
-echo $driver->getOutput();
+echo $driver->output();
 ```
 
 ## Extensions
