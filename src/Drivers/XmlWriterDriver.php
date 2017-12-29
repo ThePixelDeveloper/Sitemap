@@ -100,6 +100,12 @@ class XmlWriterDriver implements DriverInterface
             'http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
         );
 
+        // google requires this to be declared in the root sitemap element
+        $this->writer->writeAttribute(
+            'xmlns',
+            'http://www.sitemaps.org/schemas/sitemap/0.9'
+        );
+
         foreach ($sitemapIndex->all() as $item) {
             $item->accept($this);
         }
