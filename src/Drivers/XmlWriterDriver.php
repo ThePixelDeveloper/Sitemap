@@ -35,15 +35,15 @@ class XmlWriterDriver implements DriverInterface
     private $extensionAttributes = [
         Video::class  => [
             'name'    => 'xmlns:video',
-            'content' => 'https://www.google.com/schemas/sitemap-video/1.1',
+            'content' => 'http://www.google.com/schemas/sitemap-video/1.1',
         ],
         News::class   => [
             'name'    => 'xmlns:news',
-            'content' => 'https://www.google.com/schemas/sitemap-news/0.9',
+            'content' => 'http://www.google.com/schemas/sitemap-news/0.9',
         ],
         Mobile::class => [
             'name'    => 'xmlns:mobile',
-            'content' => 'https://www.google.com/schemas/sitemap-mobile/1.0',
+            'content' => 'http://www.google.com/schemas/sitemap-mobile/1.0',
         ],
         Link::class => [
             'name'    => 'xmlns:xhtml',
@@ -93,11 +93,11 @@ class XmlWriterDriver implements DriverInterface
     public function visitSitemapIndex(SitemapIndex $sitemapIndex)
     {
         $this->writer->startElement('sitemapindex');
-        $this->writer->writeAttribute('xmlns:xsi', 'https://www.w3.org/2001/XMLSchema-instance');
+        $this->writer->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
 
         $this->writer->writeAttribute(
             'xsi:schemaLocation',
-            'http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
+            'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
         );
 
         foreach ($sitemapIndex->all() as $item) {
@@ -123,12 +123,12 @@ class XmlWriterDriver implements DriverInterface
 
         $this->writer->writeAttribute(
             'xmlns:xsi',
-            'https://www.w3.org/2001/XMLSchema-instance'
+            'http://www.w3.org/2001/XMLSchema-instance'
         );
 
         $this->writer->writeAttribute(
             'xsi:schemaLocation',
-            'http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
+            'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
         );
 
         $this->writer->writeAttribute(
