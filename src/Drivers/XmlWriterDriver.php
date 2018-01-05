@@ -99,8 +99,7 @@ class XmlWriterDriver implements DriverInterface
             'xsi:schemaLocation',
             'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
         );
-
-        // google requires this to be declared in the root sitemap element
+        
         $this->writer->writeAttribute(
             'xmlns',
             'http://www.sitemaps.org/schemas/sitemap/0.9'
