@@ -99,6 +99,11 @@ class XmlWriterDriver implements DriverInterface
             'xsi:schemaLocation',
             'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
         );
+        
+        $this->writer->writeAttribute(
+            'xmlns',
+            'http://www.sitemaps.org/schemas/sitemap/0.9'
+        );
 
         foreach ($sitemapIndex->all() as $item) {
             $item->accept($this);
