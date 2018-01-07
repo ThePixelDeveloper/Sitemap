@@ -1,7 +1,5 @@
 stages:
-    - lint
     - test
-    - coverage
     - deploy
 
 .composer_cache: &composer_cache
@@ -17,7 +15,7 @@ stages:
     script:
         - composer test
 
-phpstan:
+lint (phpstan):
     image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.1
     stage: lint
     <<: *install_dependencies
@@ -25,21 +23,21 @@ phpstan:
     script:
         - composer lint
 
-php 7.0:
+test php 7.0:
     image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.0
     stage: test
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
 
-php 7.1:
+test php 7.1:
     image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.1
     stage: test
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
 
-php 7.2:
+test php 7.2:
     image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.2
     stage: test
     <<: *install_dependencies
