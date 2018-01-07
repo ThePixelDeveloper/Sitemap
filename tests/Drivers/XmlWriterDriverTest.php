@@ -179,7 +179,7 @@ XML;
         $video->setCategory('Baking');
         $video->setRestriction('IE GB US CA');
         $video->setGalleryLoc('https://example.com/gallery');
-        $video->setPrice(100);
+        $video->setPrice('100');
         $video->setRequiresSubscription(true);
         $video->setUploader('GrillyMcGrillerson');
         $video->setPlatform('web mobile');
