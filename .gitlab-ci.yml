@@ -36,6 +36,9 @@ test php 7.1:
     <<: *install_dependencies
     <<: *composer_test
     <<: *composer_cache
+    artifacts:
+        paths:
+            - coverage/
 
 test php 7.2:
     image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.2
@@ -44,21 +47,10 @@ test php 7.2:
     <<: *composer_test
     <<: *composer_cache
 
-coverage:
-    image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.1
-    stage: test
-    <<: *install_dependencies
-    <<: *composer_cache
-    script:
-        - composer coverage
-    artifacts:
-        paths:
-          - coverage/
-
 pages:
     stage: deploy
     dependencies:
-        - coverage
+        - test php 7.1
     script:
         - mv coverage/ public/
     artifacts:

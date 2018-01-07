@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+
+    php:
+        image: www.devkit.net:4567/mathew-davies/dockerimages/php:7.1
+        working_dir: /var/www/Sitemap
+        volumes:
+            - ~/.ssh/:/root/.ssh
+            - ./:/var/www/Sitemap
