@@ -234,7 +234,18 @@ class XmlWriterDriver implements DriverInterface
         $this->writeElement('video:category', $video->getCategory());
         $this->writeElement('video:restriction', $video->getRestriction());
         $this->writeElement('video:gallery_loc', $video->getGalleryLoc());
-        $this->writeElement('video:price', $video->getPrice());
+
+        if ($price = $video->getPrice()) {
+            $this->writer->startElement('video:price');
+
+            if ($currency = $video->getCurrency()) {
+                $this->writer->writeAttribute('currency', $currency);
+            }
+
+            $this->writer->writeRaw($price);
+            $this->writer->endElement();
+        }
+
         $this->writeElement('video:requires_subscription', $video->getRequiresSubscription());
         $this->writeElement('video:uploader', $video->getUploader());
         $this->writeElement('video:platform', $video->getPlatform());

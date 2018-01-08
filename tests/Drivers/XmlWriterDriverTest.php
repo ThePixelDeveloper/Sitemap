@@ -180,6 +180,7 @@ XML;
         $video->setRestriction('IE GB US CA');
         $video->setGalleryLoc('https://example.com/gallery');
         $video->setPrice('100');
+        $video->setCurrency('EUR');
         $video->setRequiresSubscription(true);
         $video->setUploader('GrillyMcGrillerson');
         $video->setPlatform('web mobile');
@@ -190,7 +191,7 @@ XML;
 
         $expected = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
-<video:video><video:thumbnail_loc>https://example.com</video:thumbnail_loc><video:title>Title</video:title><video:description>Description</video:description><video:content_loc>https://example.com/content</video:content_loc><video:player_loc>http://example.com/player</video:player_loc><video:duration>3600</video:duration><video:expiration_date>2017-11-05T12:01:27+00:00</video:expiration_date><video:rating>4.2</video:rating><video:view_count>100</video:view_count><video:publication_date>2017-11-05T12:01:27+00:00</video:publication_date><video:family_friendly>yes</video:family_friendly><video:category>Baking</video:category><video:restriction>IE GB US CA</video:restriction><video:gallery_loc>https://example.com/gallery</video:gallery_loc><video:price>100</video:price><video:requires_subscription>1</video:requires_subscription><video:uploader>GrillyMcGrillerson</video:uploader><video:platform>web mobile</video:platform><video:tag>summer</video:tag></video:video>
+<video:video><video:thumbnail_loc>https://example.com</video:thumbnail_loc><video:title>Title</video:title><video:description>Description</video:description><video:content_loc>https://example.com/content</video:content_loc><video:player_loc>http://example.com/player</video:player_loc><video:duration>3600</video:duration><video:expiration_date>2017-11-05T12:01:27+00:00</video:expiration_date><video:rating>4.2</video:rating><video:view_count>100</video:view_count><video:publication_date>2017-11-05T12:01:27+00:00</video:publication_date><video:family_friendly>yes</video:family_friendly><video:category>Baking</video:category><video:restriction>IE GB US CA</video:restriction><video:gallery_loc>https://example.com/gallery</video:gallery_loc><video:price currency="EUR">100</video:price><video:requires_subscription>1</video:requires_subscription><video:uploader>GrillyMcGrillerson</video:uploader><video:platform>web mobile</video:platform><video:tag>summer</video:tag></video:video>
 XML;
 
         $this->assertSame($expected, $driver->output());

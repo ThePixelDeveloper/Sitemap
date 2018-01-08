@@ -82,6 +82,13 @@ class Video implements VisitorInterface
     protected $price;
 
     /**
+     * The currency used for the price.
+     *
+     * @var string
+     */
+    protected $currency;
+
+    /**
      * Link to gallery of which this video appears in.
      *
      * @var string
@@ -505,6 +512,26 @@ class Video implements VisitorInterface
         $this->price = $price;
 
         return $this;
+    }
+
+    /**
+     * The currency used for the price.
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * The currency used for the price.
+     *
+     * @param string $currency
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
     }
 
     /**
