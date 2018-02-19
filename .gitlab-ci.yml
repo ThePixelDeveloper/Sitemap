@@ -23,13 +23,6 @@ lint (phpstan):
     script:
         - composer lint
 
-test php 7.0:
-    image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.0
-    stage: test
-    <<: *install_dependencies
-    <<: *composer_test
-    <<: *composer_cache
-
 test php 7.1:
     image: $CI_REGISTRY/mathew-davies/dockerimages/php:7.1
     stage: test
