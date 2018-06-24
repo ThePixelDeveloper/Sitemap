@@ -103,7 +103,7 @@ You can add processing instructions on the output as such.
 use Thepixeldeveloper\Sitemap\Drivers\XmlWriterDriver;
 
 $driver = new XmlWriterDriver();
-$driver->addProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"');
+$driver->addProcessingInstructions('xml-stylesheet', 'type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"');
 ```
 
 Which will add before the document starts.
