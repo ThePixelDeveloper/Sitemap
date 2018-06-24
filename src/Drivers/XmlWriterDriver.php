@@ -77,6 +77,11 @@ class XmlWriterDriver implements DriverInterface
         $this->writer->writePI($target, $content);
     }
 
+    public function addComment(string $comment)
+    {
+        $this->writer->writeComment($comment);
+    }
+
     private function writeElement(string $name, $content)
     {
         if (!$content) {
