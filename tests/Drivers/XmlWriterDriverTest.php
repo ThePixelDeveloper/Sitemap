@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tests\Thepixeldeveloper\Sitemap\Drivers;
 
@@ -24,6 +24,21 @@ class XmlWriterDriverTest extends TestCase
         $expected = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"?>
+XML;
+
+        $this->assertSame($expected, $driver->output());
+    }
+
+    public function testComments()
+    {
+        $date = date('Y-m-d H:i:s');
+
+        $driver = new XmlWriterDriver();
+        $driver->addComment('This XML file was written on ' . $date . '. Bye!');
+
+        $expected = <<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This XML file was written on $date. Bye!-->
 XML;
 
         $this->assertSame($expected, $driver->output());

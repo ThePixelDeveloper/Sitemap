@@ -113,3 +113,25 @@ Which will add before the document starts.
 ```
 
 
+**Comments**
+
+Comments are useful for information such as when the file was created.
+
+```php
+<?php declare(strict_types=1);
+
+use Thepixeldeveloper\Sitemap\Drivers\XmlWriterDriver;
+
+$date = date('Y-m-d H:i:s');
+
+$driver = new XmlWriterDriver();
+$driver->addComment('This XML file was written on ' . $date . '. Bye!');
+```
+
+Which will render out.
+
+``` xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This XML file was written on 2018-06-24 15:57:23. Bye!-->
+```
+

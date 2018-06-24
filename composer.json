@@ -1,13 +1,12 @@
 {
 	"name": "thepixeldeveloper/sitemap",
 	"type": "library",
-	"description": "XML sitemap generation",
-	"keywords": ["sitemap", "xml"],
+	"description": "PHP XML sitemap generation",
+	"keywords": ["php", "sitemap", "xml", "sitemap-php", "sitemap-builder", "sitemap-generator", "sitemap-xml", "xml-sitemap"],
 	"license": "MIT",
 	"authors": [
 		{
 			"name": "Mathew Davies",
-			"homepage": "http://mathew-davies.co.uk",
 			"role": "Developer"
 		}
 	],
@@ -15,9 +14,9 @@
 		"php": ">=7.1"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^6.4",
-		"phpstan/phpstan": "^0.9.1",
-		"phpstan/phpstan-phpunit": "^0.9.3"
+		"phpunit/phpunit": "^7",
+		"phpstan/phpstan": "^0",
+		"phpstan/phpstan-phpunit": "^0"
 	},
 	"autoload": {
 		"psr-4": {
