@@ -35,7 +35,7 @@ $url->setLastMod($lastMod);
 $url->setChangeFreq($changeFreq);
 $url->setPriority($priority);
 
-$urlset = new Urlset();
+$urlSet = new Urlset();
 $urlSet->add($url);
 
 $driver = new XmlWriterDriver();
