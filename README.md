@@ -36,12 +36,12 @@ $url->setChangeFreq($changeFreq);
 $url->setPriority($priority);
 
 $urlset = new Urlset();
-$urlSet->add($url);
+$urlset->add($url);
 
 $driver = new XmlWriterDriver();
 $urlset->accept($driver);
 
-echo $driver->getOutput();
+echo $driver->output();
 ```
 
 Generating a parent (\<sitemapindex\>) sitemap.
