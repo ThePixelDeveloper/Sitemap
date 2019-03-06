@@ -1,5 +1,6 @@
 # Thepixeldeveloper\Sitemap
 
+[![codecov](https://codecov.io/gh/ThePixelDeveloper/Sitemap/branch/master/graph/badge.svg)](https://codecov.io/gh/ThePixelDeveloper/Sitemap)
 [![License](https://poser.pugx.org/thepixeldeveloper/sitemap/license)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Latest Stable Version](https://poser.pugx.org/thepixeldeveloper/sitemap/v/stable)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Total Downloads](https://poser.pugx.org/thepixeldeveloper/sitemap/downloads)](https://packagist.org/packages/thepixeldeveloper/sitemap)
