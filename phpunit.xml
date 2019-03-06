@@ -8,6 +8,10 @@
          bootstrap="vendor/autoload.php"
 >
 
+    <logging>
+        <log type="coverage-clover" target="coverage.xml"/>
+    </logging>
+
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory>tests</directory>
