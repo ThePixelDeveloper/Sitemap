@@ -36,7 +36,7 @@ class Sitemap implements VisitorInterface
     }
 
     /**
-     * @return DateTimeInterface
+     * @return DateTimeInterface|null
      */
     public function getLastMod()
     {
