@@ -29,7 +29,7 @@
 		}
 	},
 	"scripts": {
-		"test": "phpdbg -qrr vendor/bin/phpunit --coverage-text --colors=never --coverage-html ./coverage",
+		"test": "phpdbg -qrr vendor/bin/phpunit",
 		"lint": "phpstan analyse src tests --level=7 -c phpstan.neon"
 	}
 }

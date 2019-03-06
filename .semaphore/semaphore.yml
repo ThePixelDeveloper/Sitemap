@@ -29,6 +29,7 @@ blocks:
         - name: Tests
           commands:
             - composer test
+            - bash <(curl -s https://codecov.io/bash)
           
         - name: Linting
           commands:
