@@ -1,0 +1,33 @@
+version: v1.0
+name: Sitemap Test Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: Install dependencies
+    task:
+      jobs:
+        - name: Composer install
+          commands:
+            - checkout
+            - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.lock),composer-$SEMAPHORE_GIT_BRANCH,composer-master
+            - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
+            - cache store composer-$(checksum composer.lock) vendor
+
+  - name: "Test and Linting"
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.lock),composer-$SEMAPHORE_GIT_BRANCH,composer-master
+
+      jobs:
+        - name: Tests
+          commands:
+            - composer test
+          
+        - name: Linting
+          commands:
+            - composer lint
