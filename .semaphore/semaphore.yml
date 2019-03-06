@@ -13,7 +13,7 @@ blocks:
           commands:
             - phpbrew ext install iconv
             - checkout
-            - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.json)
+            - cache restore composer-$(checksum composer.json)
             - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
             - cache store composer-$(checksum composer.json) vendor
 
@@ -22,7 +22,7 @@ blocks:
       prologue:
         commands:
           - checkout
-          - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.json)
+          - cache restore composer-$(checksum composer.json)
           - phpbrew ext install iconv
 
       jobs:
