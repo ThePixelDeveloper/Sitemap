@@ -13,16 +13,16 @@ blocks:
           commands:
             - phpbrew ext install iconv
             - checkout
-            - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.lock),composer-$SEMAPHORE_GIT_BRANCH,composer-master
+            - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.json)
             - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
-            - cache store composer-$(checksum composer.lock) vendor
+            - cache store composer-$(checksum composer.json) vendor
 
   - name: "Test and Linting"
     task:
       prologue:
         commands:
           - checkout
-          - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.lock),composer-$SEMAPHORE_GIT_BRANCH,composer-master
+          - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.json)
           - phpbrew ext install iconv
 
       jobs:
