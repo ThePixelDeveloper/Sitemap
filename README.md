@@ -69,7 +69,7 @@ echo $driver->output();
 
 ## Extensions
 
-The following extensions are supported: [Image](tree/master/src/Extensions/Image.php), [Link](tree/master/src/Extensions/Link.php), [Mobile](tree/master/src/Extensions/Mobile.php), [News](tree/master/src/Extensions/News.php) and [Video](tree/master/src/Extensions/Video.php). They work in the
+The following extensions are supported: [Image](src/Extensions/Image.php), [Link](src/Extensions/Link.php), [Mobile](src/Extensions/Mobile.php), [News](src/Extensions/News.php) and [Video](src/Extensions/Video.php). They work in the
 following way (taking image as an example):
 
 ``` php
