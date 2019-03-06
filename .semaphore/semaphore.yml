@@ -6,19 +6,12 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-
-  - name: Customise PHP
-    task:
-      jobs:
-        - name: Install iconv
-          commands:
-            - phpbrew ext install iconv
-            
   - name: Install dependencies
     task:
       jobs:
         - name: Composer install
           commands:
+            - phpbrew ext install iconv
             - checkout
             - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.lock),composer-$SEMAPHORE_GIT_BRANCH,composer-master
             - composer install --prefer-dist --classmap-authoritative --no-interaction --no-progress
@@ -30,6 +23,7 @@ blocks:
         commands:
           - checkout
           - cache restore composer-$SEMAPHORE_GIT_BRANCH-$(checksum composer.lock),composer-$SEMAPHORE_GIT_BRANCH,composer-master
+          - phpbrew ext install iconv
 
       jobs:
         - name: Tests
