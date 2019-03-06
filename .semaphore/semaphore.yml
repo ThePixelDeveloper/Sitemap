@@ -19,6 +19,9 @@ blocks:
 
   - name: "Test and Linting"
     task:
+      secrets:
+        - name: CodeCov
+        
       prologue:
         commands:
           - checkout
