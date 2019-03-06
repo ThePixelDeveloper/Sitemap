@@ -12,7 +12,7 @@ blocks:
       jobs:
         - name: Install iconv
           commands:
-            - pecl install iconv
+            - phpbrew ext install iconv
             
   - name: Install dependencies
     task:
