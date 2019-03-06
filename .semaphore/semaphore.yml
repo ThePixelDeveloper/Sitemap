@@ -6,6 +6,14 @@ agent:
     os_image: ubuntu1804
 
 blocks:
+
+  - name: Customise PHP
+    task:
+      jobs:
+        - name: Install iconv
+          commands:
+            - pecl install iconv
+            
   - name: Install dependencies
     task:
       jobs:
