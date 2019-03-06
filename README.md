@@ -1,7 +1,5 @@
 # Thepixeldeveloper\Sitemap
 
-[![pipeline status](https://www.devkit.net/mathew-davies/Sitemap/badges/master/pipeline.svg)](https://www.devkit.net/mathew-davies/Sitemap/commits/master)
-[![coverage report](https://www.devkit.net/mathew-davies/Sitemap/badges/master/coverage.svg)](https://www.devkit.net/mathew-davies/Sitemap/commits/master)
 [![License](https://poser.pugx.org/thepixeldeveloper/sitemap/license)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Latest Stable Version](https://poser.pugx.org/thepixeldeveloper/sitemap/v/stable)](https://packagist.org/packages/thepixeldeveloper/sitemap)
 [![Total Downloads](https://poser.pugx.org/thepixeldeveloper/sitemap/downloads)](https://packagist.org/packages/thepixeldeveloper/sitemap)
