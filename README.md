@@ -58,7 +58,7 @@ $url->setLastMod($lastMod);
 
 // Add it to a collection.
 $urlset = new SitemapIndex();
-$urlSet->add($url);
+$urlset->add($url);
 
 $driver = new XmlWriterDriver();
 $urlset->accept($driver);
