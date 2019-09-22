@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@master
       - name: Composer Action
         uses: MilesChou/composer-action@v0.0.1
-        run: install
+        with:
+          args: install
       - name: GitHub Action for PHPUnit
         uses: pxgamer/phpunit-action@v1.0.0
