@@ -138,7 +138,7 @@ class XmlWriterDriver implements DriverInterface
 
         $this->writer->writeAttribute(
             'xsi:schemaLocation',
-            'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd'
+            'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd'
         );
 
         $this->writer->writeAttribute(
