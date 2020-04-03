@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Composer Action
+        uses: MilesChou/composer-action@v0.0.1
+        with:
+          args: install
+      - name: GitHub Action for PHPUnit
+        uses: pxgamer/phpunit-action@v1.0.0
