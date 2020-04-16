@@ -32,7 +32,7 @@ class UrlsetSpec extends ObjectBehavior
     {
         $xmlWriter->startElement('urlset')->shouldBeCalled();
         $xmlWriter->writeAttribute('xmlns:xsi', 'https://www.w3.org/2001/XMLSchema-instance')->shouldBeCalled();
-        $xmlWriter->writeAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 ' . 'https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')->shouldBeCalled();
+        $xmlWriter->writeAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 ' . 'https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd')->shouldBeCalled();
         $xmlWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')->shouldBeCalled();
 
         $url->getSubelementsThatAppend()->willReturn([$image, $video]);
