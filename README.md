@@ -74,20 +74,23 @@ following way (taking image as an example):
 ``` php
 <?php declare(strict_types=1);
 
-use Thepixeldeveloper\Sitemap\Urlset;
-use Thepixeldeveloper\Sitemap\Url;
+use Thepixeldeveloper\Sitemap\Drivers\XmlWriterDriver;
 use Thepixeldeveloper\Sitemap\Extensions\Image;
+use Thepixeldeveloper\Sitemap\Url;
+use Thepixeldeveloper\Sitemap\Urlset;
+
 
 $url = new Url($loc);
-$url->setLastMod($lastMod);
-$url->setChangeFreq($changeFreq);
-$url->setPriority($priority);
-
 $image = new Image('https://image-location.com');
-
 $url->addExtension($image);
 
-...
+$urlset = new Urlset();
+$urlset->add($url);
+
+$driver = new XmlWriterDriver();
+$urlset->accept($driver);
+
+echo $driver->output();
 ```
 
 ## Advanced Usage
